@@ -1,1 +1,1 @@
-Group XX Project
+Group 12 Project
