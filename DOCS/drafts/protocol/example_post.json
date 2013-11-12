@@ -1,0 +1,15 @@
+{
+    "name": "string",
+    "short-description": "string",
+    "long-description": "string",
+    "locations": [
+        {
+            "name": "string",
+            "latitude": float,
+            "longitude": float,
+            "time": int,
+            "image": "base64 jpg string",
+
+        }
+    ]
+}
