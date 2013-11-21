@@ -1,0 +1,51 @@
+{
+    "type": "object",
+    "properies": {
+        "name": {
+            "type": "string",
+            "description": "The name of the tour"
+        },
+        "short-description": {
+            "type": "string",
+            "description": "The short description of the tour"
+        }
+        "long-description": {
+            "type": "string"
+            "description": "The longer description of the tour"
+        },
+        "locations": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properies": {
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the location to be displayed to the user"
+                    },
+                    "latitude": {
+                        "type": "number"
+                    },
+                    "longitude": {
+                        "type": "number"
+                    },
+                    "time": {
+                        "type" "number",
+                        "description": "Unix timestamp of the time the location was recorded"
+                    },
+                    "image": {
+                        "type": "string",
+                        "description": "Base64 encoded JPEG image"
+                    }
+                },
+                "required": [
+                    "name",
+                    "latitude",
+                    "longitude",
+                    "time",
+                    "image"
+                 ]
+            }
+        }
+    },
+    "required": ["name", "short-description", "locations"]
+}
