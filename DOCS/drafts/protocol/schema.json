@@ -15,18 +15,22 @@
         },
         "locations": {
             "type": "array",
+            "description": "An array of all the locations in the tour",
             "items": {
                 "type": "object",
+                "description": "A single location",
                 "properies": {
                     "name": {
                         "type": "string",
                         "description": "The name of the location to be displayed to the user"
                     },
                     "latitude": {
-                        "type": "number"
+                        "type": "number",
+                        "description": "Latitude in degrees"
                     },
                     "longitude": {
-                        "type": "number"
+                        "type": "number",
+                        "description": "Longitude in degrees"
                     },
                     "time": {
                         "type" "number",
