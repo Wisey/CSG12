@@ -1,7 +1,7 @@
 Android
 =======
 
-Location : object
+#Location : object
 
         - name
         - lat
@@ -12,7 +12,7 @@ Location : object
         - base64jpeg(image) : String
         + toJson() : String
 
-Tour : object
+#Tour : object
 
         - name
         - locations
@@ -23,21 +23,21 @@ Tour : object
         + toJson() : String
         + addLocation(location : Location)
 
-Main : object
+#Main : object
 
         - tours : Tour[]
         + main(args String[])
 
-TourUploader : object
+#TourUploader : object
 
         - tours : Tour[]
         + upload() : boolean
 
-MapScreen : AndroidScreen
+#MapScreen : AndroidScreen
 
-Settings : AndroidScreen
+#Settings : AndroidScreen
 
-TourCreator : AndroidScreen
+#TourCreator : AndroidScreen
 
         - tour : Tour
         - button/text field for each input
@@ -45,12 +45,12 @@ TourCreator : AndroidScreen
         - method for data retrieval from the user
         - getTour() Tour
 
-TourViewer : AndroidScreen
+#TourViewer : AndroidScreen
 
         - tour : Tour[]
 
-LocationViewer : AndroidScreen
+#LocationViewer : AndroidScreen
 
         - locations : Locations[]
 
-Class for each screen in the UI
+#Class for each screen in the UI
