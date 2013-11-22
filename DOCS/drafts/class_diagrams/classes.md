@@ -8,7 +8,8 @@ Location : object
     - image
     - description
     - time
-    + toJson()
+    - base64jpeg(image) : String
+    + toJson() : String
 
 Tour : object
     - name
@@ -16,22 +17,33 @@ Tour : object
     - description
     - long description
     - date
-    + toJson()
+    - uploaded
+    + toJson() : String
     + addLocation(location : Location)
 
 Main : object
     - tours : Tour[]
     + main(args String[])
 
-Screen : AndroidScreen
-    - title
-    - backSlide
+TourUploader : object
+    - tours : Tour[]
+    + upload() : boolean
+
+MapScreen : AndroidScreen
+
+Settings : AndroidScreen
 
 TourCreator : AndroidScreen
     - tour : Tour
     - button/text field for each input
     - accept button
     - method for data retrieval from the user
-    - getTour()
+    - getTour() Tour
+
+TourViewer : AndroidScreen
+    - tour : Tour[]
+
+LocationViewer : AndroidScreen
+    - locations : Locations[]
 
 Class for each screen in the UI
