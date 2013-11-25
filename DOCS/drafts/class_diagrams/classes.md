@@ -3,35 +3,43 @@ Android
 
 #Location : object
 
-        - name
-        - lat
-        - long
-        - image
-        - description
-        - time
-        - base64jpeg(image) : String
-        + toJson() : String
+```
+    - name
+    - lat
+    - long
+    - image
+    - description
+    - time
+    - base64jpeg(image) : String
+    + toJson() : String
+```
 
 #Tour : object
 
-        - name
-        - locations
-        - description
-        - long description
-        - date
-        - uploaded
-        + toJson() : String
-        + addLocation(location : Location)
+```
+    - name
+    - locations
+    - description
+    - long description
+    - date
+    - uploaded
+    + toJson() : String
+    + addLocation(location : Location)
+```
 
 #Main : object
 
-        - tours : Tour[]
-        + main(args String[])
+```
+    - tours : Tour[]
+    + main(args String[])
+```
 
 #TourUploader : object
 
-        - tours : Tour[]
-        + upload() : boolean
+```
+    - tours : Tour[]
+    + upload() : boolean
+```
 
 #MapScreen : AndroidScreen
 
@@ -39,18 +47,24 @@ Android
 
 #TourCreator : AndroidScreen
 
-        - tour : Tour
-        - button/text field for each input
-        - accept button
-        - method for data retrieval from the user
-        - getTour() Tour
+```
+    - tour : Tour
+    - button/text field for each input
+    - accept button
+    - method for data retrieval from the user
+    - getTour() Tour
+```
 
 #TourViewer : AndroidScreen
 
-        - tour : Tour[]
+```
+    - tour : Tour[]
+```
 
 #LocationViewer : AndroidScreen
 
-        - locations : Locations[]
+```
+    - locations : Locations[]
+```
 
 #Class for each screen in the UI
