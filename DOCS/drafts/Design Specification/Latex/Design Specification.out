@@ -1,0 +1,19 @@
+\BOOKMARK [1][-]{section.1}{INTRODUCTION}{}% 1
+\BOOKMARK [1][-]{section.2}{DECOMPOSITION DESCRIPTION}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Programs in system}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Significant classes in Program 1}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Modules shared between programs}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.4}{Mapping from requirements to classes}{section.2}% 6
+\BOOKMARK [1][-]{section.3}{DEPENDENCY DESCRIPTION}{}% 7
+\BOOKMARK [2][-]{subsection.3.1}{Component Diagrams}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.2}{Component Diagrams for Program 1}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.3}{Inheritance Relationships}{section.3}% 10
+\BOOKMARK [1][-]{section.4}{INTERFACE DESCRIPTION}{}% 11
+\BOOKMARK [2][-]{subsection.4.1}{Class 1 interface specification}{section.4}% 12
+\BOOKMARK [1][-]{section.5}{DETAILED DESIGN}{}% 13
+\BOOKMARK [2][-]{subsection.5.1}{Sequence diagrams}{section.5}% 14
+\BOOKMARK [2][-]{subsection.5.2}{Significant algorithms}{section.5}% 15
+\BOOKMARK [2][-]{subsection.5.3}{Signifcant data structures}{section.5}% 16
+\BOOKMARK [1][-]{section.6}{REFERENCES}{}% 17
+\BOOKMARK [1][-]{section.7}{APPENDICES}{}% 18
+\BOOKMARK [1][-]{section.8}{DOCUMENT HISTORY}{}% 19
