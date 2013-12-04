@@ -1,6 +1,6 @@
 
 public class TourUploader {
-	Tour[] tours;
+	private Tour[] tours;
 	
 	/*
 	 * Upload the tours to the server.
