@@ -8,3 +8,7 @@ out/
 bin/
 *.class
 .DS_Store
+*.log
+*.out
+*.toc
+*.aux
