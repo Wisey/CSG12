@@ -1,5 +1,6 @@
 \documentclass{project}
 \usepackage[pdftex]{hyperref}
+\usepackage{listings}
 
 \newcommand{\code}[1] {\texttt{#1}}
 
@@ -22,7 +23,12 @@
 \section{DECOMPOSITION DESCRIPTION}
     \subsection{Programs in system}
     \subsection{Significant classes in Program 1}
-    \subsection{Modules shared between programs}
+        \subsubsection{Tour}
+            \lstinputlisting[language=Java]{../../class_diagrams/Tour.java}
+        \subsubsection{Location}
+            \lstinputlisting[language=Java]{../../class_diagrams/Location.java}
+        \subsubsection{TourUploader}
+            \lstinputlisting[language=Java]{../../class_diagrams/TourUploader.java}
     \subsection{Mapping from requirements to classes}
 
         This table shows each functional requirement that must be met, and
