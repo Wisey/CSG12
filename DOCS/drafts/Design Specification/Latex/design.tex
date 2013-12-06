@@ -1,0 +1,89 @@
+\documentclass{project}
+\usepackage[pdftex]{hyperref}
+\usepackage{listings}
+
+\newcommand{\code}[1] {\texttt{#1}}
+
+\begin{document}
+
+\title{Design Specification}
+\subtitle{Group 12}
+
+    \author{lps1 \& lot15}     
+    \shorttitle{Group 12 Design Specification}
+    \version{1.0}
+    \status{Draft}
+    \configref{Config Ref: To be assigned}
+    \maketitle
+
+\tableofcontents
+
+\section{INTRODUCTION}
+
+\section{DECOMPOSITION DESCRIPTION}
+    \subsection{Programs in system}
+    \subsection{Significant classes in Program 1}
+        \subsubsection{Tour}
+            \lstinputlisting[language=Java]{../../class_diagrams/Tour.java}
+        \subsubsection{Location}
+            \lstinputlisting[language=Java]{../../class_diagrams/Location.java}
+        \subsubsection{TourUploader}
+            \lstinputlisting[language=Java]{../../class_diagrams/TourUploader.java}
+    \subsection{Mapping from requirements to classes}
+
+        This table shows each functional requirement that must be met, and
+        which class provides its operation. This will ensure that all
+        requirements are covered, and show the impact that changes to the
+        design may have.
+
+        \begin{table}[h]
+            \caption{Table mapping requirements to classes}
+            \centering
+            \begin{tabular}{l|c}
+            \hline
+            \hline
+            Functional requirement                            & Class providing requirement \\   [0.5ex] \hline
+            FR1- Startup of software on Android device        & \code{HomeActivity}         \\
+            FR2 - Providing info about the whole walking tour & \code{Tour}                 \\
+            FR3 - Adding locations to the walking tour        & \code{TourCreatorActivity}  \\
+            FR4 - Adding photos to the walks                  & \code{TourCreatorActivity}  \\
+            FR5 - Cancelling walks                            & \code{TourViewer}           \\
+            FR6 - Sending the walk to the server              & \code{TourUploader}         \\
+            FR7 - Switching from the WTC                      & \code{HomeActivity}         \\
+            FR8 - Trying out a created walking tour           & ~                           \\
+            FR9 - Saving data on server                       & ~                           \\
+            \end{tabular}
+        \end{table}
+
+\section{DEPENDENCY DESCRIPTION}
+    \subsection{Component Diagrams}
+    \subsection{Component Diagrams for Program 1}
+    \subsection{Inheritance Relationships}
+
+\section{INTERFACE DESCRIPTION}
+    \subsection{Class 1 interface specification}
+
+\section{DETAILED DESIGN}
+    \subsection{Sequence diagrams}
+    \subsection{Significant algorithms}
+
+        \subsubsection{Length of tour}
+    \subsection{Signifcant data structures}
+
+\section{REFERENCES}
+
+\section{APPENDICES}
+
+    \label{thelastpage}
+    \section{DOCUMENT HISTORY}
+        \begin{tabular}{|l | l | l | l | l |}
+            \hline
+            Version & CCF No. & Date & Changes made to Document & Changed by \\
+            \hline
+            0.1 & N/A & 2013-11-25 & Initial creation & LPS1 \\
+            0.2 & N/A & 2013-12-04 &  & LOT15 \\
+            \hline
+        \end{tabular}
+        \label{thelastpage}
+
+\end{document}
