@@ -13,18 +13,21 @@ import android.widget.Toast;
 public class HomeActivity extends Activity implements LocationListener {
 	private LocationManager locationManager;
 	private String provider;
-	private int latitude = 0;
-	private int longitude = 0;
+	private double latitude = 0;
+	private double longitude = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
-		LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+		locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
 		Criteria criteria = new Criteria();
 		provider = locationManager.getBestProvider(criteria, false);
 		Location location = locationManager.getLastKnownLocation(provider);
+		if (location != null) {
+			onLocationChanged(location);
+		}
 	}
 
 	@Override
@@ -35,7 +38,9 @@ public class HomeActivity extends Activity implements LocationListener {
 	}
 
 	public void onCoordinateClick(View view) {
-		Toast.makeText(this, "Button clicked!", Toast.LENGTH_SHORT).show();
+		String Text = "Latitude = " + latitude + " Longitude = " + longitude;
+		Toast.makeText(getApplicationContext(), Text, Toast.LENGTH_SHORT)
+				.show();
 	}
 
 	public void getCoordinates() {
@@ -44,8 +49,11 @@ public class HomeActivity extends Activity implements LocationListener {
 
 	@Override
 	public void onLocationChanged(Location location) {
-		latitude = (int) (location.getLatitude());
-		longitude = (int) (location.getLongitude());
+		location.getLatitude();
+		location.getLongitude();
+		System.out.println("location changed");
+		latitude = location.getLatitude();
+		longitude = location.getLongitude();
 	}
 
 	@Override
@@ -58,5 +66,17 @@ public class HomeActivity extends Activity implements LocationListener {
 
 	@Override
 	public void onStatusChanged(String arg0, int arg1, Bundle arg2) {
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		locationManager.requestLocationUpdates(provider, 400, 1, this);
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		locationManager.removeUpdates(this);
 	}
 }
