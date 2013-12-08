@@ -12,3 +12,5 @@ bin/
 *.out
 *.toc
 *.aux
+SRC/Drafts/WalkingTour/gen
+SRC/Drafts/WalkingTour/bin

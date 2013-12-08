@@ -1,15 +1,30 @@
 package uk.ac.aber.group12.walkingtour;
 
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Toast;
 
-public class HomeActivity extends Activity {
+public class HomeActivity extends Activity implements LocationListener {
+	private LocationManager locationManager;
+	private String provider;
+	private int latitude = 0;
+	private int longitude = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
+		LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+
+		Criteria criteria = new Criteria();
+		provider = locationManager.getBestProvider(criteria, false);
+		Location location = locationManager.getLastKnownLocation(provider);
 	}
 
 	@Override
@@ -19,4 +34,29 @@ public class HomeActivity extends Activity {
 		return true;
 	}
 
+	public void onCoordinateClick(View view) {
+		Toast.makeText(this, "Button clicked!", Toast.LENGTH_SHORT).show();
+	}
+
+	public void getCoordinates() {
+
+	}
+
+	@Override
+	public void onLocationChanged(Location location) {
+		latitude = (int) (location.getLatitude());
+		longitude = (int) (location.getLongitude());
+	}
+
+	@Override
+	public void onProviderDisabled(String arg0) {
+	}
+
+	@Override
+	public void onProviderEnabled(String arg0) {
+	}
+
+	@Override
+	public void onStatusChanged(String arg0, int arg1, Bundle arg2) {
+	}
 }
