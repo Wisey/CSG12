@@ -9,12 +9,13 @@
     tools:context=".HomeActivity" >
 
     <Button
-        android:id="@+id/coordinate_button"
+        android:id="@+id/button1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:text="Record Coordinates" android:onClick="onCoordinateClick"/>
+        android:text="Record location"
+        android:onClick="onStartTourCreator" />
 
 </RelativeLayout>
