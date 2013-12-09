@@ -3,8 +3,7 @@
 
     <string name="app_name">WalkingTour</string>
     <string name="action_settings">Settings</string>
-    <string name="test_string">Hi, there!</string>
     <string name="title_activity_tour_creator">TourCreatorActivity</string>
-    <string name="hello_world">Hello world!</string>
+    
 
 </resources>

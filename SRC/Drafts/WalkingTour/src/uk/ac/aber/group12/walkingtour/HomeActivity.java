@@ -12,6 +12,9 @@ public class HomeActivity extends Activity {
 		Intent intent = new Intent(this, TourCreatorActivity.class);
 		startActivity(intent);
 	}
+	
+	public void onUpload(View view) {
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
