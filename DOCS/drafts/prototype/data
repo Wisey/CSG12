@@ -1,0 +1,23 @@
+tour:
+    - name: Aberystwyth University
+    - short description: A tour around the university
+    - long description: A nice look around the delightful grounds of the rather
+                        nice University of Aberystwyth.
+    - locations:
+        - compsci:
+            - coords: 52.416238, -4.065470
+            - description: the compsci department
+            - time: 888333
+            - image: image1.jpg
+                      
+        - arts center:
+            - coords: 52.41540, -4.06341
+            - description: the steps to the arts center
+            - time: 888342
+            - image: image2.jpg
+
+        - arts center:
+            - coords: 52.41540, -4.06341
+            - description: the steps to the arts center
+            - time: 888342
+            - image: image3.jpg
