@@ -17,6 +17,7 @@ import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
 
+
 public class TourCreatorActivity extends Activity  {
 
 
@@ -28,6 +29,9 @@ public class TourCreatorActivity extends Activity  {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tour_creator);
+
+
+
 		setupActionBar();
 
 		// photo stuff
@@ -75,6 +79,7 @@ public class TourCreatorActivity extends Activity  {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+
 
 	@Override
 	protected void onResume() {
