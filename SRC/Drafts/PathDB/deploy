@@ -1,4 +1,6 @@
 #!/bin/bash
+# Pull from git and deploy the webserver files into public_html
+
 while true;
     do
         git pull
