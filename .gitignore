@@ -7,7 +7,7 @@ out/
 .project
 bin/
 *.class
-.DS_Store
+*.DS_Store
 *.log
 *.out
 *.toc
@@ -26,4 +26,4 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
-WalkingTourPrototype/gen
+SRC/Drafts/WalkingTourPrototype/gen

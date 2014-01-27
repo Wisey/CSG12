@@ -1,0 +1,62 @@
+
+<LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:baselineAligned="true"
+        android:clickable="false"
+        android:background="#000000">
+
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:minHeight="300dp"
+            android:minWidth="400dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_launcher"/>
+
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Start walk"
+            android:id="@+id/btnStartWalk"
+            android:clickable="true"
+            style="@android:style/ButtonBar"
+            android:onClick="onStartTourCreator"
+            android:textSize="30dp"/>
+
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Upload"
+            android:id="@+id/btnViewWalks"
+            style="@android:style/ButtonBar"
+            android:clickable="true"
+            android:onClick="onStartViewTours"
+            android:textSize="30dp"/>
+
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Settings"
+            android:id="@+id/btnSettings"
+            style="@android:style/ButtonBar"
+            android:layout_marginTop="-1dp"
+            android:onClick="onStartSettings"
+            android:textSize="30dp"/>
+
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Log out"
+            android:id="@+id/btnLog_Out"
+            style="@android:style/ButtonBar"
+            android:clickable="true"
+            android:onClick="onStartLogOut"
+            android:textSize="30dp"
+            android:layout_gravity="bottom"
+            android:longClickable="false"/>
+
+</LinearLayout>
