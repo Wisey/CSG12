@@ -10,3 +10,5 @@ Web server
 ----------
 
 Location `SRC/Drafts/PathDB`
+
+  - Deployed to http://nyaa.kragniz.eu:443/~group
