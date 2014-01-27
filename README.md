@@ -4,9 +4,9 @@ Group 12 Project
 Android client
 --------------
 
-Source location: `SRC/Drafts/WalkingTour`
+Location: `SRC/Drafts/WalkingTour`
 
 Web server
 ----------
 
-Source location `SRC/Drafts/PathDB`
+Location `SRC/Drafts/PathDB`
