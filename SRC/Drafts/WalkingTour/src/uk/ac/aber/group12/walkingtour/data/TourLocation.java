@@ -9,15 +9,15 @@ public class TourLocation {
             + "\"image\": \"%s\"\n}";
 
     private String name;
-    private String locationDescription;
+    private String description;
     private Image image;
     private double latitude;
     private double longitude;
     private double time;
 
-    public TourLocation(String name, String locationDescription, Image image, double latitude, double longitude, double time) {
+    public TourLocation(String name, String description, Image image, double latitude, double longitude, double time) {
         this.name = name;
-        this.locationDescription = locationDescription;
+        this.description = description;
         this.image = image;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -25,15 +25,15 @@ public class TourLocation {
     }
 
     public String toJSON() {
-        return null;
+        return String.format(LOCATION_JSON, name, latitude, longitude, time, image);
     }
 
     public String getName() {
         return name;
     }
 
-    public String getLocationDescription() {
-        return locationDescription;
+    public String getDescription() {
+        return description;
     }
 
     public Image getImage() {
