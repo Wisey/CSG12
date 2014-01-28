@@ -43,10 +43,4 @@ public class HomeActivity extends Activity {
         // Intent intent = new Intent(this, test.class);
         //  startActivity(intent);
     }
-
-
-
-
-
-
 }
