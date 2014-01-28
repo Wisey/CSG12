@@ -6,6 +6,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 public class HomeActivity extends Activity {
 
@@ -29,8 +32,7 @@ public class HomeActivity extends Activity {
     }
 
     public void onStartUpload(View view) {
-        Intent intent = new Intent(this, UploaderActivity.class);
-         startActivity(intent);
+        Toast.makeText(getApplicationContext(), "Starting post", Toast.LENGTH_SHORT).show();
     }
 
 
