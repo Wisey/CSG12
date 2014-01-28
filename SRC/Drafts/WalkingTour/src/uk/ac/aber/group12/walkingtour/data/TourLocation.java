@@ -8,7 +8,7 @@ public class TourLocation {
     private double longitude;
     private double time;
 
-    public TourLocation(String name,String locationDescription,Image image, double latitude, double longitude, double time) {
+    public TourLocation(String name, String locationDescription, Image image, double latitude, double longitude, double time) {
         this.name = name;
         this.locationDescription = locationDescription;
         this.image = image;
