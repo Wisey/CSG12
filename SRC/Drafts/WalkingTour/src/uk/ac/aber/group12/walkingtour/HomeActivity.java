@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import uk.ac.aber.group12.walkingtour.data.Post;
+
 public class HomeActivity extends Activity {
 
     @Override
@@ -33,6 +35,7 @@ public class HomeActivity extends Activity {
 
     public void onStartUpload(View view) {
         Toast.makeText(getApplicationContext(), "Starting post", Toast.LENGTH_SHORT).show();
+        Post.postJSON("http://nyaa.kragniz.eu", "\"test\": 12");
     }
 
 
