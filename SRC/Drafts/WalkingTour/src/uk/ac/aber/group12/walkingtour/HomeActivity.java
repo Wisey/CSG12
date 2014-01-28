@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import uk.ac.aber.group12.walkingtour.data.Post;
 
+
+
 public class HomeActivity extends Activity {
 
     @Override
@@ -27,6 +29,7 @@ public class HomeActivity extends Activity {
     }
 
     public void onStartTourCreator(View view) {
+
         Intent intent = new Intent(this, TourCreatorActivity.class);
         startActivity(intent);
     }

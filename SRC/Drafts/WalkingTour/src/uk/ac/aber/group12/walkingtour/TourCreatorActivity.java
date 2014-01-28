@@ -13,10 +13,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.EditText;
 import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
+import uk.ac.aber.group12.walkingtour.data.Tour;
 
 import uk.ac.aber.group12.walkingtour.data.Image;
 
@@ -30,6 +32,8 @@ public class TourCreatorActivity extends Activity implements LocationListener {
     private TextView textView;
 	private static final int CAMERA_REQUEST = 1888;
 	private ImageView imageView;
+    private HomeActivity homeactivity;
+    private Tour tour;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +96,10 @@ public class TourCreatorActivity extends Activity implements LocationListener {
 	}
 
     public void onStartTour(View view) {
+        String name= ((EditText)findViewById(R.id.tourName)).getText().toString();
+        String shortDes=((EditText)findViewById(R.id.shortDes)).getText().toString();
+        String longDes= ((EditText)findViewById(R.id.longDes)).getText().toString();
+        tour=new Tour(name,shortDes,longDes);
         Intent intent = new Intent(this, TourActivity.class);
         startActivity(intent);
     }

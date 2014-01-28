@@ -28,7 +28,7 @@ import android.widget.Toast;
         private String provider;
         private double latitude = 0;
         private double longitude = 0;
-        private Image image;
+       // private Image image;
         private TextView textView;
         private static final int CAMERA_REQUEST = 1888;
         private ImageView imageView;

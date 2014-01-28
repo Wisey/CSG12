@@ -29,4 +29,12 @@ public class Image {
         this.encodedImage = Base64.encodeToString(b, Base64.DEFAULT);
         return this.encodedImage;
     }
+
+    public Bitmap getImage() {
+        return image;
+    }
+
+    public String getEncodedImage() {
+        return encodedImage;
+    }
 }
