@@ -1,8 +1,11 @@
 package uk.ac.aber.group12.walkingtour.data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Tour {
+@SuppressWarnings("serial")
+public class Tour implements Serializable{
+
     private String name;
     private String shortDescription;
     private String longDescription;

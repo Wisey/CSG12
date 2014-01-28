@@ -22,7 +22,8 @@
                 android:id="@+id/tourName"
                 android:editable="true"
                 android:text="Tour name"
-                android:selectAllOnFocus="true"/>
+                android:selectAllOnFocus="true"
+                />
 
         <EditText
                 android:layout_width="fill_parent"
@@ -33,7 +34,7 @@
                 android:layout_gravity="left|center_vertical"
                 android:text="Short Description"
                 android:selectAllOnFocus="true"
-                />
+                android:maxLength="100"/>
 
         <EditText
                 android:layout_width="fill_parent"
@@ -41,7 +42,8 @@
                 android:id="@+id/longDes"
                 android:layout_gravity="left|center_vertical"
                 android:text="Long Description"
-                android:selectAllOnFocus="true"/>
+                android:selectAllOnFocus="true"
+                android:maxLength="1000"/>
 
         <Button
                 android:layout_width="fill_parent"

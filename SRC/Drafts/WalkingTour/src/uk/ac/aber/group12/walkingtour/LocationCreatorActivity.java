@@ -21,6 +21,9 @@ import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
+
+import uk.ac.aber.group12.walkingtour.data.Tour;
+import uk.ac.aber.group12.walkingtour.data.TourLocation;
 import android.text.format.Time;
 
 import java.util.Date;
@@ -34,16 +37,20 @@ public class LocationCreatorActivity extends Activity implements LocationListene
     private double latitude = 0;
     private double longitude = 0;
     private Image image;
-    private Location loca;
+    private TourLocation loca;
     private TextView textView;
     private static final int CAMERA_REQUEST = 1888;
     private ImageView imageView;
+    private Tour tour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_creator);
         setupActionBar();
+
+        Intent i = getIntent();
+        tour=(Tour)i.getSerializableExtra("tour");
 
         // location stuff
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
@@ -118,8 +125,15 @@ public class LocationCreatorActivity extends Activity implements LocationListene
         //Code to save the information into the database
         String locName= ((EditText)findViewById(R.id.locName)).getText().toString();
         String locationDes= ((EditText)findViewById(R.id.locDes)).getText().toString();
+
+        if ((locName.matches(""))||locationDes.matches("")) {
+            Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         double time = System.currentTimeMillis()/1000;
-        loca=new Location(locName,locationDes,image,latitude,longitude,time);
+        loca=new TourLocation(locName,locationDes,image,latitude,longitude,time);
+        tour.addLocation(loca);
         finish();
     }
 

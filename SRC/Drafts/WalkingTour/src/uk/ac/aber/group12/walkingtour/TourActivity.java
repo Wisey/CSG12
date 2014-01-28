@@ -6,15 +6,21 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
+import android.widget.TextView;
+import uk.ac.aber.group12.walkingtour.data.Tour;
 
 public class TourActivity extends Activity {
 
-
+   // private TourCreatorActivity TCA;
+    private Tour tour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tour);
+        Intent i = getIntent();
+        Tour tour=(Tour)i.getSerializableExtra("tour");
+        ((TextView)findViewById(R.id.textView)).setText(tour.getName());
     }
 
     @Override
@@ -26,6 +32,7 @@ public class TourActivity extends Activity {
 
     public void onStartLocationCreator(View view) {
         Intent intent = new Intent(this, LocationCreatorActivity.class);
+        intent.putExtra("tour",tour);
         startActivity(intent);
     }
 
