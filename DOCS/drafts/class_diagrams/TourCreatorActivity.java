@@ -12,7 +12,7 @@ public class TourCreatorActivity extends Activity {
 
     /*
      * Reads a name from the user and adds it to the tour.
-     */
+     *
     private void recordName() {
     }
 
