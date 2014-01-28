@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import uk.ac.aber.group12.walkingtour.data.Image;
 import uk.ac.aber.group12.walkingtour.data.Post;
+import uk.ac.aber.group12.walkingtour.data.Tour;
 import uk.ac.aber.group12.walkingtour.data.TourLocation;
 
 
@@ -35,9 +36,12 @@ public class HomeActivity extends Activity {
     }
 
     public void onStartUpload(View view) {
-        TourLocation location = new TourLocation("test", "a test location", new Image(), 0.3, 23.1, 312312313.122);
-        Toast.makeText(getApplicationContext(), "Starting post", Toast.LENGTH_SHORT).show();
-        Post post = new Post("http://nyaa.kragniz.eu", location.toJSON());
+        Tour tour = new Tour("Nice", "A nice tour", "This is a very nice tour. Something something long description");
+        tour.addLocation(new TourLocation("road", "first test location", new Image(), 0.3, 23.1, 312312313.122));
+        tour.addLocation(new TourLocation("house", "second location", new Image(), 0.3, 23.1, 312312313.122));
+
+        Toast.makeText(getApplicationContext(), String.valueOf(tour.getLocations().get(0).toJSON()), Toast.LENGTH_SHORT).show();
+        Post post = new Post("http://nyaa.kragniz.eu", tour.toJSON());
         post.sendAsync();
     }
 

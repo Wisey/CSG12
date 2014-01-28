@@ -7,10 +7,10 @@ import java.util.ArrayList;
 public class Tour implements Serializable{
     private static String TOUR_JSON = "{\n"
         + "  \"name\": \"%s\",\n"
-        + "  \"short-description\": %s,\n"
-        + "  \"long-description\": %s,\n"
+        + "  \"short-description\": \"%s\",\n"
+        + "  \"long-description\": \"%s\",\n"
         + "  \"locations\": [\n"
-        + "    %s"
+        + "%s"
         + "  ]\n"
         + "}";
 
@@ -23,6 +23,7 @@ public class Tour implements Serializable{
         this.name = name;
         this.shortDescription = shortDescription;
         this.longDescription = longDescription;
+        locations = new ArrayList<TourLocation>();
     }
 
     public void addLocation(TourLocation location) {
@@ -30,13 +31,14 @@ public class Tour implements Serializable{
     }
 
     public String toJSON() {
-        String locationStrings = "";
+        StringBuffer buf = new StringBuffer();
+
         for(TourLocation loc: locations) {
-            locationStrings.concat(loc.toJSON());
-            locationStrings.concat(",\n");
+            buf.append(loc.toJSON());
+            buf.append(",\n");
         }
 
-        return String.format(TOUR_JSON, name, shortDescription, longDescription, locationStrings);
+        return String.format(TOUR_JSON, name, shortDescription, longDescription, buf.toString());
     }
 
     public String getName() {
@@ -49,5 +51,9 @@ public class Tour implements Serializable{
 
     public String getLongDescription() {
         return longDescription;
+    }
+
+    public ArrayList<TourLocation> getLocations() {
+        return locations;
     }
 }
