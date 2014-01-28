@@ -8,62 +8,45 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".TourCreatorActivity" >
 
-    <Button
-        android:id="@+id/coordinate_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:onClick="onCoordinateClick"
-        android:text="Record Coordinates" />
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="14dp">
 
-    <Button
-        android:id="@+id/photo_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/coordinate_button"
-        android:layout_below="@+id/coordinate_button"
-        android:layout_marginTop="29dp"
-        android:onClick="onPhotoClick"
-        android:text="Take photo" />
+        <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editText"
+                android:editable="true"
+                android:text="Tour name"/>
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" />
+        <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="127dp"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/editText2"
+                android:layout_gravity="left|center_vertical"
+                android:text="Short Description"/>
 
-    <ImageView
-        android:id="@+id/ImageView01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" />
+        <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="194dp"
+                android:id="@+id/editText3"
+                android:layout_gravity="left|center_vertical"
+                android:text="Long Description"/>
 
-    <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageView2"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="44dp"/>
+        <Button
+                android:layout_width="fill_parent"
+                android:layout_height="89dp"
+                android:text="Start Tour"
+                android:id="@+id/button"
+                android:layout_gravity="left|center_vertical"
+                android:textSize="40dp"
+                android:onClick="onStartTour"/>
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Small Text"
-            android:id="@+id/textView"
-            android:layout_below="@+id/photo_button"
-            android:layout_toRightOf="@+id/imageView"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="29dp"/>
-
-    <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/editText"
-            android:layout_below="@+id/textView"
-            android:layout_alignLeft="@+id/textView"/>
-
+    </LinearLayout>
 </RelativeLayout>
