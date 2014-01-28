@@ -25,14 +25,13 @@ def hello_world():
                       'long-description'
                       )
                   )
-        print [f for f in fields]
-        field_types = (type(f) in strings_types for f in fields)
-        print field_types
 
-        if all_str and len(body['locations']) > 0:
+        if len(body['locations']) > 0 and type(body['name']) is unicode:
             os.system('figlet IT WORKS')
             if not TEST:
                 shutdown_server()
+        else:
+            os.system('figlet BADNESS')
 
         return 'success!'
         
@@ -41,4 +40,4 @@ def hello_world():
 
 if __name__ == '__main__':
     app.debug = True
-    app.run()
+    app.run(port=9090, host='0.0.0.0')
