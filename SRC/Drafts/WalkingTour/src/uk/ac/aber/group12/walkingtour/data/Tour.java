@@ -13,4 +13,8 @@ public class Tour {
         this.shortDescription = shortDescription;
         this.longDescription = longDescription;
     }
+
+    public void addLocation(Location location) {
+        locations.add(location);
+    }
 }
