@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 
+
+
 public class HomeActivity extends Activity {
 
     @Override
@@ -24,6 +26,7 @@ public class HomeActivity extends Activity {
     }
 
     public void onStartTourCreator(View view) {
+
         Intent intent = new Intent(this, TourCreatorActivity.class);
         startActivity(intent);
     }

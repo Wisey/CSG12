@@ -17,7 +17,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Title of walk"
+                android:text="Title of Tour"
                 android:id="@+id/textView"
                 android:layout_alignParentTop="true"
                 android:layout_alignLeft="@+id/location_button"
@@ -33,15 +33,6 @@
                 android:id="@+id/textView2"/>
 
         <Button
-                android:id="@+id/upload_button"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Upload tour"
-                android:layout_alignBaseline="@+id/button"
-                android:layout_alignBottom="@+id/button"
-                android:layout_centerHorizontal="true"/>
-
-        <Button
                 android:id="@+id/location_button"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -52,6 +43,15 @@
                 android:layout_alignLeft="@+id/upload_button"
                 android:layout_marginTop="-4dp"
                 />
+
+        <Button
+                android:id="@+id/upload_button"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Upload tour"
+                android:layout_alignBaseline="@+id/button"
+                android:layout_alignBottom="@+id/button"
+                android:layout_centerHorizontal="true"/>
 
         <Button
                 android:layout_width="fill_parent"

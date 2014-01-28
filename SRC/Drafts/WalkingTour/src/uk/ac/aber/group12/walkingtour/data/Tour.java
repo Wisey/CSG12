@@ -8,6 +8,10 @@ public class Tour {
     private String longDescription;
     private ArrayList<Location> locations;
 
+    public Tour(){
+
+    }
+
     public Tour(String name, String shortDescription, String longDescription) {
         this.name = name;
         this.shortDescription = shortDescription;
@@ -16,5 +20,17 @@ public class Tour {
 
     public void addLocation(Location location) {
         locations.add(location);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getShortDescription() {
+        return shortDescription;
+    }
+
+    public String getLongDescription() {
+        return longDescription;
     }
 }
