@@ -34,7 +34,7 @@
             android:id="@+id/btnViewWalks"
             style="@android:style/ButtonBar"
             android:clickable="true"
-            android:onClick="onStartViewTours"
+            android:onClick="onStartUpload"
             android:textSize="30dp"/>
 
     <Button

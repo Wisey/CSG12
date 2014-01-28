@@ -1,6 +1,6 @@
 package uk.ac.aber.group12.walkingtour.data;
 
-public class Location {
+public class TourLocation {
     private String name;
     private String locationDes;
     private Image image;
@@ -8,7 +8,7 @@ public class Location {
     private double longitude;
     private double time;
 
-    public Location(String name,String locationDes ,Image image, double latitude, double longitude, double time) {
+    public TourLocation(String name,String locationDes ,Image image, double latitude, double longitude, double time) {
         this.name = name;
         this.locationDes=locationDes;
         this.image = image;

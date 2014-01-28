@@ -1,11 +1,14 @@
 
 package uk.ac.aber.group12.walkingtour;
 
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Toast;
+
+import uk.ac.aber.group12.walkingtour.data.Post;
 
 
 
@@ -32,8 +35,9 @@ public class HomeActivity extends Activity {
     }
 
     public void onStartUpload(View view) {
-        Intent intent = new Intent(this, UploaderActivity.class);
-         startActivity(intent);
+        Toast.makeText(getApplicationContext(), "Starting post", Toast.LENGTH_SHORT).show();
+        Post post = new Post("http://nyaa.kragniz.eu", "{\"name\": \"nice\", \"locations\": [2, 4, 6]}");
+        post.sendAsync();
     }
 
 
@@ -42,10 +46,4 @@ public class HomeActivity extends Activity {
         // Intent intent = new Intent(this, test.class);
         //  startActivity(intent);
     }
-
-
-
-
-
-
 }

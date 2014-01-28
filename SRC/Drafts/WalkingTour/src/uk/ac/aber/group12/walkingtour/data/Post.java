@@ -17,8 +17,16 @@ import java.io.UnsupportedEncodingException;
  */
 
 public class Post {
-    public static boolean postJSON(String urlString, String postBody) {
-        int TIMEOUT = 10000;
+    private String urlString;
+    private String postBody;
+
+    public Post(String urlString, String postBody) {
+        this.urlString = urlString;
+        this.postBody = postBody;
+    }
+
+    public boolean send() {
+        int TIMEOUT = 60000;
         HttpParams httpParams = new BasicHttpParams();
         HttpConnectionParams.setConnectionTimeout(httpParams, TIMEOUT);
         HttpConnectionParams.setSoTimeout(httpParams, TIMEOUT);
@@ -39,5 +47,20 @@ public class Post {
             return false;
         }
         return true;
+    }
+
+    public void sendAsync() {
+        Thread thread = new Thread(new Runnable(){
+            @Override
+            public void run() {
+                try {
+                    send();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        thread.start();
     }
 }
