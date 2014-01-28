@@ -8,8 +8,9 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Toast;
 
+import uk.ac.aber.group12.walkingtour.data.Image;
 import uk.ac.aber.group12.walkingtour.data.Post;
-
+import uk.ac.aber.group12.walkingtour.data.TourLocation;
 
 
 public class HomeActivity extends Activity {
@@ -29,14 +30,14 @@ public class HomeActivity extends Activity {
     }
 
     public void onStartTourCreator(View view) {
-
         Intent intent = new Intent(this, TourCreatorActivity.class);
         startActivity(intent);
     }
 
     public void onStartUpload(View view) {
+        TourLocation location = new TourLocation("test", "a test location", new Image(), 0.3, 23.1, 312312313.122);
         Toast.makeText(getApplicationContext(), "Starting post", Toast.LENGTH_SHORT).show();
-        Post post = new Post("http://nyaa.kragniz.eu", "{\"name\": \"nice\", \"locations\": [2, 4, 6]}");
+        Post post = new Post("http://nyaa.kragniz.eu", location.toJSON());
         post.sendAsync();
     }
 
