@@ -22,10 +22,11 @@ public class Image {
         this.encodedImage=null;
     }
 
-    public void convertimagebase64(Bitmap image){
+    public String convertimagebase64(Bitmap image){
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         image.compress(Bitmap.CompressFormat.JPEG, 100, baos); //bm is the bitmap object
         byte[] b = baos.toByteArray();
         this.encodedImage = Base64.encodeToString(b, Base64.DEFAULT);
+        return this.encodedImage;
     }
 }
