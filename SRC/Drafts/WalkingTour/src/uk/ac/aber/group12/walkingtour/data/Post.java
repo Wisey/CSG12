@@ -17,7 +17,15 @@ import java.io.UnsupportedEncodingException;
  */
 
 public class Post {
-    public static boolean postJSON(String urlString, String postBody) {
+    private String urlString;
+    private String postBody;
+
+    public Post(String urlString, String postBody) {
+        this.urlString = urlString;
+        this.postBody = postBody;
+    }
+
+    public boolean postJSON() {
         int TIMEOUT = 60000;
         HttpParams httpParams = new BasicHttpParams();
         HttpConnectionParams.setConnectionTimeout(httpParams, TIMEOUT);
