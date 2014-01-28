@@ -7,7 +7,7 @@ out/
 .project
 bin/
 *.class
-.DS_Store
+*.DS_Store
 *.log
 *.out
 *.toc
@@ -26,7 +26,10 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+<<<<<<< HEA
 SRC/Drafts/WalkingTourPrototype/gen/
 ._*
 .~lock*
 *Thumbs.db
+SRC/Drafts/WalkingTourPrototype/gen
+*.swp

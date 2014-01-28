@@ -17,7 +17,6 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-
         <activity
             android:name="uk.ac.aber.group12.walkingtour.HomeActivity"
             android:label="@string/app_name" >
@@ -35,17 +34,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="uk.ac.aber.group12.walkingtour.HomeActivity" />
         </activity>
-        <activity
-            android:name="uk.ac.aber.group12.walkingtour.ViewWalksActivity"
-            android:label="@string/title_activity_view_walks"
-            android:parentActivityName="uk.ac.aber.group12.walkingtour.HomeActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="uk.ac.aber.group12.walkingtour.HomeActivity" />
 
-        </activity>
-        
-        <activity android:name="createTourActivity"></activity>
-        <activity android:name="recordWalkActivity"></activity>
+        <service android:name=".GPSService"/>
     </application>
+
 </manifest>
