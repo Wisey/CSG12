@@ -5,15 +5,19 @@ import java.util.ArrayList;
 
 @SuppressWarnings("serial")
 public class Tour implements Serializable{
+    private static String TOUR_JSON = "{\n"
+        + "  \"name\": \"%s\",\n"
+        + "  \"short-description\": %s,\n"
+        + "  \"long-description\": %s,\n"
+        + "  \"locations\": [\n"
+        + "    %s"
+        + "  ]\n"
+        + "}";
 
     private String name;
     private String shortDescription;
     private String longDescription;
     private ArrayList<TourLocation> locations;
-
-    public Tour(){
-
-    }
 
     public Tour(String name, String shortDescription, String longDescription) {
         this.name = name;
