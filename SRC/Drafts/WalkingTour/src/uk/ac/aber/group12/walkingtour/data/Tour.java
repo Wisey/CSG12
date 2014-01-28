@@ -29,6 +29,16 @@ public class Tour implements Serializable{
         locations.add(location);
     }
 
+    public String toJSON() {
+        String locationStrings = "";
+        for(TourLocation loc: locations) {
+            locationStrings.concat(loc.toJSON());
+            locationStrings.concat(",\n");
+        }
+
+        return String.format(TOUR_JSON, name, shortDescription, longDescription, locationStrings);
+    }
+
     public String getName() {
         return name;
     }
