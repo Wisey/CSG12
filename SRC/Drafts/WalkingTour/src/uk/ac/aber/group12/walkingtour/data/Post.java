@@ -25,7 +25,7 @@ public class Post {
         this.postBody = postBody;
     }
 
-    public boolean postJSON() {
+    public boolean send() {
         int TIMEOUT = 60000;
         HttpParams httpParams = new BasicHttpParams();
         HttpConnectionParams.setConnectionTimeout(httpParams, TIMEOUT);
@@ -49,12 +49,12 @@ public class Post {
         return true;
     }
 
-    public void postAsync() {
+    public void sendAsync() {
         Thread thread = new Thread(new Runnable(){
             @Override
             public void run() {
                 try {
-                    postJSON();
+                    send();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
