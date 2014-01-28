@@ -6,4 +6,12 @@ public class Location {
     private double latitude;
     private double longitude;
     private double time;
+
+    public Location(String name, String image, double latitude, double longitude, double time) {
+        this.name = name;
+        this.image = image;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.time = time;
+    }
 }
