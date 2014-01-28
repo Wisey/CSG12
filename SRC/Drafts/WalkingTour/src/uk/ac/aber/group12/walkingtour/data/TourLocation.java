@@ -2,15 +2,15 @@ package uk.ac.aber.group12.walkingtour.data;
 
 public class TourLocation {
     private String name;
-    private String locationDes;
+    private String locationDescription;
     private Image image;
     private double latitude;
     private double longitude;
     private double time;
 
-    public TourLocation(String name,String locationDes ,Image image, double latitude, double longitude, double time) {
+    public TourLocation(String name,String locationDescription,Image image, double latitude, double longitude, double time) {
         this.name = name;
-        this.locationDes=locationDes;
+        this.locationDescription = locationDescription;
         this.image = image;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -21,8 +21,8 @@ public class TourLocation {
         return name;
     }
 
-    public String getLocationDes() {
-        return locationDes;
+    public String getLocationDescription() {
+        return locationDescription;
     }
 
     public Image getImage() {
