@@ -1,4 +1,4 @@
-package uk.ac.aber.group12.walkingtour;
+/*package uk.ac.aber.group12.walkingtour;
 
 import android.app.Service;
 import android.content.Intent;
@@ -8,9 +8,7 @@ import android.os.IBinder;
 import android.view.View;
 import android.widget.Toast;
 import android.os.HandlerThread;
-/**
- * Created by dpb1 on 27/01/2014.
- */
+
 public class GPSService extends Service implements LocationListener  {
 
     private LocationManager locationManager;
@@ -64,4 +62,4 @@ public class GPSService extends Service implements LocationListener  {
         String Text = "Latitude = " + latitude + " Longitude = " + longitude;
         Toast.makeText(getApplicationContext(), Text, Toast.LENGTH_SHORT).show();
     }
-}
+}*/

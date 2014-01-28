@@ -19,7 +19,7 @@
         android:theme="@style/AppTheme" >
 
         <activity
-            android:name="uk.ac.aber.group12.walkingtour.main"
+            android:name="uk.ac.aber.group12.walkingtour.HomeActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,28 +28,48 @@
             </intent-filter>
         </activity>
         <activity
-                android:name="uk.ac.aber.group12.walkingtour.HomeActivity"
-                android:label="@string/title_activity_home"
-                android:parentActivityName="uk.ac.aber.group12.walkingtour.main" >
+                android:name="uk.ac.aber.group12.walkingtour.TourActivity"
+                android:label="@string/title_activity_tour"
+                android:parentActivityName="uk.ac.aber.group12.walkingtour.HomeActivity" >
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value="uk.ac.aber.group12.walkingtour.main" />
+                    android:value="uk.ac.aber.group12.walkingtour.HomeActivity" />
         </activity>
         <activity
             android:name="uk.ac.aber.group12.walkingtour.TourCreatorActivity"
             android:label="@string/title_activity_tour_creator"
-            android:parentActivityName="uk.ac.aber.group12.walkingtour.main" >
+            android:parentActivityName="uk.ac.aber.group12.walkingtour.HomeActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="uk.ac.aber.group12.walkingtour.main" />
+                android:value="uk.ac.aber.group12.walkingtour.HomeActivity" />
         </activity>
+
+        <activity
+                android:name="uk.ac.aber.group12.walkingtour.LocationCreatorActivity"
+                android:label="@string/title_activity_location_creator"
+                android:parentActivityName="uk.ac.aber.group12.walkingtour.TourActivity" >
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="uk.ac.aber.group12.walkingtour.TourActivity" />
+        </activity>
+
         <activity
             android:name="uk.ac.aber.group12.walkingtour.ViewWalksActivity"
             android:label="@string/title_activity_view_walks"
-            android:parentActivityName="uk.ac.aber.group12.walkingtour.main" >
+            android:parentActivityName="uk.ac.aber.group12.walkingtour.HomeActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="uk.ac.aber.group12.walkingtour.main" />
+                android:value="uk.ac.aber.group12.walkingtour.HomeActivity" />
+
+        </activity>
+
+        <activity
+                android:name="uk.ac.aber.group12.walkingtour.UploaderActivity"
+                android:label="@string/title_activity_view_walks"
+                android:parentActivityName="uk.ac.aber.group12.walkingtour.HomeActivity" >
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="uk.ac.aber.group12.walkingtour.HomeActivity" />
 
         </activity>
 

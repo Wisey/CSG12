@@ -1,4 +1,4 @@
-package uk.ac.aber.group12.walkingtour;
+package uk.ac.aber.group12.walkingtour.data;
 
 import android.graphics.*;
 import android.util.*;

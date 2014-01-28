@@ -10,7 +10,6 @@ import android.app.Activity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +17,8 @@ import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
+
+import uk.ac.aber.group12.walkingtour.data.Image;
 
 public class TourCreatorActivity extends Activity implements LocationListener {
 
@@ -48,26 +49,12 @@ public class TourCreatorActivity extends Activity implements LocationListener {
 		// photo stuff
 		this.imageView = (ImageView) this.findViewById(R.id.imageView);
 	}
-	
-	public void onPhotoClick(View view) {
-		Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-		startActivityForResult(cameraIntent, CAMERA_REQUEST);
-	}
 
 	public void onCoordinateClick(View view) {
 		String Text = "Latitude = " + latitude + " Longitude = " + longitude;
-		Toast.makeText(getApplicationContext(), Text, Toast.LENGTH_SHORT).show();
+		Toast.makeText(getApplicationContext(), Text, Toast.LENGTH_LONG).show();
 	}
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {  
-        if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {  
-            Bitmap photo = (Bitmap) data.getExtras().get("data");
-            image=new Image(photo);
-            String encodedImage= image.convertimagebase64(photo);
-            textView.setText("hahahaha");
-            imageView.setImageBitmap(photo);
-        }  
-    } 
 
 	@Override
 	public void onLocationChanged(Location location) {
@@ -103,6 +90,11 @@ public class TourCreatorActivity extends Activity implements LocationListener {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+
+    public void onStartTour(View view) {
+        Intent intent = new Intent(this, TourActivity.class);
+        startActivity(intent);
+    }
 
 	@Override
 	protected void onResume() {
