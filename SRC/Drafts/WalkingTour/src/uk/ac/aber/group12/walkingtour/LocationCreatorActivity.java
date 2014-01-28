@@ -2,14 +2,17 @@
 package uk.ac.aber.group12.walkingtour;
 
 
-
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
-import android.app.Activity;
+import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,26 +20,20 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.support.v4.app.NavUtils;
-import android.annotation.TargetApi;
-import android.content.Intent;
-import android.os.Build;
-import android.text.format.Time;
-
-import java.util.Date;
 
 import uk.ac.aber.group12.walkingtour.data.Image;
+import uk.ac.aber.group12.walkingtour.data.TourLocation;
 
 public class LocationCreatorActivity extends Activity implements LocationListener {
 
+    private static final int CAMERA_REQUEST = 1888;
     private LocationManager locationManager;
     private String provider;
     private double latitude = 0;
     private double longitude = 0;
     private Image image;
-    private Location loca;
+    private TourLocation loca;
     private TextView textView;
-    private static final int CAMERA_REQUEST = 1888;
     private ImageView imageView;
 
     @Override
@@ -71,8 +68,8 @@ public class LocationCreatorActivity extends Activity implements LocationListene
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
-            image=new Image(photo);
-            String encodedImage= image.convertimagebase64(photo);
+            image = new Image(photo);
+            String encodedImage = image.convertimagebase64(photo);
             //Toast.makeText(getApplicationContext(), encodedImage, Toast.LENGTH_SHORT).show();
 
             imageView.setImageBitmap(photo);
@@ -116,14 +113,14 @@ public class LocationCreatorActivity extends Activity implements LocationListene
 
     public void onStartAddLocation(View view) {
         //Code to save the information into the database
-        String locName= ((EditText)findViewById(R.id.locName)).getText().toString();
-        String locationDes= ((EditText)findViewById(R.id.locDes)).getText().toString();
-        double time = System.currentTimeMillis()/1000;
-        loca=new Location(locName,locationDes,image,latitude,longitude,time);
+        String locName = ((EditText) findViewById(R.id.locName)).getText().toString();
+        String locationDes = ((EditText) findViewById(R.id.locDes)).getText().toString();
+        double time = System.currentTimeMillis() / 1000;
+        loca = new TourLocation(locName, locationDes, image, latitude, longitude, time);
         finish();
     }
 
-    public void onStartDeleteLocation(View view){
+    public void onStartDeleteLocation(View view) {
         finish();
     }
 

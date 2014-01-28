@@ -25,7 +25,7 @@ public class TourLocation {
     }
 
     public String toJSON() {
-        return String.format(LOCATION_JSON, name, latitude, longitude, time, image);
+        return String.format(LOCATION_JSON, name, latitude, longitude, time, image.toString());
     }
 
     public String getName() {
