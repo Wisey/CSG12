@@ -48,4 +48,19 @@ public class Post {
         }
         return true;
     }
+
+    public void postAsync() {
+        Thread thread = new Thread(new Runnable(){
+            @Override
+            public void run() {
+                try {
+                    postJSON();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        thread.start();
+    }
 }
