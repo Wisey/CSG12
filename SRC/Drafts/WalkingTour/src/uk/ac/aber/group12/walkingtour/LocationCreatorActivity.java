@@ -1,6 +1,8 @@
 
 package uk.ac.aber.group12.walkingtour;
 
+
+
 import android.graphics.Bitmap;
 import android.location.Criteria;
 import android.location.Location;
@@ -11,6 +13,7 @@ import android.app.Activity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +21,9 @@ import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
+import android.text.format.Time;
+
+import java.util.Date;
 
 import uk.ac.aber.group12.walkingtour.data.Image;
 
@@ -28,6 +34,7 @@ public class LocationCreatorActivity extends Activity implements LocationListene
     private double latitude = 0;
     private double longitude = 0;
     private Image image;
+    private Location loca;
     private TextView textView;
     private static final int CAMERA_REQUEST = 1888;
     private ImageView imageView;
@@ -108,7 +115,15 @@ public class LocationCreatorActivity extends Activity implements LocationListene
     }
 
     public void onStartAddLocation(View view) {
-        //Code to save the imformation into the database
+        //Code to save the information into the database
+        String locName= ((EditText)findViewById(R.id.locName)).getText().toString();
+        String locationDes= ((EditText)findViewById(R.id.locDes)).getText().toString();
+        double time = System.currentTimeMillis()/1000;
+        loca=new Location(locName,locationDes,image,latitude,longitude,time);
+        finish();
+    }
+
+    public void onStartDeleteLocation(View view){
         finish();
     }
 

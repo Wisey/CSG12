@@ -43,18 +43,20 @@
         <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText"
+                android:id="@+id/locName"
                 android:layout_gravity="center"
-                android:text="Location Name"/>
+                android:text="Location Name"
+                android:selectAllOnFocus="true"/>
 
         <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="68dp"
                 android:inputType="textMultiLine"
                 android:ems="10"
-                android:id="@+id/editText2"
+                android:id="@+id/locDes"
                 android:layout_gravity="center"
-                android:text="Location Description"/>
+                android:text="Location Description"
+                android:selectAllOnFocus="true"/>
 
         <Button
                 android:layout_width="wrap_content"
@@ -63,6 +65,14 @@
                 android:id="@+id/button"
                 android:layout_gravity="center"
                 android:onClick="onStartAddLocation"/>
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Delete Location"
+                android:id="@+id/button2"
+                android:layout_gravity="center"
+                android:onClick="onStartDeleteLocation"/>
 
     </LinearLayout>
 
