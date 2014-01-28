@@ -33,7 +33,7 @@ public class TourCreatorActivity extends Activity implements LocationListener {
 	private static final int CAMERA_REQUEST = 1888;
 	private ImageView imageView;
     private HomeActivity homeactivity;
-    private Tour tour;
+    //private Tour tour;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -99,8 +99,17 @@ public class TourCreatorActivity extends Activity implements LocationListener {
         String name= ((EditText)findViewById(R.id.tourName)).getText().toString();
         String shortDes=((EditText)findViewById(R.id.shortDes)).getText().toString();
         String longDes= ((EditText)findViewById(R.id.longDes)).getText().toString();
-        tour=new Tour(name,shortDes,longDes);
+
+
+        if ((name.matches(""))||shortDes.matches("")||longDes.matches("")) {
+            Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
+        Tour tour=new Tour(name,shortDes,longDes);
         Intent intent = new Intent(this, TourActivity.class);
+        intent.putExtra("tour",tour);
         startActivity(intent);
     }
 

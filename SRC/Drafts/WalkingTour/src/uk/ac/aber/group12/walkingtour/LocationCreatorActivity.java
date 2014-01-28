@@ -21,6 +21,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import uk.ac.aber.group12.walkingtour.data.Tour;
+import uk.ac.aber.group12.walkingtour.data.TourLocation;
+import android.text.format.Time;
+
+import java.util.Date;
+
 import uk.ac.aber.group12.walkingtour.data.Image;
 import uk.ac.aber.group12.walkingtour.data.TourLocation;
 
@@ -35,12 +41,16 @@ public class LocationCreatorActivity extends Activity implements LocationListene
     private TourLocation loca;
     private TextView textView;
     private ImageView imageView;
+    private Tour tour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_creator);
         setupActionBar();
+
+        Intent i = getIntent();
+        tour=(Tour)i.getSerializableExtra("tour");
 
         // location stuff
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
@@ -113,10 +123,24 @@ public class LocationCreatorActivity extends Activity implements LocationListene
 
     public void onStartAddLocation(View view) {
         //Code to save the information into the database
+<<<<<<< HEAD
+        String locName= ((EditText)findViewById(R.id.locName)).getText().toString();
+        String locationDes= ((EditText)findViewById(R.id.locDes)).getText().toString();
+
+        if ((locName.matches(""))||locationDes.matches("")) {
+            Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        double time = System.currentTimeMillis()/1000;
+        loca=new TourLocation(locName,locationDes,image,latitude,longitude,time);
+        tour.addLocation(loca);
+=======
         String locName = ((EditText) findViewById(R.id.locName)).getText().toString();
         String locationDes = ((EditText) findViewById(R.id.locDes)).getText().toString();
         double time = System.currentTimeMillis() / 1000;
         loca = new TourLocation(locName, locationDes, image, latitude, longitude, time);
+>>>>>>> 246cd1b2eb75a248351441b40ae72a64a8c112d1
         finish();
     }
 
