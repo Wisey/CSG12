@@ -33,7 +33,7 @@ public class HomeActivity extends Activity {
 
     public void onStartUpload(View view) {
         Toast.makeText(getApplicationContext(), "Starting post", Toast.LENGTH_SHORT).show();
-        Post post = new Post("http://nyaa.kragniz.eu", "\"test\": 12");
+        Post post = new Post("http://nyaa.kragniz.eu", "{\"test\": 12}");
         post.sendAsync();
     }
 
