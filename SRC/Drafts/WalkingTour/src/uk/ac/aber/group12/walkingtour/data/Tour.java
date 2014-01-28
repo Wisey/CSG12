@@ -7,4 +7,10 @@ public class Tour {
     private String shortDescription;
     private String longDescription;
     private ArrayList<Location> locations;
+
+    public Tour(String name, String shortDescription, String longDescription) {
+        this.name = name;
+        this.shortDescription = shortDescription;
+        this.longDescription = longDescription;
+    }
 }
