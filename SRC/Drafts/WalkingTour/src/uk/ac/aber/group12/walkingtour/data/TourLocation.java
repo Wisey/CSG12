@@ -1,6 +1,13 @@
 package uk.ac.aber.group12.walkingtour.data;
 
+
 public class TourLocation {
+    private static String LOCATION_JSON = "{\"name\": \"%s\",\n"
+            + "\"latitude\": %d,\n"
+            + "\"longitude\": %d,\n"
+            + "\"time\": %d\n,"
+            + "\"image\": \"%s\"\n}";
+
     private String name;
     private String locationDescription;
     private Image image;
@@ -15,6 +22,10 @@ public class TourLocation {
         this.latitude = latitude;
         this.longitude = longitude;
         this.time = time;
+    }
+
+    public String toJSON() {
+        return null;
     }
 
     public String getName() {
