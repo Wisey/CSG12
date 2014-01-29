@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import uk.ac.aber.group12.walkingtour.data.Post;
 import uk.ac.aber.group12.walkingtour.data.Tour;
-import uk.ac.aber.group12.walkingtour.data.TourLocation;
 
 
 public class HomeActivity extends Activity {

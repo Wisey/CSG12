@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import uk.ac.aber.group12.walkingtour.data.Post;
 import uk.ac.aber.group12.walkingtour.data.Tour;
 
 public class TourActivity extends Activity {
@@ -20,7 +21,6 @@ public class TourActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tour);
-        Intent i = getIntent();
 
         tour = ((WalkingTourApplication) this.getApplication()).getCurrentTour();
         Toast.makeText(getApplicationContext(), tour.getName(), Toast.LENGTH_SHORT).show();
@@ -45,8 +45,10 @@ public class TourActivity extends Activity {
     }
 
     public void onUpload(View view) {
-        Intent intent = new Intent(this, UploaderActivity.class);
-        startActivity(intent);
+        Tour tour = ((WalkingTourApplication) this.getApplication()).getCurrentTour();
+        Toast.makeText(getApplicationContext(), String.valueOf(tour.getLocations().get(0).toJSON()), Toast.LENGTH_SHORT).show();
+        Post post = new Post("http://nyaa.kragniz.eu", tour.toJSON());
+        post.sendAsync();
     }
 
 }
