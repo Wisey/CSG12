@@ -8,7 +8,6 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Toast;
 
-import uk.ac.aber.group12.walkingtour.data.Image;
 import uk.ac.aber.group12.walkingtour.data.Post;
 import uk.ac.aber.group12.walkingtour.data.Tour;
 import uk.ac.aber.group12.walkingtour.data.TourLocation;
