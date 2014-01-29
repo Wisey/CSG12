@@ -3,9 +3,11 @@
 
     <string name="app_name">WalkingTour</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_home">HomeActivity</string>
-    <string name="title_activity_tour_creator">TourCreatorActivity</string>
+    <string name="title_activity_home">Main Menu</string>
+    <string name="title_activity_tour_creator">Create Tour</string>
+    <string name="title_activity_tour">Tour</string>
+    <string name="title_activity_location_creator">Add Location</string>
     <string name="title_activity_view_walks">Walks</string>
-    <string name="hello_world">Hello world!</string>
+
 
 </resources>

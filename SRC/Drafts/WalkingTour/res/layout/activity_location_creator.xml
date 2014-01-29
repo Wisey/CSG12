@@ -1,0 +1,79 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                tools:context=".TourCreatorActivity" >
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/linearLayout">
+
+        <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="187dp"
+                android:id="@+id/imageView"
+                android:layout_gravity="center"/>
+
+        <Button
+                android:id="@+id/coordinate_button"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onCoordinateClick"
+                android:text="Record Coordinates"
+                android:layout_centerVertical="true"
+                />
+
+        <Button
+                android:id="@+id/photo_button"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onPhotoClick"
+                android:text="Take photo"
+                android:layout_below="@+id/coordinate_button"
+                android:layout_alignLeft="@+id/coordinate_button"/>
+
+        <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/locName"
+                android:layout_gravity="center"
+                android:text="Location Name"
+                android:selectAllOnFocus="true"/>
+
+        <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="68dp"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/locDes"
+                android:layout_gravity="center"
+                android:text="Location Description"
+                android:selectAllOnFocus="true"/>
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Save Location"
+                android:id="@+id/button"
+                android:layout_gravity="left|center_vertical"
+                android:onClick="onStartAddLocation"/>
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Delete Location"
+                android:id="@+id/button2"
+                android:layout_gravity="right|center_vertical"
+                android:onClick="onStartDeleteLocation"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

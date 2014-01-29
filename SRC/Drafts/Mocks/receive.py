@@ -17,6 +17,7 @@ def shutdown_server():
 @app.route('/', methods=['GET', 'POST'])
 def hello_world():
     if request.method == 'POST':
+        print request.data.strip()
         body = json.loads(request.data.strip())
 
         fields = (body[name] for name in (
@@ -25,20 +26,24 @@ def hello_world():
                       'long-description'
                       )
                   )
-        print [f for f in fields]
-        field_types = (type(f) in strings_types for f in fields)
-        print field_types
 
-        if all_str and len(body['locations']) > 0:
-            os.system('figlet IT WORKS')
-            if not TEST:
-                shutdown_server()
+        if body.has_key('locations') and body.has_key('name'):
+            if len(body['locations']) > 0 and type(body['name']) is unicode:
+                os.system('figlet IT WORKS')
+                if not TEST:
+                    shutdown_server()
+            else:
+                os.system('figlet MALFORMED')
+
+        else:
+            os.system('figlet BADNESS')
 
         return 'success!'
         
     else:
+        os.system('figlet GETed')
         return 'POST to this url, please\n'
 
 if __name__ == '__main__':
     app.debug = True
-    app.run()
+    app.run(port=9090, host='0.0.0.0')

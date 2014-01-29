@@ -1,12 +1,17 @@
+
 package uk.ac.aber.group12.walkingtour;
+
 
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -17,28 +22,33 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.database.Cursor;
 
 import uk.ac.aber.group12.walkingtour.data.Image;
 import uk.ac.aber.group12.walkingtour.data.Tour;
+import uk.ac.aber.group12.walkingtour.data.TourLocation;
 
-public class TourCreatorActivity extends Activity implements LocationListener {
+public class LocationCreatorActivity extends Activity implements LocationListener {
 
     private static final int CAMERA_REQUEST = 1888;
     private LocationManager locationManager;
     private String provider;
     private double latitude = 0;
     private double longitude = 0;
-    private Image image;
+    private String imageFilePath;
+    private TourLocation loca;
     private TextView textView;
     private ImageView imageView;
-    private HomeActivity homeactivity;
-    //private Tour tour;
+    private Tour tour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tour_creator);
+        setContentView(R.layout.activity_location_creator);
         setupActionBar();
+
+        tour = ((WalkingTourApplication) this.getApplication()).getCurrentTour();
+        Toast.makeText(getApplicationContext(), tour.getName(), Toast.LENGTH_SHORT).show();
 
         // location stuff
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
@@ -53,9 +63,37 @@ public class TourCreatorActivity extends Activity implements LocationListener {
         this.imageView = (ImageView) this.findViewById(R.id.imageView);
     }
 
+    public void onPhotoClick(View view) {
+        Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(cameraIntent, CAMERA_REQUEST);
+    }
+
     public void onCoordinateClick(View view) {
         String Text = "Latitude = " + latitude + " Longitude = " + longitude;
         Toast.makeText(getApplicationContext(), Text, Toast.LENGTH_LONG).show();
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
+            Bitmap photo = (Bitmap) data.getExtras().get("data");
+            Uri _uri = data.getData();
+
+            //image = new Image(photo);
+            Cursor cursor = getContentResolver().query(_uri, new String[] { android.provider.MediaStore.Images.ImageColumns.DATA }, null, null, null);
+            cursor.moveToFirst();
+
+            //Link to the image
+            //final String
+                    imageFilePath = cursor.getString(0);
+            cursor.close();
+
+
+           // String encodedImage = image.convertimagebase64(photo);
+            Toast.makeText(getApplicationContext(), imageFilePath, Toast.LENGTH_SHORT).show();
+            Bitmap img=BitmapFactory.decodeFile(imageFilePath);
+            imageView.setImageBitmap(Bitmap.createScaledBitmap(img, 512, 512, false));
+            //imageView.setImageBitmap(img);
+        }
     }
 
     @Override
@@ -93,22 +131,28 @@ public class TourCreatorActivity extends Activity implements LocationListener {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onStartTour(View view) {
-        String name = ((EditText) findViewById(R.id.tourName)).getText().toString();
-        String shortDes = ((EditText) findViewById(R.id.shortDes)).getText().toString();
-        String longDes = ((EditText) findViewById(R.id.longDes)).getText().toString();
+    public void onStartAddLocation(View view) {
+        String locName = ((EditText) findViewById(R.id.locName)).getText().toString();
+        String locationDes = ((EditText) findViewById(R.id.locDes)).getText().toString();
 
-
-        if ((name.matches("")) || shortDes.matches("") || longDes.matches("")) {
+        if ((locName.matches("")) || locationDes.matches("")) {
             Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
             return;
         }
 
+        double time = System.currentTimeMillis() / 1000;
+        TourLocation loc = new TourLocation(locName,
+                locationDes,
+                "",
+                latitude,
+                longitude,
+                time);
+        tour.addLocation(loc);
+        finish();
+    }
 
-        Tour tour = new Tour(name, shortDes, longDes);
-        ((WalkingTourApplication) this.getApplication()).setCurrentTour(tour);
-        Intent intent = new Intent(this, TourActivity.class);
-        startActivity(intent);
+    public void onStartDeleteLocation(View view) {
+        finish();
     }
 
     @Override
