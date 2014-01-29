@@ -3,6 +3,8 @@ package uk.ac.aber.group12.walkingtour.data;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import uk.ac.aber.group12.walkingtour.WalkingTourApplication;
+
 
 @SuppressWarnings("serial")
 public class Tour implements Serializable {
