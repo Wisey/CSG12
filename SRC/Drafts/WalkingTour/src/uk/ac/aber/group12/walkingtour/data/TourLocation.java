@@ -13,22 +13,22 @@ public class TourLocation {
 
     private String name;
     private String description;
-    private Image image;
+    private String imageFilePath;
     private double latitude;
     private double longitude;
     private double time;
 
-    public TourLocation(String name, String description, Image image, double latitude, double longitude, double time) {
+    public TourLocation(String name, String description, String imageFilePath, double latitude, double longitude, double time) {
         this.name = name;
         this.description = description;
-        this.image = image;
+        this.imageFilePath = imageFilePath;
         this.latitude = latitude;
         this.longitude = longitude;
         this.time = time;
     }
 
     public String toJSON() {
-        return String.format(LOCATION_JSON, name, description, latitude, longitude, time, image.toString());
+        return String.format(LOCATION_JSON, name, description, latitude, longitude, time, imageFilePath);
     }
 
     public String getName() {
@@ -39,8 +39,8 @@ public class TourLocation {
         return description;
     }
 
-    public Image getImage() {
-        return image;
+    public String getImageFilePath() {
+        return imageFilePath;
     }
 
     public double getLatitude() {

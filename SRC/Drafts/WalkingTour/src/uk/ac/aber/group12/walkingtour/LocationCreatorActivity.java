@@ -6,10 +6,12 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -20,6 +22,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.database.Cursor;
 
 import uk.ac.aber.group12.walkingtour.data.Image;
 import uk.ac.aber.group12.walkingtour.data.Tour;
@@ -32,7 +35,7 @@ public class LocationCreatorActivity extends Activity implements LocationListene
     private String provider;
     private double latitude = 0;
     private double longitude = 0;
-    private Image image;
+    private String imageFilePath;
     private TourLocation loca;
     private TextView textView;
     private ImageView imageView;
@@ -73,11 +76,23 @@ public class LocationCreatorActivity extends Activity implements LocationListene
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
-            image = new Image(photo);
-            String encodedImage = image.convertimagebase64(photo);
-            //Toast.makeText(getApplicationContext(), encodedImage, Toast.LENGTH_SHORT).show();
+            Uri _uri = data.getData();
 
-            imageView.setImageBitmap(photo);
+            //image = new Image(photo);
+            Cursor cursor = getContentResolver().query(_uri, new String[] { android.provider.MediaStore.Images.ImageColumns.DATA }, null, null, null);
+            cursor.moveToFirst();
+
+            //Link to the image
+            //final String
+                    imageFilePath = cursor.getString(0);
+            cursor.close();
+
+
+           // String encodedImage = image.convertimagebase64(photo);
+            Toast.makeText(getApplicationContext(), imageFilePath, Toast.LENGTH_SHORT).show();
+            Bitmap img=BitmapFactory.decodeFile(imageFilePath);
+            imageView.setImageBitmap(Bitmap.createScaledBitmap(img, 512, 512, false));
+            //imageView.setImageBitmap(img);
         }
     }
 
@@ -128,7 +143,7 @@ public class LocationCreatorActivity extends Activity implements LocationListene
         double time = System.currentTimeMillis() / 1000;
         TourLocation loc = new TourLocation(locName,
                 locationDes,
-                image,
+                "",
                 latitude,
                 longitude,
                 time);
