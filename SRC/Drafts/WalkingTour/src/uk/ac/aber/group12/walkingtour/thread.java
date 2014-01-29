@@ -37,7 +37,6 @@ public class Thread extends Activity implements LocationListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tour_creator);
         setupActionBar();
 
         // location stuff

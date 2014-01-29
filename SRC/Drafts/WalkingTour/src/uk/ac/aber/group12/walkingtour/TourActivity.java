@@ -47,7 +47,7 @@ public class TourActivity extends Activity {
     public void onUpload(View view) {
         Tour tour = ((WalkingTourApplication) this.getApplication()).getCurrentTour();
         Toast.makeText(getApplicationContext(), String.valueOf(tour.getLocations().get(0).toJSON()), Toast.LENGTH_SHORT).show();
-        Post post = new Post("http://nyaa.kragniz.eu", tour.toJSON());
+        Post post = new Post("http://nyaa.kragniz.eu:443/~group/upload.php", tour.toJSON());
         post.sendAsync();
     }
 
