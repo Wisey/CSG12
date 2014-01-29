@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 @SuppressWarnings("serial")
-public class Tour implements Serializable{
+public class Tour implements Serializable {
     private static String TOUR_JSON = "{\n"
         + "  \"name\": \"%s\",\n"
         + "  \"short-description\": \"%s\",\n"

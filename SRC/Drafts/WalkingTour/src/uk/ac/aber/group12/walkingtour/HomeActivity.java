@@ -45,7 +45,7 @@ public class HomeActivity extends Activity {
         tour.addLocation(new TourLocation("house", "second location", new Image(), 0.3, 23.1, 312312313.122));
 
         Toast.makeText(getApplicationContext(), String.valueOf(tour.getLocations().get(5).toJSON()), Toast.LENGTH_SHORT).show();
-        Post post = new Post("http://nyaa.kragniz.eu", tour.toJSON());
+        Post post = new Post("http://nyaa.kragniz.eu:443/~group/upload.php", tour.toJSON());
         post.sendAsync();
     }
 

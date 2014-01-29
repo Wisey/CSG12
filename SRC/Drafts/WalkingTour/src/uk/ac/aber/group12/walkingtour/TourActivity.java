@@ -1,17 +1,19 @@
 
 package uk.ac.aber.group12.walkingtour;
 
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import uk.ac.aber.group12.walkingtour.data.Tour;
 
 public class TourActivity extends Activity {
 
-   // private TourCreatorActivity TCA;
+    // private TourCreatorActivity TCA;
     private Tour tour;
 
     @Override
@@ -19,8 +21,10 @@ public class TourActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tour);
         Intent i = getIntent();
-        Tour tour=(Tour)i.getSerializableExtra("tour");
-        ((TextView)findViewById(R.id.textView)).setText(tour.getName());
+
+        tour = ((WalkingTourApplication) this.getApplication()).getCurrentTour();
+        Toast.makeText(getApplicationContext(), tour.getName(), Toast.LENGTH_SHORT).show();
+        ((TextView) findViewById(R.id.textView)).setText(tour.getName());
     }
 
     @Override
@@ -32,7 +36,7 @@ public class TourActivity extends Activity {
 
     public void onStartLocationCreator(View view) {
         Intent intent = new Intent(this, LocationCreatorActivity.class);
-        intent.putExtra("tour",tour);
+        ((WalkingTourApplication) this.getApplication()).setCurrentTour(tour);
         startActivity(intent);
     }
 
