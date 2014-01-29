@@ -35,7 +35,7 @@ public class HomeActivity extends Activity {
     }
 
     public void onStartUpload(View view) {
-        TourLocation location = new TourLocation("test", "a test location", new Image(), 0.3, 23.1, 312312313.122);
+        TourLocation location = new TourLocation("test", "a test location", "this is the file path", 0.3, 23.1, 312312313.122);
         Toast.makeText(getApplicationContext(), "Starting post", Toast.LENGTH_SHORT).show();
         Post post = new Post("http://nyaa.kragniz.eu", location.toJSON());
         post.sendAsync();

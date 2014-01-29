@@ -11,30 +11,28 @@ public class Image {
 
 
     Bitmap image;
-    String encodedImage;
+    String imageFilePath;
 
     public Image(){
 
     }
 
-    public Image(Bitmap image){
-        this.image=image;
-        this.encodedImage=null;
+    public Image(String imageFilePath){
+        this.imageFilePath=imageFilePath;
+       // this.encodedImage=null;
     }
-
+/*
     public String convertimagebase64(Bitmap image){
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         image.compress(Bitmap.CompressFormat.JPEG, 100, baos); //bm is the bitmap object
         byte[] b = baos.toByteArray();
         this.encodedImage = Base64.encodeToString(b, Base64.DEFAULT);
         return this.encodedImage;
+    }*/
+
+    public String getImageFilePath() {
+        return imageFilePath;
     }
 
-    public Bitmap getImage() {
-        return image;
-    }
 
-    public String getEncodedImage() {
-        return encodedImage;
-    }
 }

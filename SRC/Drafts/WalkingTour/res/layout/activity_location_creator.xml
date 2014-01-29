@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:text="Save Location"
                 android:id="@+id/button"
-                android:layout_gravity="center"
+                android:layout_gravity="left|center_vertical"
                 android:onClick="onStartAddLocation"/>
 
         <Button
@@ -71,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:text="Delete Location"
                 android:id="@+id/button2"
-                android:layout_gravity="center"
+                android:layout_gravity="right|center_vertical"
                 android:onClick="onStartDeleteLocation"/>
 
     </LinearLayout>
