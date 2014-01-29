@@ -22,6 +22,7 @@ employees[0].firstName="Gilbert";
 document.getElementById("newname").innerHTML=employees[0].firstName + " " + employees[0].lastName;
 </script>
 
+<p>Path details: <span id="newpath"></span></p>
 <script>
 var path =
 [
@@ -30,15 +31,18 @@ var path =
 		"shortDesc":"Shopping"
 		"longDesc":"I need more pizza."
 	}
+	document.getElementById("newpath").innerHTML=path[0].title + " " + path[0].shortDesc + " " + path[0].longDesc;
 ]
+</script>
 
+<script>
 var points =
 [
 	{
 		
 	}
 ]
-
+</script>
 
 <?php
 if(!function_exists('json_decode')) die('JSON not supported.');
@@ -50,7 +54,12 @@ if (!$con)
 {
 	die('Could not connect: ' . mysql_error());
 }
+else
+{
+	echo('Connection Established.</br>');
+}
 mysql_select_db("pathdb", $con);
 ?>
+
 </body>
 </html>
