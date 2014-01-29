@@ -30,8 +30,8 @@ document.getElementById("newname").innerHTML=employees[0].firstName + " " + empl
 var path =
 [
 	{
-		"title":"Shops"
-		"shortDesc":"Shopping"
+		"title":"Shops",
+		"shortDesc":"Shopping",
 		"longDesc":"I need more pizza."
 	}
 ]
