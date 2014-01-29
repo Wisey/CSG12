@@ -77,8 +77,7 @@ public class FileManagerTest {
     public void testAppend() throws Exception {
 
 
-        Tour appended = new Tour("Louis' Tour", "This is a tour, that Louis walked.", "During this tour, Louis put one foot in front of the other and walked. He walked for a short amount of time, and then stopped walking. He turned left, and continued walking. " +
-                "He is still walking now. We're just tracking him as best we can.");
+        Tour appended = new Tour("Tour", "This is a tour.", "This is a really long description of the tour.");
         Tour moreAppended = new Tour("nm","s","l");
 
         Tour[] tourAppends = new Tour[2];

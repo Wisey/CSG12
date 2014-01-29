@@ -18,6 +18,20 @@ public class TourLocation {
     private double longitude;
     private double time;
 
+    /**
+     *
+     * This is the constructor for a location in a Tour.
+     * Waypoints are considered locations, except that the unnecessary parameters are null.
+     *
+     *
+     * @param name
+     * @param description
+     * @param imageFilePath
+     * @param latitude
+     * @param longitude
+     * @param time
+     */
+
     public TourLocation(String name, String description, String imageFilePath, double latitude, double longitude, double time) {
         this.name = name;
         this.description = description;
