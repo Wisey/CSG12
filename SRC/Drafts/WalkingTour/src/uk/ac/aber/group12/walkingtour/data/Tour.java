@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 
 @SuppressWarnings("serial")
-public class Tour implements Serializable{
+public class Tour implements Serializable {
     private static String TOUR_JSON = "{\n"
         + "  \"name\": \"%s\",\n"
         + "  \"short-description\": \"%s\",\n"
@@ -25,6 +25,7 @@ public class Tour implements Serializable{
         this.shortDescription = shortDescription;
         this.longDescription = longDescription;
         locations = new ArrayList<TourLocation>();
+    }
     
 
     public void addLocation(TourLocation location) {

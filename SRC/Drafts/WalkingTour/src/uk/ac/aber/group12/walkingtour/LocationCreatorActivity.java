@@ -47,8 +47,8 @@ public class LocationCreatorActivity extends Activity implements LocationListene
         setContentView(R.layout.activity_location_creator);
         setupActionBar();
 
-        Intent i = getIntent();
-        tour=(Tour)i.getSerializableExtra("tour");
+        tour = ((WalkingTourApplication) this.getApplication()).getCurrentTour();
+        Toast.makeText(getApplicationContext(), tour.getName(), Toast.LENGTH_SHORT).show();
 
         // location stuff
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
@@ -132,19 +132,22 @@ public class LocationCreatorActivity extends Activity implements LocationListene
     }
 
     public void onStartAddLocation(View view) {
-        //Code to save the information into the database
-        String locName= ((EditText)findViewById(R.id.locName)).getText().toString();
-        String locationDes= ((EditText)findViewById(R.id.locDes)).getText().toString();
+        String locName = ((EditText) findViewById(R.id.locName)).getText().toString();
+        String locationDes = ((EditText) findViewById(R.id.locDes)).getText().toString();
 
-        if ((locName.matches(""))||locationDes.matches("")) {
+        if ((locName.matches("")) || locationDes.matches("")) {
             Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        double time = System.currentTimeMillis()/1000;
-        loca = new TourLocation(locName, locationDes, imageFilePath, latitude, longitude, time);
-        tour.addLocation(loca);
-
+        double time = System.currentTimeMillis() / 1000;
+        TourLocation loc = new TourLocation(locName,
+                locationDes,
+                "",
+                latitude,
+                longitude,
+                time);
+        tour.addLocation(loc);
         finish();
     }
 
