@@ -9,6 +9,9 @@
 <p>Original name: <span id="origname"></span></p>
 <p>New name: <span id="newname"></span></p>
 
+<p>Path details: <span id="newpath"></span></p>
+
+
 <script>
 var employees = [
 { "firstName" : "John" , "lastName" : "Doe" }, 
@@ -22,7 +25,7 @@ employees[0].firstName="Gilbert";
 document.getElementById("newname").innerHTML=employees[0].firstName + " " + employees[0].lastName;
 </script>
 
-<p>Path details: <span id="newpath"></span></p>
+
 <script>
 var path =
 [
