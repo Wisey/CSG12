@@ -5,6 +5,7 @@ package uk.ac.aber.group12.walkingtour;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.location.Criteria;
@@ -22,9 +23,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.database.Cursor;
 
-import uk.ac.aber.group12.walkingtour.data.Image;
 import uk.ac.aber.group12.walkingtour.data.Tour;
 import uk.ac.aber.group12.walkingtour.data.TourLocation;
 
@@ -141,13 +140,15 @@ public class LocationCreatorActivity extends Activity implements LocationListene
         }
 
         double time = System.currentTimeMillis() / 1000;
-        TourLocation loc = new TourLocation(locName,
-                locationDes,
-                "",
-                latitude,
-                longitude,
-                time);
+        TourLocation loc;
+        if (imageFilePath != null) {
+            loc = new TourLocation(locName, locationDes, imageFilePath, latitude, longitude, time);
+        } else {
+            loc = new TourLocation(locName, locationDes, "", latitude, longitude, time);
+        }
+
         tour.addLocation(loc);
+        Toast.makeText(getApplicationContext(), String.valueOf(tour.getLocations().size()), Toast.LENGTH_SHORT).show();
         finish();
     }
 

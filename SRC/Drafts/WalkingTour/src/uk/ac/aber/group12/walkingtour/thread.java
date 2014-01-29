@@ -23,7 +23,7 @@ import android.widget.Toast;
 
 public class Thread extends Activity implements LocationListener {
 
-    private static final int CAMERA_REQUEST = 1888;
+
     private LocationManager locationManager;
     private String provider;
     private double latitude = 0;
@@ -32,11 +32,11 @@ public class Thread extends Activity implements LocationListener {
     private TextView textView;
     private ImageView imageView;
     private String test;
+    private Location[] waypoints;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tour_creator);
         setupActionBar();
 
         // location stuff
@@ -76,12 +76,27 @@ public class Thread extends Activity implements LocationListener {
         System.out.println("location changed");
         latitude = location.getLatitude();
         longitude = location.getLongitude();
+        setArrayLength();
+        waypoints[waypoints.length-1] = location;
+    }
+
+
+    private void setArrayLength()
+    {
+
+        Location[] temp = waypoints.clone();
+        waypoints = new Location[temp.length+1];
+
+        for(int integ =0; integ < temp.length; integ++)
+        {
+            waypoints[integ] = temp[integ];
+
+        }
     }
 
     /**
      * Set up the {@link android.app.ActionBar}, if the API is available.
      */
-
 
     private void setupActionBar() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
