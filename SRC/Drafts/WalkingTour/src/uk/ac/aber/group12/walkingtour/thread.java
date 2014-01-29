@@ -66,6 +66,7 @@ public class Thread extends Activity implements LocationListener {
 
     public void onCoordinateClick(View view) {
         String Text = "Latitude = " + latitude + " Longitude = " + longitude;
+        Toast.makeText(getApplicationContext(), "Saving your location to the array..", Toast.LENGTH_SHORT).show();
         Toast.makeText(getApplicationContext(), Text, Toast.LENGTH_SHORT).show();
     }
 
