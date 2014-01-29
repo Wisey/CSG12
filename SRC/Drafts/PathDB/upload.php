@@ -9,6 +9,9 @@
 <p>Original name: <span id="origname"></span></p>
 <p>New name: <span id="newname"></span></p>
 
+<p>Path details: <span id="newpath"></span></p>
+
+
 <script>
 var employees = [
 { "firstName" : "John" , "lastName" : "Doe" }, 
@@ -23,47 +26,43 @@ document.getElementById("newname").innerHTML=employees[0].firstName + " " + empl
 </script>
 
 
+<script>
+var path =
+[
+	{
+		"title":"Shops",
+		"shortDesc":"Shopping",
+		"longDesc":"I need more pizza."
+	}
+]
+document.getElementById("newpath").innerHTML=path[0].title + " " + path[0].shortDesc + " " + path[0].longDesc;
+</script>
+
+<script>
+var points =
+[
+	{
+		
+	}
+]
+</script>
+
 <?php
 if(!function_exists('json_decode')) die('JSON not supported.');
 else 
 echo("JSON Supported.</br>");
-$json = 
-'{
-		"name":"A tour",
-		"shortDesc": "Some kind of tour. I am not sure how long this should be.",
-		"longDesc":"I do not know what to say right here.",
-		"locations":
-		[
-			{
-				"name": "Point One",
-				"latitude": 0.23223232,
-				"longitude": -1.23232,
-				"time": 1390832912.171089,
-				"image": "AB8FD927E8B72CB7223..."
-			}
-		]
-	}';
-var_dump(json_decode($json));
-echo ("</br>");
-/*
 //create a DB connection
-$con = mysql_connect("localhost","root","");
+$con = mysql_connect("localhost","root","group12");
 if (!$con)
 {
 	die('Could not connect: ' . mysql_error());
 }
-mysql_select_db("pathdb", $con);
-
-$result = json_decode($json);
-while($result)
+else
 {
-    if($value)
-	{
-		//how to use json array to insert data in Database
-        mysql_query("INSERT INTO `path` (title, shortDesc, longDesc) VALUES (`$value->name`, `$value->shortDesc`, `$value->longDesc`)");
-    }
+	echo('Connection Established.</br>');
 }
-*/
+mysql_select_db("pathdb", $con);
 ?>
+
 </body>
 </html>
