@@ -22,6 +22,21 @@ employees[0].firstName="Gilbert";
 document.getElementById("newname").innerHTML=employees[0].firstName + " " + employees[0].lastName;
 </script>
 
+<script>
+var path =
+[
+	{
+		
+	}
+]
+
+var points =
+[
+	{
+		
+	}
+]
+
 
 <?php
 if(!function_exists('json_decode')) die('JSON not supported.');
@@ -45,7 +60,7 @@ $json =
 	}';
 
 //create a DB connection
-$con = mysql_connect("localhost","root","");
+$con = mysql_connect("localhost","root","group12");
 if (!$con)
 {
 	die('Could not connect: ' . mysql_error());
