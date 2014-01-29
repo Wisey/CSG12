@@ -43,9 +43,7 @@ $json =
 			}
 		]
 	}';
-var_dump(json_decode($json));
-echo ("</br>");
-/*
+
 //create a DB connection
 $con = mysql_connect("localhost","root","");
 if (!$con)
@@ -53,17 +51,6 @@ if (!$con)
 	die('Could not connect: ' . mysql_error());
 }
 mysql_select_db("pathdb", $con);
-
-$result = json_decode($json);
-while($result)
-{
-    if($value)
-	{
-		//how to use json array to insert data in Database
-        mysql_query("INSERT INTO `path` (title, shortDesc, longDesc) VALUES (`$value->name`, `$value->shortDesc`, `$value->longDesc`)");
-    }
-}
-*/
 ?>
 </body>
 </html>
