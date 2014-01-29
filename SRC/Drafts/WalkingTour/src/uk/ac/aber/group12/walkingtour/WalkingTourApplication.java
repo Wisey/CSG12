@@ -9,13 +9,13 @@ import uk.ac.aber.group12.walkingtour.data.Tour;
  */
 
 public class WalkingTourApplication extends Application {
-    private Tour tour;
+    private static Tour tour;
 
     public Tour getCurrentTour() {
         return tour;
     }
 
     public void setCurrentTour(Tour tour) {
-        this.tour = tour;
+        WalkingTourApplication.tour = tour;
     }
 }
