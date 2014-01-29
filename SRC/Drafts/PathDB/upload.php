@@ -31,8 +31,8 @@ var path =
 		"shortDesc":"Shopping"
 		"longDesc":"I need more pizza."
 	}
-	document.getElementById("newpath").innerHTML=path[0].title + " " + path[0].shortDesc + " " + path[0].longDesc;
 ]
+document.getElementById("newpath").innerHTML=path[0].title + " " + path[0].shortDesc + " " + path[0].longDesc;
 </script>
 
 <script>
