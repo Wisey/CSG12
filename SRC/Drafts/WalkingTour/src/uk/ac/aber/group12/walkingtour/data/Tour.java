@@ -3,6 +3,7 @@ package uk.ac.aber.group12.walkingtour.data;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+
 @SuppressWarnings("serial")
 public class Tour implements Serializable{
     private static String TOUR_JSON = "{\n"
@@ -24,7 +25,7 @@ public class Tour implements Serializable{
         this.shortDescription = shortDescription;
         this.longDescription = longDescription;
         locations = new ArrayList<TourLocation>();
-    }
+    
 
     public void addLocation(TourLocation location) {
         locations.add(location);
@@ -33,9 +34,13 @@ public class Tour implements Serializable{
     public String toJSON() {
         StringBuffer buf = new StringBuffer();
 
-        for(TourLocation loc: locations) {
-            buf.append(loc.toJSON());
-            buf.append(",\n");
+        for(int i=0; i < locations.size(); i++) {
+            buf.append(locations.get(i).toJSON());
+            if (i < locations.size()-1) {
+                buf.append(",\n");
+            } else {
+                buf.append("\n");
+            }
         }
 
         return String.format(TOUR_JSON, name, shortDescription, longDescription, buf.toString());
