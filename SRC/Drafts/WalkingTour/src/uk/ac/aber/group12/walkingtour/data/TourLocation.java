@@ -2,13 +2,14 @@ package uk.ac.aber.group12.walkingtour.data;
 
 
 public class TourLocation {
-    private static String LOCATION_JSON = "  {\n"
-            + "    \"name\": \"%s\",\n"
-            + "    \"latitude\": %f,\n"
-            + "    \"longitude\": %f,\n"
-            + "    \"time\": %f,\n"
-            + "    \"image\": \"%s\"\n"
-            + "  }";
+    private static String LOCATION_JSON = "    {\n"
+            + "      \"name\": \"%s\",\n"
+            + "      \"description\": \"%s\",\n"
+            + "      \"latitude\": %f,\n"
+            + "      \"longitude\": %f,\n"
+            + "      \"time\": %f,\n"
+            + "      \"image\": \"%s\"\n"
+            + "    }";
 
     private String name;
     private String description;
@@ -27,8 +28,7 @@ public class TourLocation {
     }
 
     public String toJSON() {
-        //return String.format(LOCATION_JSON, name, latitude, longitude, time, image.toString());
-        return null;
+        return String.format(LOCATION_JSON, name, description, latitude, longitude, time, image.toString());
     }
 
     public String getName() {
