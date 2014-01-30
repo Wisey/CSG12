@@ -168,7 +168,7 @@ while($photograph = mysql_fetch_array($getphotos))
         $data = $photograph['photoName'];
         
         //echo '<img src="data:image/jpg;base64,' . $data . '" />';
-        
+        echo “<img src=\”viewimage.php?id=$row[id]\” width=\”55\” height=\”55\” /> <br/>”;
         
 }
 
