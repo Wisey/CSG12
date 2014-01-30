@@ -163,7 +163,7 @@ while($row = mysql_fetch_array($getresult))
 {
 	
   	 echo '<div class="single"><div class="wrap">
-  		  <a href="'.$row['location'].'" rel="lightbox[plants]" title="'.$row['caption'].'">'<img src="data:image/jpg;base64,' . $data . '" />';</a>
+  		  <a href="'.$row['location'].'" rel="lightbox[plants]" title="'.$row['caption'].'"><img src="'.$row['location'].'" alt="Plants: image 1 0f 4 thumb" /></a>
   		</div></div>';
 }				
 ?>		
