@@ -37,7 +37,7 @@ box-shadow: 2px 2px 2px 2px #999;}
 	var directionsService = new google.maps.DirectionsService();
 	
 	<?php
-	$con = mysql_connect("localhost","admin","");
+	$con = mysql_connect("localhost","root","group12");
 		if (!$con)
 		{
 			die('Could not connect: ' . mysql_error());
