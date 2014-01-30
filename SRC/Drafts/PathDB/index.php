@@ -34,12 +34,12 @@
 	var directionsService = new google.maps.DirectionsService();
 	
 	<?php
-	$con = mysql_connect("localhost","admin","");
+	$con = mysql_connect("localhost","root","group12");
 		if (!$con)
 		{
 			die('Could not connect: ' . mysql_error());
 		}
-		mysql_select_db("test", $con);
+		mysql_select_db("pathdb", $con);
 	?>
 	
 	
