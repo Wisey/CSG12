@@ -54,7 +54,7 @@ echo "ARRAY ACCESS";
 
 $pointMarkers = json_decode(file_get_contents("post_data.json"));
 $y=0;
-foreach($jsonDecode->locations as $mypoints)
+foreach($thepost->locations as $mypoints)
 {
 	foreach($mypoints as $key => $value)
 	{
@@ -70,7 +70,7 @@ foreach($jsonDecode->locations as $mypoints)
 $a = 0;
 $max = 0;
 
-foreach($jsonDecode->waypoint_long as $interlongs)
+foreach($thepost->waypoint_long as $interlongs)
 {
 	echo "Reading from waypoint_long Array.";
 		echo "<p>$interlongs</p>";
@@ -79,7 +79,7 @@ foreach($jsonDecode->waypoint_long as $interlongs)
 		$max = $a;
 }
 $a = 0;
-foreach($jsonDecode->waypoint_lat as $interlats)
+foreach($thepost->waypoint_lat as $interlats)
 {
 	echo "Reading from waypoint_lat Array.";
 		echo "<p>$interlats</p>";
