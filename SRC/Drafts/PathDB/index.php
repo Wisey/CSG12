@@ -29,6 +29,7 @@
     <nav><?php $query = "SELECT * FROM walks";
     $result = mysql_query($query);
 	?>
+<form action="index.php" method="post" style="height:15px; float:left;">
 <select name="select1"  style="width:134px; float:left; margin-left:10px; margin-top:10px;">
 <?php
 while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
@@ -40,6 +41,9 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 ?>
 </select>
 
+<input name = "submitbutton" type = "submit" value = "submit" />
+</form>
+
     
     <ul>
 			<li class="active"><a href="#">Home</a></li>
@@ -49,9 +53,6 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 		
 	<script type="text/javascript"
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgXd8GzR2kAhJw-fnQqX_ZYpDnBxLLiRw&sensor=false">
-	
-	var dropdown = document.getElementById("value1").value;
-	<?=$drop?>= dropdown;
 	</script>
 	
     <script type="text/javascript">
@@ -68,8 +69,13 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 		var infowindow = new google.maps.InfoWindow();
 		
 		<?php
-		$selectedwalk = mysql_query("SELECT * FROM walks where title = '$drop'");
-		$res = mysql_query("SELECT * FROM location WHERE walkID = '14'");
+		$drop = $_POST['select1'];
+		$selectedwalk = mysql_query("SELECT ID FROM walks WHERE title = '$drop'");
+		echo $selectedwalk;
+		echo "</br>";
+		echo $drop;
+		//echo $_POST['select1'];
+		$res = mysql_query("SELECT * FROM location WHERE walkID = $selectedwalk");
 		$res2 = mysql_query("SELECT * FROM placedesc");
 		while($a = mysql_fetch_array($res))
 		{
