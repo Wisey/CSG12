@@ -162,10 +162,15 @@ $result = mysql_query("SELECT * FROM photos");
 while($row = mysql_fetch_array($getresult))
 {
 	
-  	 echo '<div class="single"><div class="wrap">
-  		  <a href="'.$row['location'].'" rel="lightbox[plants]" title="'.$row['caption'].'"><img src="'.$row['location'].'" alt="Plants: image 1 0f 4 thumb" /></a>
-  		</div></div>';
-}				
+  	 $getphotos = mysql_query ("SELECT * FROM photos");
+while($photograph = mysql_fetch_array($getphotos))
+{
+        $data = $photograph['photoName'];
+        echo '<img src="data:image/jpg;base64,' . $data . '" />';
+}
+
+
+				
 ?>		
 		
 		
