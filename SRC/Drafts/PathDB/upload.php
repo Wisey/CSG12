@@ -36,13 +36,13 @@ $current = $thepost;
 file_put_contents($file, $current);
 
 
-$jsonDecode=json_decode(file_get_contents("post_data.json"));
+$jsonDecode=json_decode(file_get_contents("json2.json"));
 print_r($jsonDecode);
 echo("</br>");
 $pathdata=array();
 $x = 0;
  
-foreach($thepost as $key => $value)
+foreach($jsonDecode as $key => $value)
 {
 	echo "<p>$key | $value</p>";
 	$pathdata[$x]=$value;
@@ -64,38 +64,34 @@ foreach($thepost->locations as $mypoints)
 	}
 	mysql_query("INSERT INTO location (latitude, longitude, timestamp) VALUES ('$pointdata[2]', '$pointdata[3]', '$pointdata[4]')");
 	mysql_query("INSERT INTO placedesc (name, description) VALUES ('$pointdata[0]', '$pointdata[1]')");
-	mysql_query("INSERT INTO photos (placeID, photoName) VALUES ('$pointdata[]','$pointdata[5]')");
+	mysql_query("INSERT INTO photos (photoName) VALUES ($pointdata[5]')");
 	$y = 0;
 }
 $a = 0;
 $max = 0;
-/*
+
 foreach($thepost->waypoint_long as $interlongs)
 {
-	foreach($interlongs as $value)
-	{
-		echo "<p>$value</p>";
-		$wayptlong[$a]=$value;
+	echo "Reading from waypoint_long Array.";
+		echo "<p>$interlongs</p>";
+		$wayptlong[$a]=$interlongs;
 		$a++;
-		$max = a;
-	}
+		$max = $a;
 }
 $a = 0;
 foreach($thepost->waypoint_lat as $interlats)
 {
-	foreach($interlats as $value)
-	{
-		echo "<p>$value</p>";
-		$wayptlong[$a]=$value;
+	echo "Reading from waypoint_lat Array.";
+		echo "<p>$interlats</p>";
+		$wayptlat[$a]=$interlats;
 		$a++;
-	}
 }
-for(a=0; a<$max; a++)
+for($a=0; $a<$max; $a++)
 {
-	mysql_query("INSERT INTO location (latitude, longitude) VALUES ('$wayptlong[a]', '$wayptlat[a]')");
-	a++;
+	mysql_query("INSERT INTO location (latitude, longitude) VALUES ('$wayptlong[$a]', '$wayptlat[$a]')");
+	$a++;
 }
-*/
+
 mysql_close($con);
 
 ?>
