@@ -26,12 +26,10 @@
 
     </style>
     
-    <nav><?php
-
-$query = "SELECT * FROM walks";
-$result = mysql_query($query);
-?>
-<select name="select1" style="width:134px; float:left; margin-left:4px; margin-top:10px;>
+    <nav><?php $query = "SELECT * FROM walks";
+    $result = mysql_query($query);
+	?>
+<select name="select1" style="width:134px; float:left; margin-left:10px; margin-top:10px;>
 <?php
 while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 ?>
