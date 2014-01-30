@@ -113,10 +113,21 @@
 		new google.maps.LatLng(52.415661,-4.087775),
 		new google.maps.LatLng(52.424648,-4.082924)
 		];
+		var userroute2[];
+		<?php 
+		$res = mysql_query("SELECT * FROM location WHERE walkID = '1'");
+		while $a=mysql_fetch_array($res)
+		{
+		?>
+			var LatLng = new google.maps.LatLng(<?=$a['latitude']?>,<?=$a['longitude']?>);
+			userroute.push(LatLng);
+		<?php
+		}
+		?>
 		
 		var path = new google.maps.Polyline
 		({
-			path: userroute,
+			path: userroute2,
 			geodesic: true,
 			strokeColor: '#336699',
 			strokeOpacity: 0.6,
