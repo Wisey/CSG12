@@ -74,6 +74,17 @@
 
         </activity>
 
+        <activity
+                android:name="uk.ac.aber.group12.walkingtour.EditLocationActivity"
+                android:label="@string/title_activity_edit_location"
+                android:parentActivityName="uk.ac.aber.group12.walkingtour.HomeActivity" >
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="uk.ac.aber.group12.walkingtour.HomeActivity" />
+
+        </activity>
+
+
         <!--  <activity android:name="createTourActivity"></activity>
         <activity android:name="recordWalkActivity"></activity> -->
      </application>
