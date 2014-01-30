@@ -143,11 +143,10 @@ public class LocationCreatorActivity extends Activity implements LocationListene
     public void onLocationChanged(Location location) {
         location.getLatitude();
         location.getLongitude();
-        System.out.println("location changed");
         latitude = location.getLatitude();
         longitude = location.getLongitude();
 
-        String Text = "Latitude = " + latitude + " Longitude = " + longitude;
+        String Text = "LocationCreator Latitude = " + latitude + " Longitude = " + longitude;
         Toast.makeText(getApplicationContext(), Text, Toast.LENGTH_LONG).show();
     }
 
@@ -190,7 +189,6 @@ public class LocationCreatorActivity extends Activity implements LocationListene
         TourLocation loc;
 
         loc = new TourLocation(locName, locationDes, imageFilePath, Image.base64(savedImage), latitude, longitude, time);
-
 
         tour.addLocation(loc);
         Toast.makeText(getApplicationContext(), String.valueOf(tour.getLocations().size()), Toast.LENGTH_SHORT).show();
