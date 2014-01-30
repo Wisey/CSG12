@@ -69,6 +69,7 @@ foreach($thepost->locations as $mypoints)
 }
 $a = 0;
 $max = 0;
+/*
 foreach($thepost->waypoint_long as $interlongs)
 {
 	foreach($interlongs as $value)
@@ -94,7 +95,7 @@ for(a=0; a<$max; a++)
 	mysql_query("INSERT INTO location (latitude, longitude) VALUES ('$wayptlong[a]', '$wayptlat[a]')");
 	a++;
 }
-
+*/
 mysql_close($con);
 
 ?>
