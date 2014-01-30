@@ -9,6 +9,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Looper;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
@@ -17,10 +18,11 @@ import android.widget.Toast;
 import uk.ac.aber.group12.walkingtour.data.Post;
 import uk.ac.aber.group12.walkingtour.data.Tour;
 
-public class TourActivity extends Activity  implements LocationListener {
+public class TourActivity extends Activity implements LocationListener {
 
     // private TourCreatorActivity TCA;
-    private Location[] waypoints;
+    private int i = 1;
+    private Location[] waypoints = new Location[i];
     private LocationManager locationManager;
     private String provider;
     private double latitude = 0;
@@ -40,33 +42,62 @@ public class TourActivity extends Activity  implements LocationListener {
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         Criteria criteria = new Criteria();
         provider = locationManager.getBestProvider(criteria, false);
+        Log.e("sometjong", provider.toString());
 
+        Thread thread = new Thread(new Runnable() {
 
-        new java.lang.Thread(new Runnable() {
-
+            @Override
             public void run() {
                 Looper.prepare();
-                Location location = locationManager.getLastKnownLocation(provider);
                 while (true) {
-                    Toast.makeText(getApplicationContext(), "Things are happening", Toast.LENGTH_SHORT).show();
-                    try
-                    {
-                        if (location != null) {
-                            onLocationChanged(location);
-                        }
-                        else
-                        {
-                            Toast.makeText(getApplicationContext(), "Things are struggling", Toast.LENGTH_SHORT).show();
-                        }
-                        java.lang.Thread.sleep(2000);
-                    }
-                    catch (Exception e)
-                    {
+                    /*Location location = getLocation();
+                    Log.e("location", location.toString());
+                    if (location != null) {
+                        waypoints[i] = location;
+                        setArrayLength();
+                        System.out.println(i);
+                        i++;
+                    } else {
+                        System.out.println("null");
 
                     }
+                    try {
+                        Thread.sleep(5000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    */
                 }
             }
-        }).start();
+        });
+        thread.start();
+    }
+
+    public Location getLocation() {
+        Location location = null;
+        boolean canGetLocation;
+        try {
+            locationManager = (LocationManager) this.getApplicationContext().getSystemService(LOCATION_SERVICE);
+
+            locationManager.requestLocationUpdates(
+                    LocationManager.GPS_PROVIDER,
+                    1000,
+                    1000, this);
+            Log.d("GPS", "GPS Enabled");
+            if (locationManager != null) {
+                location = locationManager
+                        .getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                if (location != null) {
+                    latitude = location.getLatitude();
+                    longitude = location.getLongitude();
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.e("GPS", e.toString());
+        }
+        return location;
     }
 
     @Override
@@ -95,14 +126,16 @@ public class TourActivity extends Activity  implements LocationListener {
 
     @Override
     public void onLocationChanged(Location location) {
+        Log.e("LOCATION_CHANGED", "yes");
         Toast.makeText(getApplicationContext(),"Waypoints saved: "+waypoints.length,Toast.LENGTH_SHORT).show();
         location.getLatitude();
         location.getLongitude();
         latitude = location.getLatitude();
         longitude = location.getLongitude();
         setArrayLength();
-        waypoints[waypoints.length-1] = location;
+        waypoints[waypoints.length - 1] = location;
     }
+
     @Override
     public void onProviderDisabled(String arg0) {
     }
@@ -115,17 +148,24 @@ public class TourActivity extends Activity  implements LocationListener {
     public void onStatusChanged(String arg0, int arg1, Bundle arg2) {
     }
 
-    private void setArrayLength()
-    {
+    private void setArrayLength() {
 
         Location[] temp = waypoints.clone();
-        waypoints = new Location[temp.length+1];
+        waypoints = new Location[temp.length + 1];
 
-        for(int integ =0; integ < temp.length; integ++)
-        {
+        for (int integ = 0; integ < temp.length; integ++) {
             waypoints[integ] = temp[integ];
 
         }
     }
 
+    public void UIMethod1() {
+        TextView t = ((TextView) findViewById(R.id.textView));
+        t.setText("This is 1");
+    }
+
+    public void UIMethod2() {
+        TextView t = ((TextView) findViewById(R.id.textView));
+        t.setText("This is 2");
+    }
 }

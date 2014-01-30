@@ -41,9 +41,5 @@ public class HomeActivity extends Activity {
     }
 
 
-    public void onStartQuit(View view) {
-        finish();
-        // Intent intent = new Intent(this, test.class);
-        //  startActivity(intent);
-    }
+
 }

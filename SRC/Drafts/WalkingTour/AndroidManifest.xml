@@ -76,5 +76,6 @@
 
         <!--  <activity android:name="createTourActivity"></activity>
         <activity android:name="recordWalkActivity"></activity> -->
-     </application>
+        <service android:name=".ThreadService"/>
+    </application>
  </manifest>
