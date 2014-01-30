@@ -75,7 +75,28 @@
 		<?php
 		}
 		?>
-		pathco = [
+		userroute = [
+		<?php
+		$res = mysql_query("SELECT * FROM location WHERE walkID = '1'");
+		$rows = mysql_num_rows($res);
+		$final = $rows - 1;
+		while ($a = mysql_fetch_array($res))
+		{
+		IF($final < $rows)
+		{
+		?>
+		new google.maps.LatLng(<?=$a['latitude']?>,<?=$a['longitude']?>),
+		<?php
+		}
+		}
+		else
+		{
+		?>
+		new google.maps.LatLng(<?=$a['latitude']?>,<?=$a['longitude']?>)
+		<?php
+		}
+		?>
+		/*
 		new google.maps.LatLng(52.415100,-4.063118),
 		new google.maps.LatLng(52.415779,-4.062887),
 		new google.maps.LatLng(52.408504,-4.059840),
@@ -112,11 +133,12 @@
 		new google.maps.LatLng(52.415630,-4.087333),
 		new google.maps.LatLng(52.415661,-4.087775),
 		new google.maps.LatLng(52.424648,-4.082924)
+		*/
 		];
 		
 		var path = new google.maps.Polyline
 		({
-			path: pathco,
+			path: userroute,
 			geodesic: true,
 			strokeColor: '#336699',
 			strokeOpacity: 0.6,
