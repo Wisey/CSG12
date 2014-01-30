@@ -36,13 +36,13 @@ $current = $thepost;
 file_put_contents($file, $current);
 
 
-$jsonDecode=json_decode(file_get_contents("post_data.json"));
+$jsonDecode=json_decode(file_get_contents("json2.json"));
 print_r($jsonDecode);
 echo("</br>");
 $pathdata=array();
 $x = 0;
  
-foreach($thepost as $key => $value)
+foreach($jsonDecode as $key => $value)
 {
 	echo "<p>$key | $value</p>";
 	$pathdata[$x]=$value;
@@ -54,7 +54,7 @@ echo "ARRAY ACCESS";
 
 $pointMarkers = json_decode(file_get_contents("post_data.json"));
 $y=0;
-foreach($thepost->locations as $mypoints)
+foreach($jsonDecode->locations as $mypoints)
 {
 	foreach($mypoints as $key => $value)
 	{
@@ -70,7 +70,7 @@ foreach($thepost->locations as $mypoints)
 $a = 0;
 $max = 0;
 
-foreach($thepost->waypoint_long as $interlongs)
+foreach($jsonDecode->waypoint_long as $interlongs)
 {
 	foreach($interlongs as $value)
 	{
@@ -81,7 +81,7 @@ foreach($thepost->waypoint_long as $interlongs)
 	}
 }
 $a = 0;
-foreach($thepost->waypoint_lat as $interlats)
+foreach($jsonDecode->waypoint_lat as $interlats)
 {
 	foreach($interlats as $value)
 	{
