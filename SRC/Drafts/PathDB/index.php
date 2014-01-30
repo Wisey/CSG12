@@ -70,7 +70,7 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 		var infowindow = new google.maps.InfoWindow();
 		
 		<?php
-		$selectedwalk = mysql_query("SELECT * FROM walks where title = '$drop'");
+		$selectedwalk = mysql_query("SELECT * FROM walks where title = $drop");
 		$res = mysql_query("SELECT * FROM location WHERE walkID = '14'");
 		$res2 = mysql_query("SELECT * FROM placedesc");
 		while($a = mysql_fetch_array($res))
