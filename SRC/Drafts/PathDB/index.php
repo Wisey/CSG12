@@ -29,7 +29,7 @@
     <nav><?php $query = "SELECT * FROM walks";
     $result = mysql_query($query);
 	?>
-<select name="select1" style="width:134px; float:left; margin-left:10px; margin-top:10px;>
+<select name="select1" onchange="window.location.href= this.form.select1.options[this.form.select1.selectedIndex].value" style="width:134px; float:left; margin-left:10px; margin-top:10px;>
 <?php
 while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 ?>
