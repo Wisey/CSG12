@@ -29,12 +29,12 @@
     <nav><?php $query = "SELECT * FROM walks";
     $result = mysql_query($query);
 	?>
-<select name="select1" onchange="window.location.href= this.form.select1.options[this.form.select1.selectedIndex].value" style="width:134px; float:left; margin-left:10px; margin-top:10px;>
+<select name="select1"  style="width:134px; float:left; margin-left:10px; margin-top:10px;">
 <?php
 while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 ?>
 <option value="<?php echo $line['title'];?>"> <?php echo $line['title'];?> </option>
- 
+
 <?php
 }
 ?>
@@ -49,6 +49,9 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 		
 	<script type="text/javascript"
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgXd8GzR2kAhJw-fnQqX_ZYpDnBxLLiRw&sensor=false">
+	
+	var dropdown = document.getElementById("value1");
+	<?=$drop?>= dropdown;
 	</script>
 	
     <script type="text/javascript">
@@ -65,7 +68,7 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 		var infowindow = new google.maps.InfoWindow();
 		
 		<?php
-		$selectedwalk = mysql_query("SELECT * FROM walks where title = 'select1'");
+		$selectedwalk = mysql_query("SELECT * FROM walks where title = '$drop'");
 		$res = mysql_query("SELECT * FROM location WHERE walkID = '14'");
 		$res2 = mysql_query("SELECT * FROM placedesc");
 		while($a = mysql_fetch_array($res))
