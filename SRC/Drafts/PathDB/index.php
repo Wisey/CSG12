@@ -49,11 +49,6 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 		
 	<script type="text/javascript"
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgXd8GzR2kAhJw-fnQqX_ZYpDnBxLLiRw&sensor=false">
-	
-	var dropdown = document.getElementById("select1").value;
-	<?php
-	$drop = document.getElementById("select1").value;
-	?>
 	</script>
 	
     <script type="text/javascript">
@@ -70,6 +65,9 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 		var infowindow = new google.maps.InfoWindow();
 		
 		<?php
+		$dd = document.getElementById("select1");
+		$drop = $dd.options[$dd.selectedIndex];
+		
 		$selectedwalk = mysql_query("SELECT * FROM walks where title = $drop");
 		$res = mysql_query("SELECT * FROM location WHERE walkID = '14'");
 		$res2 = mysql_query("SELECT * FROM placedesc");
