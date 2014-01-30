@@ -27,7 +27,7 @@ else
 mysql_select_db("pathdb", $con);
 //-------------------------------------------------------------------------------
 
-$thepost=json_decode(file_get_contents('php://input'));
+$thepost=json_decode(file_get_contents("php://input"));
 var_dump(json_decode(file_get_contents("php://input")));
 echo "</br>";
 
@@ -48,7 +48,7 @@ foreach($thepost as $key => $value)
 	$pathdata[$x]=$value;
 	$x++;
 }
-mysql_query("INSERT INTO walks (title, shortDesc, longDesc, hours, distance) VALUES ('$pathdata[0]', '$pathdata[1]', '$pathdata[2]', '$pathdata[3]', '$pathdata[4]')");
+mysql_query("INSERT INTO walks (title, shortDesc, longDesc) VALUES ('$pathdata[0]', '$pathdata[1]', '$pathdata[2]')");
 
 echo "ARRAY ACCESS";
 
@@ -56,7 +56,7 @@ $pointMarkers = json_decode(file_get_contents("post_data.json"));
 $y=0;
 foreach($thepost->locations as $mypoints)
 {
-	foreach($thepost as $key => $value)
+	foreach($mypoints as $key => $value)
 	{
 		echo "<p>$key | $value</p>";
 		if($key="name")

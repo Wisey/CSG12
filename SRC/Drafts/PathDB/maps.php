@@ -17,130 +17,19 @@
 	var directionsService = new google.maps.DirectionsService();
 	
 	<?php
-	$con = mysql_connect("localhost","root","group12");
+	$con = mysql_connect("localhost","root","");
 		if (!$con)
 		{
 			die('Could not connect: ' . mysql_error());
 		}
 		mysql_select_db("pathdb", $con);
 	?>
-	
-	
-	
-	
-	function calcRoute()
-	{
-		
-		var waypts = [];	
-			waypts.push({
-			location: new google.maps.LatLng(52.399982,-4.072388),
-			stopover:false});
-			waypts.push({
-			location: new google.maps.LatLng(52.408867,-4.074300),
-			stopover:false});
-			waypts.push({
-			location: new google.maps.LatLng(52.409698,-4.085050),
-			stopover:false});
-			waypts.push({
-			location: new google.maps.LatLng(52.416687,-4.081175),
-			stopover:false});
-			waypts.push({
-			location: new google.maps.LatLng(52.416092,-4.083629),
-			stopover:false});
-			waypts.push({
-			location: new google.maps.LatLng(52.415176,-4.085528),
-			stopover:false});
-			waypts.push({
-			location: new google.maps.LatLng(52.413960,-4.086737),
-			stopover:false});
-			waypts.push({
-			location: new google.maps.LatLng(52.415661,-4.087775),
-			stopover:false});
-		
-		<?php
-		$startpoint = mysql_query("SELECT * FROM points WHERE `order` = 1");
-		$starter = mysql_fetch_array($startpoint);
-		$endpoint = mysql_query("SELECT * FROM points WHERE `order` = 36");
-		$ender = mysql_fetch_array($endpoint);
-		?>
-		
-		var start = new google.maps.LatLng(<?=$starter['lat']?>,<?=$starter['long']?>);
-		var end = new google.maps.LatLng(<?=$ender['lat']?>,<?=$ender['long']?>)
-		
-		var request=
-		{
-			origin: start,
-			destination: end,
-			waypoints: waypts,
-			optimizeWaypoints: true,
-			travelMode: google.maps.TravelMode.WALKING
-		};
-		directionsService.route(request, function(response, status)
-		{
-			if (status == google.maps.DirectionsStatus.OK)
-			{
-				directionsDisplay.setDirections(response);
-				directionsDisplay.setOptions({suppressMarkers: true});
-			}
-		});
-		
-		
-		/*
-		<?php
-		$allpaths = mysql_query("SELECT * FROM points");
-		while($allroutes = mysql_fetch_array($allpaths))
-		{
-		?>
-		var request=
-		{
-			origin: new google.maps.LatLng(<?=$allroutes['lat']?>,<?=$allroutes['long']?>),
-			destination: end,
-			travelMode: google.maps.TravelMode.WALKING
-		};
-		directionsService.route(request, function(response, status)
-		{
-			if (status == google.maps.DirectionsStatus.OK)
-			{
-				directionsDisplay.setDirections(response);
-				directionsDisplay.setOptions({suppressMarkers: true});
-			}
-		});
-		<?php
-		}
-		?>
-		
-		 var flightPlanCoordinates = [
-    new google.maps.LatLng(37.772323, -122.214897),
-    new google.maps.LatLng(21.291982, -157.821856),
-    new google.maps.LatLng(-18.142599, 178.431),
-    new google.maps.LatLng(-27.46758, 153.027892)
-  ];
-  var flightPath = new google.maps.Polyline({
-    path: flightPlanCoordinates,
-    geodesic: true,
-    strokeColor: '#FF0000',
-    strokeOpacity: 1.0,
-    strokeWeight: 2
-  });
 
-		
-		*/
-		
-		
-		
-	}
-	
-	
-	
 	function initialize()
 	{
 		var mapOptions = {center: new google.maps.LatLng(52.413571,-4.073489), zoom: 14};
 		var map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
 		var infowindow = new google.maps.InfoWindow();
-		
-		window.directionsService = new google.maps.DirectionsService();
-		window.directionsDisplay = new google.maps.DirectionsRenderer();
-		directionsDisplay.setMap(map);
 		
 		<?php
 		$res = mysql_query("SELECT * FROM points");
@@ -165,7 +54,54 @@
 		<?php
 		}
 		?>
-		calcRoute();
+		pathco = [
+		new google.maps.LatLng(52.415100,-4.063118),
+		new google.maps.LatLng(52.415779,-4.062887),
+		new google.maps.LatLng(52.408504,-4.059840),
+		new google.maps.LatLng(52.408371,-4.059551),
+		new google.maps.LatLng(52.404819,-4.064931),
+		new google.maps.LatLng(52.399982,-4.072388),
+		new google.maps.LatLng(52.408867,-4.074300),
+		new google.maps.LatLng(52.409698,-4.085050),
+		new google.maps.LatLng(52.411865,-4.085286),
+		new google.maps.LatLng(52.412354,-4.088138),
+		new google.maps.LatLng(52.413265,-4.086802),
+		new google.maps.LatLng(52.413319,-4.085775),
+		new google.maps.LatLng(52.413448,-4.085581),
+		new google.maps.LatLng(52.412949,-4.083897),
+		new google.maps.LatLng(52.414127,-4.082470),
+		new google.maps.LatLng(52.414204,-4.082309),
+		new google.maps.LatLng(52.414177,-4.081690),
+		new google.maps.LatLng(52.414452,-4.081775),
+		new google.maps.LatLng(52.415977,-4.077967),
+		new google.maps.LatLng(52.416061,-4.079947),
+		new google.maps.LatLng(52.416687,-4.081175),
+		new google.maps.LatLng(52.420563,-4.084423),
+		new google.maps.LatLng(52.416473,-4.085048),
+		new google.maps.LatLng(52.417122,-4.083452),
+		new google.maps.LatLng(52.415943,-4.081427),
+		new google.maps.LatLng(52.416092,-4.083629),
+		new google.maps.LatLng(52.416119,-4.083943),
+		new google.maps.LatLng(52.415936,-4.084753),
+		new google.maps.LatLng(52.415176,-4.085528),
+		new google.maps.LatLng(52.414875,-4.086166),
+		new google.maps.LatLng(52.413898,-4.086434),
+		new google.maps.LatLng(52.413960,-4.086737),
+		new google.maps.LatLng(52.415321,-4.086872),
+		new google.maps.LatLng(52.415630,-4.087333),
+		new google.maps.LatLng(52.415661,-4.087775),
+		new google.maps.LatLng(52.424648,-4.082924)
+		];
+		
+		var path = new google.maps.Polyline
+		({
+			path: pathco,
+			geodesic: true,
+			strokeColor: '#336699',
+			strokeOpacity: 0.6,
+			strokeWeight:5
+		});
+		path.setMap(map);
 	}
 	
 	google.maps.event.addDomListener(window, 'load', initialize);
