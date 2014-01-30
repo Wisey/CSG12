@@ -120,7 +120,7 @@
 		{
 		?>
 			var LatLng = new google.maps.LatLng(<?=$a['latitude']?>,<?=$a['longitude']?>);
-			userroute.push(LatLng);
+			userroute2.push(LatLng);
 		<?php
 		}
 		?>
