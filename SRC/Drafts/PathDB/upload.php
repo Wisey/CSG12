@@ -27,7 +27,7 @@ else
 mysql_select_db("pathdb", $con);
 //-------------------------------------------------------------------------------
 
-$thepost=json_decode(file_get_contents('php://input'), true);
+$thepost=json_decode(file_get_contents('php://input'));
 var_dump(json_decode(file_get_contents("php://input")));
 echo "</br>";
 
@@ -59,6 +59,30 @@ foreach($thepost->locations as $mypoints)
 	foreach($mypoints as $key => $value)
 	{
 		echo "<p>$key | $value</p>";
+		if($key="name")
+		{
+			$name = $value;
+		}
+		if($key="description")
+		{
+			$desc = $value;
+		}
+		if($key="latitude")
+		{
+			$lat = $value;
+		}
+		if($key="longitude")
+		{
+			$long = $value;
+		}
+		if($key="time")
+		{
+			$time = $value;
+		}
+		if($key="image")
+		{
+			$img = $value;
+		}
 		$pointdata[$y]=$value;
 		$y++;
 	}
