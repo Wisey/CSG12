@@ -42,7 +42,7 @@ echo("</br>");
 $pathdata=array();
 $x = 0;
  
-foreach($thepost as $key => $value)
+foreach($jsonDecode as $key => $value)
 {
 	echo "<p>$key | $value</p>";
 	$pathdata[$x]=$value;
@@ -54,7 +54,7 @@ echo "ARRAY ACCESS";
 
 $pointMarkers = json_decode(file_get_contents("post_data.json"));
 $y=0;
-foreach($thepost->locations as $mypoints)
+foreach($jsonDecode->locations as $mypoints)
 {
 	foreach($mypoints as $key => $value)
 	{
