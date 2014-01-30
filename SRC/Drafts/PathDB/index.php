@@ -162,8 +162,23 @@ $getphotos = mysql_query ("SELECT * FROM photos");
 while($photograph = mysql_fetch_array($getphotos))
 {
         $data = $photograph['photoName'];
+        
         echo '<img src="data:image/jpg;base64,' . $data . '" />';
-}				
+        
+        
+}
+
+if(($img = @imagecreatefromstring($fileData)) !== FALSE) {
+    // Let's create a 100x100 thumbnail
+    $width = imagesx($img);
+    $height = imagesy($img);
+    $boxSize = min($width,$height);
+    $boxX = ($width / 2) - ($boxSize / 2);
+    $boxY = ($height / 2) - ($boxSize / 2);
+    $thumb = imagecreatetruecolor(100, 100);
+    imagecopyresampled($thumb, $img, 0, 0, $boxX, $boxY, 100, 100, $boxSize, $boxSize);
+    //$thumb is now a 100x100 thumbnail
+}
 ?>		
 		
 		
