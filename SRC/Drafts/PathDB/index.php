@@ -63,8 +63,7 @@
 				map:map,
 				draggable:false,
 				animation: google.maps.Animation.DROP,
-				position: LatLng,
-				icon: image
+				position: LatLng
 			});
 			marker.content = ContentString;
 			google.maps.event.addListener(marker, 'click', function(){
