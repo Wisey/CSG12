@@ -2,8 +2,8 @@ Configuration Reference File for Group 12
 Quality Manager: Alex Heaven, 38 Bridge Street, email: alh32@aber.ac.uk
 
 Reference:            Config Item Status:	    Description:
-SE_12_PP_01	        Released v1.1	        Project plan
-SE_12_DS_01	      Released v1.0	        Design Spec
+SE_12_PP_01	          Released v1.1	        Project plan
+SE_12_DS_01	          Released v1.0	        Design Spec
 SE_12_TEST_01	        Released v1.5	        Test Spec
 SE_12_MAINTAIN_01            Draft v0.1                   Maintenance manual
 SE_12_TESTREPO_01            Draft v0.1                   Test report
