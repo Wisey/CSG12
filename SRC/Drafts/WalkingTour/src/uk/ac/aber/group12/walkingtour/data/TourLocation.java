@@ -2,7 +2,7 @@ package uk.ac.aber.group12.walkingtour.data;
 
 
 public class TourLocation {
-    private static boolean UPLOAD_IMAGES = false;
+    private static boolean UPLOAD_IMAGES = true;
 
     private static String LOCATION_JSON = "    {\n"
             + "      \"name\": %s,\n"

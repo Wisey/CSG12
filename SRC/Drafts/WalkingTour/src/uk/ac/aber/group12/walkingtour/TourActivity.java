@@ -22,7 +22,7 @@ import static java.lang.System.*;
 
 public class TourActivity extends Activity implements LocationListener{
     private static double TIME_BETWEEN_WAYPOINTS = 10000;
-    private static boolean DEBUG = true;
+    private static boolean DEBUG = false;
 
     private LocationManager locationManager;
     private String provider;
