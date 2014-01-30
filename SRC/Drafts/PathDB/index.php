@@ -31,7 +31,7 @@
 $query = "SELECT * FROM walks";
 $result = mysql_query($query);
 ?>
-<select name="select1" style="width:134px; float:left;>
+<select name="select1" style="width:134px;>
 <?php
 while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 ?>
