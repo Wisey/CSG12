@@ -70,9 +70,10 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 		
 		<?php
 		$drop = $_POST['select1'];
-		$selectedwalk = mysql_query("SELECT ID FROM walks WHERE title = '$drop'");
+		$selectedwalk = mysql_query("SELECT ID FROM walks WHERE title = $_POST['select1']");
 		echo $selectedwalk;
 		echo $drop;
+		echo $_POST['select1'];
 		$res = mysql_query("SELECT * FROM location WHERE walkID = $selectedwalk");
 		$res2 = mysql_query("SELECT * FROM placedesc");
 		while($a = mysql_fetch_array($res))
