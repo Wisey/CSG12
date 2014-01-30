@@ -18,14 +18,17 @@ import android.widget.Toast;
 import uk.ac.aber.group12.walkingtour.data.Post;
 import uk.ac.aber.group12.walkingtour.data.Tour;
 
+import static java.lang.System.*;
+
 public class TourActivity extends Activity implements LocationListener{
+    private static double TIME_BETWEEN_WAYPOINTS = 10000;
     private static boolean DEBUG = true;
 
     private LocationManager locationManager;
     private String provider;
     private double latitude = 0;
     private double longitude = 0;
-    private 
+    private double time = currentTimeMillis();
 
     // private TourCreatorActivity TCA;
     private Tour tour;
@@ -54,11 +57,14 @@ public class TourActivity extends Activity implements LocationListener{
         location.getLongitude();
         latitude = location.getLatitude();
         longitude = location.getLongitude();
-        tour.addWaypoint(latitude, longitude);
 
-        String Text = "Latitude = " + latitude + " Longitude = " + longitude;
-        Toast.makeText(getApplicationContext(), Text, Toast.LENGTH_LONG).show();
+        if (currentTimeMillis() - time > TIME_BETWEEN_WAYPOINTS) {
+            tour.addWaypoint(latitude, longitude);
 
+            String Text = "Latitude = " + latitude + " Longitude = " + longitude;
+            Toast.makeText(getApplicationContext(), Text, Toast.LENGTH_LONG).show();
+            time = currentTimeMillis();
+        }
         Log.e("location", String.valueOf(latitude));
     }
 
