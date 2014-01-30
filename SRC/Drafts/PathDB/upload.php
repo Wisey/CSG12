@@ -27,7 +27,7 @@ else
 mysql_select_db("pathdb", $con);
 //-------------------------------------------------------------------------------
 
-$thepost=json_decode(file_get_contents('php://input'));
+$thepost=json_decode(file_get_contents("php://input"));
 var_dump(json_decode(file_get_contents("php://input")));
 echo "</br>";
 
