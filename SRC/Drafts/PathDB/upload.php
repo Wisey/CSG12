@@ -73,24 +73,18 @@ $max = 0;
 foreach($jsonDecode->waypoint_long as $interlongs)
 {
 	echo "Reading from waypoint_long Array.";
-	foreach($interlongs as $value)
-	{
-		echo "<p>$value</p>";
-		$wayptlong[$a]=$value;
+		echo "<p>$interlongs</p>";
+		$wayptlong[$a]=$interlongs;
 		$a++;
 		$max = $a;
-	}
 }
 $a = 0;
 foreach($jsonDecode->waypoint_lat as $interlats)
 {
 	echo "Reading from waypoint_lat Array.";
-	foreach($interlats as $value)
-	{
-		echo "<p>$value</p>";
-		$wayptlat[$a]=$value;
+		echo "<p>$interlats</p>";
+		$wayptlat[$a]=$interlats;
 		$a++;
-	}
 }
 for($a=0; $a<$max; $a++)
 {
