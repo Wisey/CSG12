@@ -70,7 +70,7 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 		
 		<?php
 		$drop = $_POST['select1'];
-		$selectedwalk = mysql_query("SELECT * FROM walks WHERE title = '$drop'");
+		$selectedwalk = mysql_query("SELECT * FROM walks WHERE title = $drop");
 		$selectedwalkID = $selectedwalk['ID'];
 		echo $selectedwalkID;
 		echo " +++ ";
