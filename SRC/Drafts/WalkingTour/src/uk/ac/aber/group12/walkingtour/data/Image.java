@@ -17,6 +17,13 @@ public class Image {
 
     }
 
+    /**
+     *
+     * This is the constructor for an image. It takes in an Image Filepath so that the location can
+     * be refered to at a later time.
+     *
+     * @param imageFilePath This is the String that holds the filepath of the location.
+     */
     public Image(String imageFilePath){
         this.imageFilePath=imageFilePath;
        // this.encodedImage=null;
@@ -30,6 +37,12 @@ public class Image {
         return this.encodedImage;
     }*/
 
+    /**
+     *
+     * This is the method that returns the image's file path.
+     *
+     * @return This is the location of the image that has been stored on the device.
+     */
     public String getImageFilePath() {
         return imageFilePath;
     }

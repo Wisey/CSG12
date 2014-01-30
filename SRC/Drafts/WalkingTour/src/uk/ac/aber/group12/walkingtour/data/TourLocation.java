@@ -3,8 +3,8 @@ package uk.ac.aber.group12.walkingtour.data;
 
 public class TourLocation {
     private static String LOCATION_JSON = "    {\n"
-            + "      \"name\": \"%s\",\n"
-            + "      \"description\": \"%s\",\n"
+            + "      \"name\": %s,\n"
+            + "      \"description\": %s,\n"
             + "      \"latitude\": %f,\n"
             + "      \"longitude\": %f,\n"
             + "      \"time\": %f,\n"
@@ -18,6 +18,20 @@ public class TourLocation {
     private double longitude;
     private double time;
 
+    /**
+     *
+     * This is the constructor for a location in a Tour.
+     * Waypoints are considered locations, except that the unnecessary parameters are null.
+     *
+     *
+     * @param name
+     * @param description
+     * @param imageFilePath
+     * @param latitude
+     * @param longitude
+     * @param time
+     */
+
     public TourLocation(String name, String description, String imageFilePath, double latitude, double longitude, double time) {
         this.name = name;
         this.description = description;
@@ -28,7 +42,7 @@ public class TourLocation {
     }
 
     public String toJSON() {
-        return String.format(LOCATION_JSON, name, description, latitude, longitude, time, imageFilePath);
+        return String.format(LOCATION_JSON, JSON.quote(name), JSON.quote(description), latitude, longitude, time, imageFilePath);
     }
 
     public String getName() {

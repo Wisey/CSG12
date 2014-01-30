@@ -1,0 +1,32 @@
+{
+"name": "Shopping",
+"short-description": "The shops.",
+"long-description": "I am going shopping.",
+	"locations":
+	[
+	{
+		"name": "Argos",
+		"description": "Might have external hard drives!",           
+		"latitude": 52.4131698,
+		"longitude": -4.0795939,
+		"time": 1223255737,
+		"image": ""            
+	},
+	{
+		"name": "Iceland",
+		"description": "Pizza better than Domino's.",
+		"latitude": 52.4131077,
+		"longitude": -4.0796879,
+		"time":2,
+		"image":""
+	},
+	{
+		"name": "Bermuda Triangle",
+		"longDesc": "Random LatLong.",
+		"latitude": 51.4131077,
+		"longitude": -5.0796879,
+		"time":2.5474747,
+		"image":""
+	}
+	]
+}
