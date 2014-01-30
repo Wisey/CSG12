@@ -52,7 +52,6 @@ mysql_query("INSERT INTO walks (title, shortDesc, longDesc) VALUES ('$pathdata[0
 
 echo "ARRAY ACCESS";
 
-$pointMarkers = json_decode(file_get_contents("post_data.json"));
 $y=0;
 foreach($thepost->locations as $mypoints)
 {
