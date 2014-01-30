@@ -119,7 +119,8 @@
 		while $a=mysql_fetch_array($res)
 		{
 		?>
-			userroute.push(new google.maps.LatLng(<?=$a['latitude']?>,<?=$a['longitude']?>))
+			var LatLng = new google.maps.LatLng(<?=$a['latitude']?>,<?=$a['longitude']?>);
+			userroute.push(LatLng);
 		<?php
 		}
 		?>
