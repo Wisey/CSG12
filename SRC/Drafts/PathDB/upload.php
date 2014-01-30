@@ -42,7 +42,7 @@ echo("</br>");
 $pathdata=array();
 $x = 0;
  
-foreach($jsonDecode as $key => $value)
+foreach($thepost as $key => $value)
 {
 	echo "<p>$key | $value</p>";
 	$pathdata[$x]=$value;
