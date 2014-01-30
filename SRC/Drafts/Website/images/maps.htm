@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<style type="text/css">
+	html { height: 100% }
+	body { height: 100%; margin: 0; padding: 0 }
+	#map-canvas { height: 100% }
+	</style>
+	<script type="text/javascript"
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgXd8GzR2kAhJw-fnQqX_ZYpDnBxLLiRw&sensor=false">
+	</script>
+	
+    <script type="text/javascript">
+	var image = 'icon2.png';
+	var directionsDisplay;
+	var directionsService = new google.maps.DirectionsService();
+	
+		
+	
+	
+	
+	function calcRoute()
+	{
+		
+		var waypts = [];	
+			waypts.push({
+			location: new google.maps.LatLng(52.399982,-4.072388),
+			stopover:false});
+			waypts.push({
+			location: new google.maps.LatLng(52.408867,-4.074300),
+			stopover:false});
+			waypts.push({
+			location: new google.maps.LatLng(52.409698,-4.085050),
+			stopover:false});
+			waypts.push({
+			location: new google.maps.LatLng(52.416687,-4.081175),
+			stopover:false});
+			waypts.push({
+			location: new google.maps.LatLng(52.416092,-4.083629),
+			stopover:false});
+			waypts.push({
+			location: new google.maps.LatLng(52.415176,-4.085528),
+			stopover:false});
+			waypts.push({
+			location: new google.maps.LatLng(52.413960,-4.086737),
+			stopover:false});
+			waypts.push({
+			location: new google.maps.LatLng(52.415661,-4.087775),
+			stopover:false});
+		
+				
+		var start = new google.maps.LatLng(52.4151,-4.063118);
+		var end = new google.maps.LatLng(52.424648,-4.082924)
+		
+		var request=
+		{
+			origin: start,
+			destination: end,
+			waypoints: waypts,
+			optimizeWaypoints: true,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+		
+		
+		/*
+				var request=
+		{
+			origin: new google.maps.LatLng(52.4151,-4.063118),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.415779,-4.062887),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.408504,-4.05984),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.408371,-4.059551),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.404819,-4.064931),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.399982,-4.072388),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.408867,-4.0743),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.409698,-4.08505),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.411865,-4.085286),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.412354,-4.088138),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.413265,-4.086802),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.413319,-4.085775),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.413448,-4.085581),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.412949,-4.083897),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.414127,-4.08247),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.414204,-4.082309),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.414177,-4.08169),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.414452,-4.081775),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.415977,-4.077967),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.416061,-4.079947),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.416687,-4.081175),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.420563,-4.084423),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.416473,-4.085048),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.417122,-4.083452),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.415943,-4.081427),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.416092,-4.083629),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.416119,-4.083943),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.415936,-4.084753),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.415176,-4.085528),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.414875,-4.086166),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.413898,-4.086434),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.41396,-4.086737),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.415321,-4.086872),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.41563,-4.087333),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.415661,-4.087775),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				var request=
+		{
+			origin: new google.maps.LatLng(52.424648,-4.082924),
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(response, status)
+		{
+			if (status == google.maps.DirectionsStatus.OK)
+			{
+				directionsDisplay.setDirections(response);
+				directionsDisplay.setOptions({suppressMarkers: true});
+			}
+		});
+				
+		 var flightPlanCoordinates = [
+    new google.maps.LatLng(37.772323, -122.214897),
+    new google.maps.LatLng(21.291982, -157.821856),
+    new google.maps.LatLng(-18.142599, 178.431),
+    new google.maps.LatLng(-27.46758, 153.027892)
+  ];
+  var flightPath = new google.maps.Polyline({
+    path: flightPlanCoordinates,
+    geodesic: true,
+    strokeColor: '#FF0000',
+    strokeOpacity: 1.0,
+    strokeWeight: 2
+  });
+
+		
+		*/
+		
+		
+		
+	}
+	
+	
+	
+	function initialize()
+	{
+		var mapOptions = {center: new google.maps.LatLng(52.413571,-4.073489), zoom: 14};
+		var map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
+		var infowindow = new google.maps.InfoWindow();
+		
+		window.directionsService = new google.maps.DirectionsService();
+		window.directionsDisplay = new google.maps.DirectionsRenderer();
+		directionsDisplay.setMap(map);
+		
+					var LatLng = new google.maps.LatLng(52.4151,-4.063118);
+			var ContentString = "<b>Union</b></br>Aberystwyth student's union, the start point of our messy adventure. For it is from here we will embark upon our sacred quest across the breadth of Aberystwyth in search of half a pint in every reputa";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.415779,-4.062887);
+			var ContentString = "<b>Aberystwyth Arts Center</b></br>There's a bar inside, it's close to the union, so we might as well include it! Quick stop off before we drop out of campus and straight down the hill and into the backwoods of Llanbadarn.";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.408504,-4.05984);
+			var ContentString = "<b>The Black Lion</b></br>The black lion pub, good review, first of the two available in Llanbadarn but far from the only two in the sticks. Take this one first due to it's position on the near side of the road.";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.408371,-4.059551);
+			var ContentString = "<b>Gogerddan Arms</b></br>The second and final pub for Llanbadarn! Dive here after Black Lion.";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.404819,-4.064931);
+			var ContentString = "<b>Park Lodge</b></br>Dank looking hotel place but it's right by Maccies so let's just like have one and get moving to the tollgate we don't even know where it is though for real.";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.399982,-4.072388);
+			var ContentString = "<b>Tollgate Inn</b></br>The farthest destination on the trip from anywhere else. This little double dog leg starts off here, and then we have to try and find that bridge by the Co-Op. Feeling better after the walk here.";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.408867,-4.0743);
+			var ContentString = "<b>The Starling Cloud</b></br>My housemate is obsessed with this place and I've never been in but I thought it would be better than this actually. Oh well, need to rest my legs.";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.409698,-4.08505);
+			var ContentString = "<b>The Fountain Inn</b></br>I live across the bridge and I've never ever been in before but wow they have goldfish in there and a fishtank and Brains Black ale and oh man fountain inn!";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.411865,-4.085286);
+			var ContentString = "<b>Rummers Wine Bar</b></br>Alright, we're on home turf. The golden mile begins here.";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.412354,-4.088138);
+			var ContentString = "<b>Castle</b></br>I live across from here going to dump my bags off and then go in and have like a doom bar or something ye boy.";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.413265,-4.086802);
+			var ContentString = "<b>Ship and Castle</b></br>REAL ALES! YEAH!";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.413319,-4.085775);
+			var ContentString = "<b>The Nags Head</b></br>MORE REAL ALES!";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.413448,-4.085581);
+			var ContentString = "<b>The Old Black Lion</b></br>I thought this was another local pub but apparently there's students in here all the time!";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.412949,-4.083897);
+			var ContentString = "<b>The Mill</b></br>I like to do shots here but I don't want to go out of commission so I'll stick to the plan and have half of whatever and then we're on the main stretch!";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.414127,-4.08247);
+			var ContentString = "<b>Lord Beechings</b></br>SHO- I mean, BEER!";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.414204,-4.082309);
+			var ContentString = "<b>The Cambrian</b></br>Always trust in the power of Coors light.";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.414177,-4.08169);
+			var ContentString = "<b>Yr Hen Orsaf Wetherspoons</b></br>Dutch courage for the next place. No amount of friendly conversation will relax my nerves enough for what may come next.";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.414452,-4.081775);
+			var ContentString = "<b>The Vale of Rheidol</b></br>Get in. Neck it. Get out.";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.415977,-4.077967);
+			var ContentString = "<b>The Cooper's Arms</b></br>I've only been in a few times. Seems decent. Didn't enjoy the trek from Vale but I suppose running for my life made it go a lot quicker.";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.416061,-4.079947);
+			var ContentString = "<b>Aber Vaults</b></br>I'm pretty sure that the pints in here are watered down, that's okay for tonight but don't expect me to come back here ever again.";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.416687,-4.081175);
+			var ContentString = "<b>Scholars</b></br>I love this place, Brains ales all around!";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.420563,-4.084423);
+			var ContentString = "<b>The Glengower</b></br>Hotel bar, it counts.";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.416473,-4.085048);
+			var ContentString = "<b>Belle Vue Royal Hotel</b></br>Another hotel with a guest bar!";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.417122,-4.083452);
+			var ContentString = "<b>Commodore Cinema</b></br>There's a bar downstairs! Were in the middle of nowhere and we have to get to Harrys after this now just to loop back to Salt! Ew.";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.415943,-4.081427);
+			var ContentString = "<b>Harry's Hotel, Bistro and</b></br>Never liked it in here really.";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.416092,-4.083629);
+			var ContentString = "<b>Salt</b></br>Never liked it here either.";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.416119,-4.083943);
+			var ContentString = "<b>Varsity</b></br>This is more my style! Roll on the V card!";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.415936,-4.084753);
+			var ContentString = "<b>Kanes</b></br>Not the best but it does the trick!";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.415176,-4.085528);
+			var ContentString = "<b>Harleys</b></br>I won a t shirt from here once what I done wore tonight and all!";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.414875,-4.086166);
+			var ContentString = "<b>Downies Vaults</b></br>Never understood why people liked this place.";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.413898,-4.086434);
+			var ContentString = "<b>Academy</b></br>I saw a guy punch a hole in the wall here it was well cool.";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.41396,-4.086737);
+			var ContentString = "<b>The Angel</b></br>So close now.. so close.";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.415321,-4.086872);
+			var ContentString = "<b>The Pier Hotel</b></br>Lip Lickin smells good.";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.41563,-4.087333);
+			var ContentString = "<b>Inn on the Pier</b></br>So close, so close. 34 pubs isn't bad.";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.415661,-4.087775);
+			var ContentString = "<b>Pier Pressure</b></br>IT'S OVER MR.FRODO, IT'S DONE, IT'S FINISHED.";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+					var LatLng = new google.maps.LatLng(52.424648,-4.082924);
+			var ContentString = "<b>Consti</b></br>No.";
+			var marker = new google.maps.Marker(
+			{
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: LatLng,
+				icon: image
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(this.content);
+				infowindow.open(this.getMap(),this);
+			});	
+				calcRoute();
+	}
+	
+	google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+</head>
+<body>
+	<div id="map-canvas"/>
+</body>
+</html>
