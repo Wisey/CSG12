@@ -21,7 +21,27 @@
 
     </style>
     
-    <nav><ul>
+    <nav>
+    
+    
+    <?php
+
+$query = "SELECT * FROM walks";
+$result = mysql_query($query);
+?>
+<select name="select1" style="width: 121px">
+<?php
+while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
+?>
+<option value="<?php echo $line['title'];?>"> <?php echo $line['title'];?> </option>
+ 
+<?php
+}
+?>
+</select>
+
+    
+    <ul>
 			<li class="active"><a href="#">Home</a></li>
 			<li><a href="#">Tours</a></li>
 			<li><a href="#">About</a></li>
