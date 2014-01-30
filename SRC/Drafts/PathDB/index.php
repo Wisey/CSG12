@@ -40,6 +40,7 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 }
 ?>
 </select>
+</br>
 <input name = "submitbutton" type = "submit" value = "submit" />
 </form>
 
@@ -69,8 +70,9 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 		
 		<?php
 		$drop = $_POST['select1'];
-		$selectedwalk = mysql_query("SELECT * FROM walks where title = '$drop'");
-		$res = mysql_query("SELECT * FROM location WHERE walkID = '14'");
+		$selectedwalk = mysql_query("SELECT * FROM walks WHERE title = '$drop'");
+		$selectedwalkID = mysql_query("SELECT ID FROM walks WHERE title = '$drop'");
+		$res = mysql_query("SELECT * FROM location WHERE walkID = '$selectedwalkID'");
 		$res2 = mysql_query("SELECT * FROM placedesc");
 		while($a = mysql_fetch_array($res))
 		{
