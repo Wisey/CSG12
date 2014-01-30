@@ -62,8 +62,9 @@ foreach($thepost->locations as $mypoints)
 		$pointdata[$y]=$value;
 		$y++;
 	}
-	mysql_query("INSERT INTO location (latitude, longitude) VALUES ('$pointdata[0]', '$pointdata[1]')");
-	mysql_query("INSERT INTO placedesc (name, description) VALUES ('$pointdata[2]', '$pointdata[3]')");
+	mysql_query("INSERT INTO location (latitude, longitude, timestamp) VALUES ('$pointdata[2]', '$pointdata[3]', '$pointdata[4]')");
+	mysql_query("INSERT INTO placedesc (name, description) VALUES ('$pointdata[0]', '$pointdata[1]')");
+	mysql_query("INSERT INTO photos (photoName) VALUES ('$pointdata[5]')");
 	$y = 0;
 }
 
