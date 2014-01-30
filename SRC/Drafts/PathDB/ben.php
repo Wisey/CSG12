@@ -66,18 +66,19 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 		var mapOptions = {center: new google.maps.LatLng(52.413571,-4.073489), zoom: 14};
 		var map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
 		var infowindow = new google.maps.InfoWindow();
+	<?php	
+		$per_page = 1;
+$pages_query = mysql_query("SELECT COUNT('id') From walks");
+$pages = floor(mysql_result($pages_query, 0) / $per_page);
+
+$page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1; 
+$start = ($page - 1) * $per_page;
+$query = mysql_query("SELECT * From walks LIMIT $start, $per_page");
+
 		
-		<?php
-		$drop = $_POST['select1'];
-		$selectedwalk = mysql_query("SELECT ID FROM walks WHERE title = $drop");
-		echo $selectedwalk;
-		echo $drop;
-		$res = mysql_query("SELECT * FROM location WHERE walkID = $selectedwalk");
-		$res2 = mysql_query("SELECT * FROM placedesc");
-		while($a = mysql_fetch_array($res))
-		{
 		
-		while($b = mysql_fetch_array($res2))
+		
+		while($query_row = mysql_fetch_assoc($query))
 		{
 		?>
 			var LatLng = new google.maps.LatLng(<?=$a['latitude']?>,<?=$a['longitude']?>);
