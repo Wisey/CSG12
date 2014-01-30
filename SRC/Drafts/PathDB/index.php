@@ -69,9 +69,12 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 		$res2 = mysql_query("SELECT * FROM placedesc");
 		while($a = mysql_fetch_array($res))
 		{
+		
+		while($b = mysql_fetch_array($res2))
+		{
 		?>
 			var LatLng = new google.maps.LatLng(<?=$a['latitude']?>,<?=$a['longitude']?>);
-			var ContentString = "<b><?=$a['shortDesc']?></b></br><?=$a['longDesc']?>";
+			var ContentString = "<b><?=$b['name']?></b></br><?=$b['description']?>";
 			var marker = new google.maps.Marker(
 			{
 				map:map,
@@ -86,6 +89,7 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 				infowindow.open(this.getMap(),this);
 			});	
 		<?php
+		}
 		}
 		?>
 		userroute = [
@@ -163,7 +167,7 @@ while($photograph = mysql_fetch_array($getphotos))
 {
         $data = $photograph['photoName'];
         
-        echo '<img src="data:image/jpg;base64,' . $data . '" />';
+        //echo '<img src="data:image/jpg;base64,' . $data . '" />';
         
         
 }
