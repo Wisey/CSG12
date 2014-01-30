@@ -8,7 +8,7 @@ public class TourLocation {
             + "      \"latitude\": %f,\n"
             + "      \"longitude\": %f,\n"
             + "      \"time\": %f,\n"
-            + "      \"image\": \"%s\"\n"
+            + "      \"image\": %s\n"
             + "    }";
 
     private String name;
@@ -42,7 +42,7 @@ public class TourLocation {
     }
 
     public String toJSON() {
-        return String.format(LOCATION_JSON, JSON.quote(name), JSON.quote(description), latitude, longitude, time, imageFilePath);
+        return String.format(LOCATION_JSON, JSON.quote(name), JSON.quote(description), latitude, longitude, time, JSON.quote(imageFilePath));
     }
 
     public String getName() {
