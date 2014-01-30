@@ -29,6 +29,7 @@
     <nav><?php $query = "SELECT * FROM walks";
     $result = mysql_query($query);
 	?>
+<form action="index.php" method="post">
 <select name="select1"  style="width:134px; float:left; margin-left:10px; margin-top:10px;">
 <?php
 while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
@@ -39,6 +40,8 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 }
 ?>
 </select>
+<input name = "submitbutton" type = "submit" value = "submit" />
+</form>
 
     
     <ul>
@@ -65,10 +68,8 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 		var infowindow = new google.maps.InfoWindow();
 		
 		<?php
-		//$dd = document.getElementById("select1");
-		//$drop = $dd.options[$dd.selectedIndex];
-		
-		$selectedwalk = mysql_query("SELECT * FROM walks where title = $drop");
+		$drop = $_POST['select1'];
+		$selectedwalk = mysql_query("SELECT * FROM walks where title = '$drop'");
 		$res = mysql_query("SELECT * FROM location WHERE walkID = '14'");
 		$res2 = mysql_query("SELECT * FROM placedesc");
 		while($a = mysql_fetch_array($res))
