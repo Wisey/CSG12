@@ -4,7 +4,7 @@ package uk.ac.aber.group12.walkingtour.data;
 import junit.framework.Assert;
 import junit.framework.TestCase;
 
-import org.junit.Test;
+//import org.junit.Test;
 
 //import org.robolectric.RobolectricTestRunner;
 

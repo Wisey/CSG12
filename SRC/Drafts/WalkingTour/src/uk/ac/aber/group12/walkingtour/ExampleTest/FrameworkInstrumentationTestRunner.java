@@ -13,7 +13,7 @@ public class FrameworkInstrumentationTestRunner extends InstrumentationTestRunne
     public TestSuite getAllTests() {
         InstrumentationTestSuite suite = new InstrumentationTestSuite(this);
 
-        suite.addTestSuite(LocationTest.class);
+       // suite.addTestSuite(LocationTest.class);
 
         return suite;
     }
