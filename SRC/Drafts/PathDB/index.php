@@ -159,7 +159,7 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 <?php
 include('config.php');
 $result = mysql_query("SELECT * FROM photos");
-while($photograph = mysql_fetch_array($getphotos))
+while($row = mysql_fetch_array($getresult))
 {
 	$data = $row['photoName'];
   	 echo 
