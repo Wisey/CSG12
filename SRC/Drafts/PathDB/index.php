@@ -158,12 +158,12 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 	
 <?php
 include('config.php');
-$result = mysql_query("SELECT * FROM photos1");
+$result = mysql_query("SELECT * FROM photos");
 while($row = mysql_fetch_array($result))
 {
-	
+	$data = $row['photoName'];
   	 echo '<div class="single"><div class="wrap">
-  		  <a href="'.$row['location'].'" rel="lightbox[plants]" title="'.$row['caption'].'"><img src="'.$row['location'].'" alt="Plants: image 1 0f 4 thumb" /></a>
+  		  <a href="'.$row['location'].'" rel="lightbox[plants]" title="'.$row['caption'].'"><img src="data:image/jpg;base64,'. $data . '/>"' alt="Plants: image 1 0f 4 thumb" /></a>
   		</div></div>';
 }				
 ?>		
