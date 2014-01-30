@@ -31,7 +31,7 @@
 	?>
 <select name="select1" style="width:134px; float:left; margin-left:10px; margin-top:10px;>
 <?php
-while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
+while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 ?>
 <option value="<?php echo $line['title'];?>"> <?php echo $line['title'];?> </option>
  
