@@ -45,6 +45,11 @@ public class TourActivity extends Activity {
         finish();
     }
 
+    public void onStartEditLocations(View view) {
+        Intent intent = new Intent(this, ViewWalksActivity.class);
+        startActivity(intent);
+    }
+
     public void onUpload(View view) {
         Tour tour = ((WalkingTourApplication) this.getApplication()).getCurrentTour();
         //Post post = new Post("http://nyaa.kragniz.eu:443/~group/upload.php", tour.toJSON());
