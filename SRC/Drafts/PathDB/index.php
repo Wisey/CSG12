@@ -50,8 +50,10 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 	<script type="text/javascript"
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgXd8GzR2kAhJw-fnQqX_ZYpDnBxLLiRw&sensor=false">
 	
-	var dropdown = document.getElementById("value1").value;
-	<?=$drop?>= dropdown;
+	var dropdown = document.getElementById("select1").value;
+	<?php
+	$drop = document.getElementById("select1").value;
+	?>
 	</script>
 	
     <script type="text/javascript">
