@@ -11,6 +11,7 @@ import org.apache.http.params.HttpParams;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 
 /**
  * Created by lot15 on 28/01/2014.

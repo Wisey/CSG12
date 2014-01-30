@@ -3,8 +3,8 @@ package uk.ac.aber.group12.walkingtour.data;
 
 public class TourLocation {
     private static String LOCATION_JSON = "    {\n"
-            + "      \"name\": \"%s\",\n"
-            + "      \"description\": \"%s\",\n"
+            + "      \"name\": %s,\n"
+            + "      \"description\": %s,\n"
             + "      \"latitude\": %f,\n"
             + "      \"longitude\": %f,\n"
             + "      \"time\": %f,\n"
@@ -42,7 +42,7 @@ public class TourLocation {
     }
 
     public String toJSON() {
-        return String.format(LOCATION_JSON, name, description, latitude, longitude, time, imageFilePath);
+        return String.format(LOCATION_JSON, JSON.quote(name), JSON.quote(description), latitude, longitude, time, imageFilePath);
     }
 
     public String getName() {
