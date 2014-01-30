@@ -57,6 +57,13 @@
         <Button
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:text="Edit Locations"
+                android:id="@+id/button2"
+                android:onClick="onStartEditLocations"/>
+
+        <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 android:text="Delete walk"
                 android:id="@+id/button"
                 android:layout_alignParentBottom="true"

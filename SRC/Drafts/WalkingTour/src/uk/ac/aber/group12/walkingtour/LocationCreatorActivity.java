@@ -4,6 +4,8 @@ package uk.ac.aber.group12.walkingtour;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -15,7 +17,9 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.NavUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,6 +28,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import uk.ac.aber.group12.walkingtour.data.Image;
 import uk.ac.aber.group12.walkingtour.data.Tour;
 import uk.ac.aber.group12.walkingtour.data.TourLocation;
 
@@ -39,6 +44,8 @@ public class LocationCreatorActivity extends Activity implements LocationListene
     private TextView textView;
     private ImageView imageView;
     private Tour tour;
+
+    private Bitmap savedImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +70,34 @@ public class LocationCreatorActivity extends Activity implements LocationListene
     }
 
     public void onPhotoClick(View view) {
-        Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(cameraIntent, CAMERA_REQUEST);
+        onSelectImage();
+        //Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+        //startActivityForResult(cameraIntent, CAMERA_REQUEST);
+    }
+
+    private void onSelectImage() {
+
+        final CharSequence[] options = {"Take Photo", "Choose from Gallery", "Cancel"};
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(LocationCreatorActivity.this);
+        builder.setTitle("Add Photo!");
+        builder.setItems(options, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int item) {
+                if (options[item].equals("Take Photo")) {
+                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(intent, 1);
+
+                } else if (options[item].equals("Choose from Gallery")) {
+                    Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(intent, 2);
+
+                } else if (options[item].equals("Cancel")) {
+                    dialog.dismiss();
+                }
+            }
+        });
+        builder.show();
     }
 
     public void onCoordinateClick(View view) {
@@ -73,26 +106,42 @@ public class LocationCreatorActivity extends Activity implements LocationListene
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
-            Bitmap photo = (Bitmap) data.getExtras().get("data");
-            Uri _uri = data.getData();
+        Uri selectedImage = data.getData();
 
-            //image = new Image(photo);
-            Cursor cursor = getContentResolver().query(_uri, new String[] { android.provider.MediaStore.Images.ImageColumns.DATA }, null, null, null);
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            Cursor cursor = null;
+            if (selectedImage != null) {
+                cursor = getContentResolver().query(selectedImage, new String[]{MediaStore.Images.ImageColumns.DATA}, null, null, null);
+            }
             cursor.moveToFirst();
-
-            //Link to the image
-            //final String
-                    imageFilePath = cursor.getString(0);
+            imageFilePath = cursor.getString(0);
             cursor.close();
-
-
-           // String encodedImage = image.convertimagebase64(photo);
-            Toast.makeText(getApplicationContext(), imageFilePath, Toast.LENGTH_SHORT).show();
-            Bitmap img=BitmapFactory.decodeFile(imageFilePath);
-            imageView.setImageBitmap(Bitmap.createScaledBitmap(img, 512, 512, false));
-            //imageView.setImageBitmap(img);
         }
+        if (requestCode == 2) {
+            String[] filePath = {MediaStore.Images.Media.DATA};
+            Cursor c = getContentResolver().query(selectedImage, filePath, null, null, null);
+            c.moveToFirst();
+            int columnIndex = c.getColumnIndex(filePath[0]);
+            imageFilePath = c.getString(columnIndex);
+            c.close();
+        }
+
+        Toast.makeText(getApplicationContext(), imageFilePath, Toast.LENGTH_SHORT).show();
+        Bitmap img = BitmapFactory.decodeFile(imageFilePath);
+        int h = img.getHeight();
+        int w = img.getWidth();
+        double t = 512;
+        double scaleH = t/h;
+        double scaleW = t/w;
+        double scale;
+        if (scaleH > scaleW) {
+            scale = scaleW;
+        } else {
+            scale = scaleH;
+        }
+
+        savedImage = Bitmap.createScaledBitmap(img, (int) (scale*w), (int) (scale*h), false);
+        imageView.setImageBitmap(savedImage);
     }
 
     @Override
@@ -102,6 +151,10 @@ public class LocationCreatorActivity extends Activity implements LocationListene
         System.out.println("location changed");
         latitude = location.getLatitude();
         longitude = location.getLongitude();
+
+        String Text = "Latitude = " + latitude + " Longitude = " + longitude;
+        Toast.makeText(getApplicationContext(), Text, Toast.LENGTH_LONG).show();
+
     }
 
     /**
@@ -141,11 +194,9 @@ public class LocationCreatorActivity extends Activity implements LocationListene
 
         double time = System.currentTimeMillis() / 1000;
         TourLocation loc;
-        if (imageFilePath != null) {
-            loc = new TourLocation(locName, locationDes, imageFilePath, latitude, longitude, time);
-        } else {
-            loc = new TourLocation(locName, locationDes, "", latitude, longitude, time);
-        }
+
+        loc = new TourLocation(locName, locationDes, imageFilePath, Image.base64(savedImage), latitude, longitude, time);
+
 
         tour.addLocation(loc);
         Toast.makeText(getApplicationContext(), String.valueOf(tour.getLocations().size()), Toast.LENGTH_SHORT).show();

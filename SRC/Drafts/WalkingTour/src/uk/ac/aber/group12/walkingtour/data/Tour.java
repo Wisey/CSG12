@@ -3,15 +3,13 @@ package uk.ac.aber.group12.walkingtour.data;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import uk.ac.aber.group12.walkingtour.WalkingTourApplication;
-
 
 @SuppressWarnings("serial")
 public class Tour implements Serializable {
     private static String TOUR_JSON = "{\n"
-        + "  \"name\": \"%s\",\n"
-        + "  \"short-description\": \"%s\",\n"
-        + "  \"long-description\": \"%s\",\n"
+        + "  \"name\": %s,\n"
+        + "  \"short-description\": %s,\n"
+        + "  \"long-description\": %s,\n"
         + "  \"locations\": [\n"
         + "%s"
         + "  ]\n"
@@ -46,7 +44,7 @@ public class Tour implements Serializable {
             }
         }
 
-        return String.format(TOUR_JSON, name, shortDescription, longDescription, buf.toString());
+        return String.format(TOUR_JSON, JSON.quote(name), JSON.quote(shortDescription), JSON.quote(longDescription), buf.toString());
     }
 
     public String getName() {
