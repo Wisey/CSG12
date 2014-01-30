@@ -52,18 +52,20 @@
 		var infowindow = new google.maps.InfoWindow();
 		
 		<?php
-		$res = mysql_query("SELECT * FROM points");
+		$res = mysql_query("SELECT * FROM location WHERE walkID = '1'");
+		$res2 = mysql_query("SELECT * FROM placedesc");
 		while($a = mysql_fetch_array($res))
 		{
 		?>
-			var LatLng = new google.maps.LatLng(<?=$a['lat']?>,<?=$a['long']?>);
+			var LatLng = new google.maps.LatLng(<?=$a['latitude']?>,<?=$a['longitude']?>);
 			var ContentString = "<b><?=$a['shortDesc']?></b></br><?=$a['longDesc']?>";
 			var marker = new google.maps.Marker(
 			{
 				map:map,
 				draggable:false,
 				animation: google.maps.Animation.DROP,
-				position: LatLng
+				position: LatLng,
+				icon: image
 			});
 			marker.content = ContentString;
 			google.maps.event.addListener(marker, 'click', function(){
