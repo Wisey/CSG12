@@ -22,7 +22,7 @@
 	},
 	{
 		"name": "Bermuda Triangle",
-		"longDesc": "Random LatLong."
+		"longDesc": "Random LatLong.",
 		"latitude": 51.4131077,
 		"longitude": -5.0796879,
 		"time":2.5474747,
