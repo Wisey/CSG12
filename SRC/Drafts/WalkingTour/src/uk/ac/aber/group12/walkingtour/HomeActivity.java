@@ -35,7 +35,6 @@ public class HomeActivity extends Activity {
 
     public void onStartUpload(View view) {
         Tour tour = ((WalkingTourApplication) this.getApplication()).getCurrentTour();
-        Toast.makeText(getApplicationContext(), String.valueOf(tour.getLocations().get(0).toJSON()), Toast.LENGTH_SHORT).show();
         Post post = new Post("http://nyaa.kragniz.eu", tour.toJSON());
         post.sendAsync();
     }

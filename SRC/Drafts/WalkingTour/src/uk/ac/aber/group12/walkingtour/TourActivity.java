@@ -51,8 +51,6 @@ public class TourActivity extends Activity {
     }
 
     public void onUpload(View view) {
-        Tour tour = ((WalkingTourApplication) this.getApplication()).getCurrentTour();
-        //Post post = new Post("http://nyaa.kragniz.eu:443/~group/upload.php", tour.toJSON());
         String url;
         if (DEBUG) {
             url = "http://nyaa.kragniz.eu";

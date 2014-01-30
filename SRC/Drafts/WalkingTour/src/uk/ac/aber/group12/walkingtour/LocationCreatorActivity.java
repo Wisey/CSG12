@@ -19,13 +19,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.NavUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import uk.ac.aber.group12.walkingtour.data.Image;
@@ -34,14 +32,11 @@ import uk.ac.aber.group12.walkingtour.data.TourLocation;
 
 public class LocationCreatorActivity extends Activity implements LocationListener {
 
-    private static final int CAMERA_REQUEST = 1888;
     private LocationManager locationManager;
     private String provider;
     private double latitude = 0;
     private double longitude = 0;
     private String imageFilePath;
-    private TourLocation loca;
-    private TextView textView;
     private ImageView imageView;
     private Tour tour;
 
@@ -154,7 +149,6 @@ public class LocationCreatorActivity extends Activity implements LocationListene
 
         String Text = "Latitude = " + latitude + " Longitude = " + longitude;
         Toast.makeText(getApplicationContext(), Text, Toast.LENGTH_LONG).show();
-
     }
 
     /**
