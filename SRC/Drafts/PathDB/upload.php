@@ -27,7 +27,7 @@ else
 mysql_select_db("pathdb", $con);
 //-------------------------------------------------------------------------------
 
-$thepost=json_decode(file_get_contents("php://input"));
+$thepost=json_decode(file_get_contents('php://input'));
 var_dump(json_decode(file_get_contents("php://input")));
 echo "</br>";
 
@@ -59,37 +59,40 @@ foreach($thepost->locations as $mypoints)
 	foreach($mypoints as $key => $value)
 	{
 		echo "<p>$key | $value</p>";
-		if($key="name")
-		{
-			$name = $value;
-		}
-		if($key="description")
-		{
-			$desc = $value;
-		}
-		if($key="latitude")
-		{
-			$lat = $value;
-		}
-		if($key="longitude")
-		{
-			$long = $value;
-		}
-		if($key="time")
-		{
-			$time = $value;
-		}
-		if($key="image")
-		{
-			$img = $value;
-		}
 		$pointdata[$y]=$value;
 		$y++;
 	}
 	mysql_query("INSERT INTO location (latitude, longitude, timestamp) VALUES ('$pointdata[2]', '$pointdata[3]', '$pointdata[4]')");
 	mysql_query("INSERT INTO placedesc (name, description) VALUES ('$pointdata[0]', '$pointdata[1]')");
-	mysql_query("INSERT INTO photos (photoName) VALUES ('$pointdata[5]')");
+	mysql_query("INSERT INTO photos (placeID, photoName) VALUES ('$pointdata[]','$pointdata[5]')");
 	$y = 0;
+}
+$a = 0;
+$max = 0;
+foreach($thepost->waypoint_long as $interlongs)
+{
+	foreach($interlongs as $value)
+	{
+		echo "<p>$value</p>";
+		$wayptlong[$a]=$value;
+		$a++;
+		$max = a;
+	}
+}
+$a = 0;
+foreach($thepost->waypoint_lat as $interlats)
+{
+	foreach($interlats as $value)
+	{
+		echo "<p>$value</p>";
+		$wayptlong[$a]=$value;
+		$a++;
+	}
+}
+for(a=0; a<$max; a++)
+{
+	mysql_query("INSERT INTO location (latitude, longitude) VALUES ('$wayptlong[a]', '$wayptlat[a]')");
+	a++;
 }
 
 mysql_close($con);
