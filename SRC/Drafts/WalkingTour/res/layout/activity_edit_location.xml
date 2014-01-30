@@ -35,8 +35,8 @@
                 android:id="@+id/photo_button"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:onClick="onPhotoClick"
-                android:text="add photo"
+                android:onClick="onPhotoClickEdit"
+                android:text="change photo"
                 android:layout_below="@+id/coordinate_button"
                 android:layout_alignLeft="@+id/coordinate_button"/>
 
@@ -59,20 +59,12 @@
                 android:selectAllOnFocus="true"/>
 
         <Button
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="Save Location"
                 android:id="@+id/button"
                 android:layout_gravity="left|center_vertical"
-                android:onClick="onStartAddLocation"/>
-
-        <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Delete Location"
-                android:id="@+id/button2"
-                android:layout_gravity="right|center_vertical"
-                android:onClick="onStartDeleteLocation"/>
+                android:onClick="onStartEditLocation"/>
 
     </LinearLayout>
 

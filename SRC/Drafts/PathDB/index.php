@@ -75,7 +75,7 @@
 		<?php
 		}
 		?>
-		pathco = [
+		userroute = [
 		new google.maps.LatLng(52.415100,-4.063118),
 		new google.maps.LatLng(52.415779,-4.062887),
 		new google.maps.LatLng(52.408504,-4.059840),
@@ -116,7 +116,7 @@
 		
 		var path = new google.maps.Polyline
 		({
-			path: pathco,
+			path: userroute,
 			geodesic: true,
 			strokeColor: '#336699',
 			strokeOpacity: 0.6,

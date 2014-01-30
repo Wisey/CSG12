@@ -21,7 +21,7 @@ import android.widget.Toast;
  */
 
 
-public class Thread extends Activity implements LocationListener {
+public class thread extends Activity implements LocationListener {
 
 
     private LocationManager locationManager;
