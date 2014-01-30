@@ -80,13 +80,15 @@
 		$res = mysql_query("SELECT * FROM location WHERE walkID = '1'");
 		$rows = mysql_num_rows($res);
 		$final = $rows - 1;
+		$inc = 0;
 		while ($a = mysql_fetch_array($res))
 		{
-		IF($final < $rows)
+		IF($inc < $final)
 		{
 		?>
 		new google.maps.LatLng(<?=$a['latitude']?>,<?=$a['longitude']?>),
 		<?php
+		$inc++;
 		}
 		}
 		else
