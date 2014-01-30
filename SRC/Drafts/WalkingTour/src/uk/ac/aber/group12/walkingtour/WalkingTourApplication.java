@@ -2,6 +2,8 @@ package uk.ac.aber.group12.walkingtour;
 
 import android.app.Application;
 
+import java.util.ArrayList;
+
 import uk.ac.aber.group12.walkingtour.data.Tour;
 
 /**
@@ -10,6 +12,7 @@ import uk.ac.aber.group12.walkingtour.data.Tour;
 
 public class WalkingTourApplication extends Application {
     private static Tour tour;
+    public ArrayList<Integer> asyncDone = new ArrayList<Integer>();
 
     public Tour getCurrentTour() {
         return tour;

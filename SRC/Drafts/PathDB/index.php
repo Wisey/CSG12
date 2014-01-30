@@ -1,3 +1,8 @@
+ <?php
+ include("config.php");
+?>
+
+
 <!doctype html>
 <html lang="en-us">
 <head>
@@ -21,7 +26,22 @@
 
     </style>
     
-    <nav><ul>
+    <nav><?php $query = "SELECT * FROM walks";
+    $result = mysql_query($query);
+	?>
+<select name="select1" style="width:134px; float:left; margin-left:10px; margin-top:10px;>
+<?php
+while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
+?>
+<option value="<?php echo $line['title'];?>"> <?php echo $line['title'];?> </option>
+ 
+<?php
+}
+?>
+</select>
+
+    
+    <ul>
 			<li class="active"><a href="#">Home</a></li>
 			<li><a href="#">Tours</a></li>
 			<li><a href="#">About</a></li>
@@ -36,14 +56,7 @@
 	var directionsDisplay;
 	var directionsService = new google.maps.DirectionsService();
 	
-	<?php
-	$con = mysql_connect("localhost","root","group12");
-		if (!$con)
-		{
-			die('Could not connect: ' . mysql_error());
-		}
-		mysql_select_db("pathdb", $con);
-	?>
+	
 
 	function initialize()
 	{
@@ -52,13 +65,17 @@
 		var infowindow = new google.maps.InfoWindow();
 		
 		<?php
-		$res = mysql_query("SELECT * FROM location WHERE walkID = '1'");
+		$selectedwalk = mysql_query("SELECT * FROM walks where title = 'select1'");
+		$res = mysql_query("SELECT * FROM location WHERE walkID = '14'");
 		$res2 = mysql_query("SELECT * FROM placedesc");
 		while($a = mysql_fetch_array($res))
 		{
+		
+		while($b = mysql_fetch_array($res2))
+		{
 		?>
 			var LatLng = new google.maps.LatLng(<?=$a['latitude']?>,<?=$a['longitude']?>);
-			var ContentString = "<b><?=$a['shortDesc']?></b></br><?=$a['longDesc']?>";
+			var ContentString = "<b><?=$b['name']?></b></br><?=$b['description']?>";
 			var marker = new google.maps.Marker(
 			{
 				map:map,
@@ -74,7 +91,9 @@
 			});	
 		<?php
 		}
+		}
 		?>
+		/*
 		userroute = [
 		new google.maps.LatLng(52.415100,-4.063118),
 		new google.maps.LatLng(52.415779,-4.062887),
@@ -113,7 +132,7 @@
 		new google.maps.LatLng(52.415661,-4.087775),
 		new google.maps.LatLng(52.424648,-4.082924)
 		];
-		
+		*/
 		var path = new google.maps.Polyline
 		({
 			path: userroute,
@@ -145,14 +164,15 @@
 	
 <?php
 include('config.php');
-$result = mysql_query("SELECT * FROM photos1");
-while($row = mysql_fetch_array($result))
+$getphotos = mysql_query ("SELECT * FROM photos");
+while($photograph = mysql_fetch_array($getphotos))
 {
-	
-  	 echo '<div class="single"><div class="wrap">
-  		  <a href="'.$row['location'].'" rel="lightbox[plants]" title="'.$row['caption'].'"><img src="'.$row['location'].'" alt="Plants: image 1 0f 4 thumb" /></a>
-  		</div></div>';
-}				
+        $data = $photograph['photoName'];
+        
+        //echo '<img src="data:image/jpg;base64,' . $data . '" />';
+        
+}
+
 ?>		
 		
 		
