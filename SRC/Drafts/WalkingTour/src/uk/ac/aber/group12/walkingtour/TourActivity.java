@@ -44,6 +44,11 @@ public class TourActivity extends Activity {
         finish();
     }
 
+    public void onStartEditLocations(View view) {
+        Intent intent = new Intent(this, ViewWalksActivity.class);
+        startActivity(intent);
+    }
+
     public void onUpload(View view) {
         Intent intent = new Intent(this, UploaderActivity.class);
         startActivity(intent);
