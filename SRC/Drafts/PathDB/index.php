@@ -10,7 +10,15 @@
 
   <link href='http://fonts.googleapis.com/css?family=Fredoka+One|Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <style>
-      
+      #map-canvas {
+        height: 450px;
+        width:950px;
+        margin: auto;
+        padding: auto;
+        box-shadow: 2px 2px 2px 2px #999;
+
+      }
+
     </style>
     
     <nav><ul>
