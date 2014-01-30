@@ -35,6 +35,9 @@ while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 ?>
 <option value="<?php echo $line['title'];?>"> <?php echo $line['title'];?> </option>
  
+?>
+<option value="<?php echo $line['title'];?>"> <?php echo $line['title'];?> </option>
+ 
 <?php
 }
 ?>
