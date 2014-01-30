@@ -5,6 +5,6 @@ Reference	           Config Item Status	    Description
 SE_12_PLAN_01	        Released v1.1	        Project plan
 SE_12_DESIGN_01	      Released v__	        Design Spec
 SE_12_TEST_01	        Released v1.5	        Test Spec
-SE_12_MAINTAIN_01         Draft v__             Maintenance manual
-SE_12_TESTREPO_01         Draft v__             Test report
-SE_12_FINAL_01            Draft v__             Final report
+SE_12_MAINTAIN_01            Draft v__             Maintenance manual
+SE_12_TESTREPO_01            Draft v__             Test report
+SE_12_FINAL_01               Draft v__             Final report
