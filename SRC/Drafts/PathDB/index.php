@@ -65,8 +65,8 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 		var infowindow = new google.maps.InfoWindow();
 		
 		<?php
-		$dd = document.getElementById("select1");
-		$drop = $dd.options[$dd.selectedIndex];
+		//$dd = document.getElementById("select1");
+		//$drop = $dd.options[$dd.selectedIndex];
 		
 		$selectedwalk = mysql_query("SELECT * FROM walks where title = $drop");
 		$res = mysql_query("SELECT * FROM location WHERE walkID = '14'");
