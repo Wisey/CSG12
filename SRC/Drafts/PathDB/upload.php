@@ -42,21 +42,21 @@ echo("</br>");
 $pathdata=array();
 $x = 0;
  
-foreach($thepost as $key => $value)
+foreach($jsonDecode as $key => $value)
 {
 	echo "<p>$key | $value</p>";
 	$pathdata[$x]=$value;
 	$x++;
 }
-mysql_query("INSERT INTO walks (title, shortDesc, longDesc, hours, distance) VALUES ('$pathdata[0]', '$pathdata[1]', '$pathdata[2]', '$pathdata[3]', '$pathdata[4]')");
+mysql_query("INSERT INTO walks (title, shortDesc, longDesc) VALUES ('$pathdata[0]', '$pathdata[1]', '$pathdata[2]')");
 
 echo "ARRAY ACCESS";
 
 $pointMarkers = json_decode(file_get_contents("post_data.json"));
 $y=0;
-foreach($thepost->locations as $mypoints)
+foreach($jsonDecode->locations as $mypoints)
 {
-	foreach($thepost as $key => $value)
+	foreach($mypoints as $key => $value)
 	{
 		echo "<p>$key | $value</p>";
 		if($key="name")
