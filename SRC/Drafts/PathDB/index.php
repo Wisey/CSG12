@@ -1,7 +1,3 @@
-<?php
- include("config.php");
-?>
-
 <!doctype html>
 <html lang="en-us">
 <head>
@@ -25,27 +21,7 @@
 
     </style>
     
-    <nav>
-    
-    
-    <?php
-
-$query = "SELECT * FROM walks";
-$result = mysql_query($query);
-?>
-<select name="select1" style="width: 121px">
-<?php
-while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
-?>
-<option value="<?php echo $line['title'];?>"> <?php echo $line['title'];?> </option>
- 
-<?php
-}
-?>
-</select>
-
-    
-    <ul>
+    <nav><ul>
 			<li class="active"><a href="#">Home</a></li>
 			<li><a href="#">Tours</a></li>
 			<li><a href="#">About</a></li>
@@ -137,10 +113,20 @@ while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 		new google.maps.LatLng(52.415661,-4.087775),
 		new google.maps.LatLng(52.424648,-4.082924)
 		];
+		var userroute2[];
+		<?php 
+		$res = mysql_query("SELECT * FROM location WHERE walkID = '1'");
+		while $a=mysql_fetch_array($res)
+		{
+		?>
+			userroute.push(new google.maps.LatLng(<?=$a['latitude']?>,<?=$a['longitude']?>))
+		<?php
+		}
+		?>
 		
 		var path = new google.maps.Polyline
 		({
-			path: userroute,
+			path: userroute2,
 			geodesic: true,
 			strokeColor: '#336699',
 			strokeOpacity: 0.6,
