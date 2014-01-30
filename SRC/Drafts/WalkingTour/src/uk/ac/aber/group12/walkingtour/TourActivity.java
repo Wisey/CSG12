@@ -13,6 +13,7 @@ import uk.ac.aber.group12.walkingtour.data.Post;
 import uk.ac.aber.group12.walkingtour.data.Tour;
 
 public class TourActivity extends Activity {
+    private static boolean DEBUG = false;
 
     // private TourCreatorActivity TCA;
     private Tour tour;
@@ -46,9 +47,15 @@ public class TourActivity extends Activity {
 
     public void onUpload(View view) {
         Tour tour = ((WalkingTourApplication) this.getApplication()).getCurrentTour();
-        Toast.makeText(getApplicationContext(), String.valueOf(tour.getLocations().get(0).toJSON()), Toast.LENGTH_SHORT).show();
         //Post post = new Post("http://nyaa.kragniz.eu:443/~group/upload.php", tour.toJSON());
-        Post post = new Post("http://nyaa.kragniz.eu", tour.toJSON());
+        String url;
+        if (DEBUG) {
+            url = "http://nyaa.kragniz.eu";
+        } else {
+            url = "http://nyaa.kragniz.eu:443/upload.php";
+        }
+        Toast.makeText(getApplicationContext(), tour.toJSON().concat(" to ").concat(url), Toast.LENGTH_SHORT).show();
+        Post post = new Post(url, tour.toJSON());
         post.sendAsync();
     }
 
