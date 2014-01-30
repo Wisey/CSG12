@@ -50,7 +50,7 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 	<script type="text/javascript"
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgXd8GzR2kAhJw-fnQqX_ZYpDnBxLLiRw&sensor=false">
 	
-	var dropdown = document.getElementById("value1");
+	var dropdown = document.getElementById("value1").value;
 	<?=$drop?>= dropdown;
 	</script>
 	
