@@ -152,6 +152,25 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 	
 	google.maps.event.addDomListener(window, 'load', initialize);
     </script>
+    
+    $prev = $page - 1;
+$next = $page + 1;
+
+if(!($page <= 1)){
+echo "<a href ='pagination.php?page=$prev'>previous</a>";
+}
+
+if($pages >= 1){
+
+	for($x = 1; $x<=$pages; $x++){
+		echo ($x == $page) ? '<b><a href="?page='.$x.'">'.$x.'</a></b>      ': '<a href="?page='.$x.'">'.$x.'</a>      ';
+	}
+
+}
+if(!($page >=$pages)){
+echo "<a href ='pagination.php?page=$next'>next</a>";
+}
+
 </head>
 
 <body>
