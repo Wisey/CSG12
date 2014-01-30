@@ -15,7 +15,7 @@ echo("JSON Supported.</br>");
 
 //-------------------------------------------------------------------------------
 //create a DB connection
-$con = mysql_connect("localhost","root","group12");
+$con = mysql_connect("localhost","root","");
 if (!$con)
 {
 	die('Could not connect: ' . mysql_error());
@@ -42,7 +42,7 @@ echo("</br>");
 $pathdata=array();
 $x = 0;
  
-foreach($jsonDecode as $key => $value)
+foreach($thepost as $key => $value)
 {
 	echo "<p>$key | $value</p>";
 	$pathdata[$x]=$value;
@@ -54,7 +54,7 @@ echo "ARRAY ACCESS";
 
 $pointMarkers = json_decode(file_get_contents("post_data.json"));
 $y=0;
-foreach($pointMarkers->locations as $mypoints)
+foreach($thepost->locations as $mypoints)
 {
 	foreach($mypoints as $key => $value)
 	{
