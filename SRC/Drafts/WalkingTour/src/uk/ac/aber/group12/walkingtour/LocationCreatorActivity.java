@@ -19,6 +19,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.NavUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -108,7 +109,10 @@ public class LocationCreatorActivity extends Activity implements LocationListene
         Uri selectedImage = data.getData();
 
         if (requestCode == 1 && resultCode == RESULT_OK) {
-            Cursor cursor = getContentResolver().query(selectedImage, new String[]{android.provider.MediaStore.Images.ImageColumns.DATA}, null, null, null);
+            Cursor cursor = null;
+            if (selectedImage != null) {
+                cursor = getContentResolver().query(selectedImage, new String[]{MediaStore.Images.ImageColumns.DATA}, null, null, null);
+            }
             cursor.moveToFirst();
             imageFilePath = cursor.getString(0);
             cursor.close();
@@ -124,7 +128,19 @@ public class LocationCreatorActivity extends Activity implements LocationListene
 
         Toast.makeText(getApplicationContext(), imageFilePath, Toast.LENGTH_SHORT).show();
         Bitmap img = BitmapFactory.decodeFile(imageFilePath);
-        savedImage = Bitmap.createScaledBitmap(img, 512, 512, false);
+        int h = img.getHeight();
+        int w = img.getWidth();
+        double t = 512;
+        double scaleH = t/h;
+        double scaleW = t/w;
+        double scale;
+        if (scaleH > scaleW) {
+            scale = scaleW;
+        } else {
+            scale = scaleH;
+        }
+
+        savedImage = Bitmap.createScaledBitmap(img, (int) (scale*w), (int) (scale*h), false);
         imageView.setImageBitmap(savedImage);
     }
 
@@ -179,7 +195,7 @@ public class LocationCreatorActivity extends Activity implements LocationListene
         double time = System.currentTimeMillis() / 1000;
         TourLocation loc;
 
-        loc = new TourLocation(locName, locationDes, Image.base64(savedImage), latitude, longitude, time);
+        loc = new TourLocation(locName, locationDes, imageFilePath, Image.base64(savedImage), latitude, longitude, time);
 
 
         tour.addLocation(loc);
