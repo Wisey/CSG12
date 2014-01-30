@@ -70,7 +70,7 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 		
 		<?php
 		$drop = $_POST['select1'];
-		$selectedwalk = mysql_query("SELECT ID FROM walks WHERE title = $_POST['select1']");
+		$selectedwalk = mysql_query("SELECT ID FROM walks WHERE title = '$_POST['select1']'");
 		echo $selectedwalk;
 		echo $drop;
 		echo $_POST['select1'];
