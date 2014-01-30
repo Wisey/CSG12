@@ -29,7 +29,7 @@
     <nav><?php $query = "SELECT * FROM walks";
     $result = mysql_query($query);
 	?>
-<select name="select1" style="width:134px; float:left; margin-left:10px; margin-top:10px;>
+<select name="select1" onchange="window.location.href= this.form.select1.options[this.form.select1.selectedIndex].value" style="width:134px; float:left; margin-left:10px; margin-top:10px;>
 <?php
 while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 ?>
@@ -65,13 +65,17 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 		var infowindow = new google.maps.InfoWindow();
 		
 		<?php
-		$res = mysql_query("SELECT * FROM location WHERE walkID = '1'");
+		$selectedwalk = mysql_query("SELECT * FROM walks where title = 'select1'");
+		$res = mysql_query("SELECT * FROM location WHERE walkID = '14'");
 		$res2 = mysql_query("SELECT * FROM placedesc");
 		while($a = mysql_fetch_array($res))
 		{
+		
+		while($b = mysql_fetch_array($res2))
+		{
 		?>
 			var LatLng = new google.maps.LatLng(<?=$a['latitude']?>,<?=$a['longitude']?>);
-			var ContentString = "<b><?=$a['shortDesc']?></b></br><?=$a['longDesc']?>";
+			var ContentString = "<b><?=$b['name']?></b></br><?=$b['description']?>";
 			var marker = new google.maps.Marker(
 			{
 				map:map,
@@ -87,7 +91,9 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 			});	
 		<?php
 		}
+		}
 		?>
+		/*
 		userroute = [
 		new google.maps.LatLng(52.415100,-4.063118),
 		new google.maps.LatLng(52.415779,-4.062887),
@@ -126,7 +132,7 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 		new google.maps.LatLng(52.415661,-4.087775),
 		new google.maps.LatLng(52.424648,-4.082924)
 		];
-		
+		*/
 		var path = new google.maps.Polyline
 		({
 			path: userroute,
@@ -158,17 +164,15 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 	
 <?php
 include('config.php');
-$result = mysql_query("SELECT * FROM photos");
-while($row = mysql_fetch_array($result))
+$getphotos = mysql_query ("SELECT * FROM photos");
+while($photograph = mysql_fetch_array($getphotos))
 {
-	$data = $row['photoName'];
-  	 echo 
-  	 '<div class="single">
-  	 	<div class="wrap">
-  			 echo '<img src="data:image/jpg;base64,' . $data . '" />';
-  		</div>
-  	</div>';
-}				
+        $data = $photograph['photoName'];
+        
+        //echo '<img src="data:image/jpg;base64,' . $data . '" />';
+        
+}
+
 ?>		
 		
 		

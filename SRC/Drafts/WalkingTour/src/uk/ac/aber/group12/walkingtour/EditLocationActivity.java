@@ -52,11 +52,11 @@ public class EditLocationActivity extends Activity{
 
 
         this.imageView = (ImageView) this.findViewById(R.id.imageView);
-        String Path=locations.get(editLoc).getImageFilePath();
+        String Path=locations.get(editLoc).getImage();
         imageFilePath=Path;
         if(Path !=null){
-        Bitmap img= BitmapFactory.decodeFile(Path);
-        this.imageView.setImageBitmap(Bitmap.createScaledBitmap(img, 512, 512, false));
+            Bitmap img= BitmapFactory.decodeFile(Path);
+            this.imageView.setImageBitmap(Bitmap.createScaledBitmap(img, 512, 512, false));
         }
         ((TextView) findViewById(R.id.locName)).setText(locations.get(editLoc).getName());
         ((TextView) findViewById(R.id.locDes)).setText(locations.get(editLoc).getDescription());
@@ -139,7 +139,7 @@ public class EditLocationActivity extends Activity{
 
         locations.get(locationNumber).setName(locName);
         locations.get(locationNumber).setDescription(locationDes);
-        locations.get(locationNumber).setImageFilePath(imageFilePath);
+        locations.get(locationNumber).setImage(imageFilePath);
 
 
         finish();
