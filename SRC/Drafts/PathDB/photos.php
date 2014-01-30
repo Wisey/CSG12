@@ -22,7 +22,7 @@ $getphotos = mysql_query ("SELECT * FROM photos");
 while($photograph = mysql_fetch_array($getphotos))
 {
 	$data = $a['photoName'];
-	echo '<img src="data:image/gif;base64,' . $data . '" />';
+	echo '<img src="data:image/jpg;base64,' . $data . '" />';
 }
 
 ?>
