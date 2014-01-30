@@ -181,7 +181,7 @@ public class LocationCreatorActivity extends Activity implements LocationListene
         String locName = ((EditText) findViewById(R.id.locName)).getText().toString();
         String locationDes = ((EditText) findViewById(R.id.locDes)).getText().toString();
 
-        if ((locName.matches("")) || locationDes.matches("")) {
+        if ((locName.matches("")) || locationDes.matches("")||imageFilePath==null) {
             Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
             return;
         }

@@ -29,12 +29,12 @@
     <nav><?php $query = "SELECT * FROM walks";
     $result = mysql_query($query);
 	?>
-<select name="select1" style="width:134px; float:left; margin-left:10px; margin-top:10px;>
+<select name="select1"  style="width:134px; float:left; margin-left:10px; margin-top:10px;">
 <?php
 while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 ?>
 <option value="<?php echo $line['title'];?>"> <?php echo $line['title'];?> </option>
- 
+
 <?php
 }
 ?>
@@ -49,6 +49,9 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 		
 	<script type="text/javascript"
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgXd8GzR2kAhJw-fnQqX_ZYpDnBxLLiRw&sensor=false">
+	
+	var dropdown = document.getElementById("value1").value;
+	<?=$drop?>= dropdown;
 	</script>
 	
     <script type="text/javascript">
@@ -65,6 +68,7 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 		var infowindow = new google.maps.InfoWindow();
 		
 		<?php
+		$selectedwalk = mysql_query("SELECT * FROM walks where title = '$drop'");
 		$res = mysql_query("SELECT * FROM location WHERE walkID = '14'");
 		$res2 = mysql_query("SELECT * FROM placedesc");
 		while($a = mysql_fetch_array($res))
@@ -92,6 +96,7 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 		}
 		}
 		?>
+		/*
 		userroute = [
 		new google.maps.LatLng(52.415100,-4.063118),
 		new google.maps.LatLng(52.415779,-4.062887),
@@ -130,7 +135,7 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 		new google.maps.LatLng(52.415661,-4.087775),
 		new google.maps.LatLng(52.424648,-4.082924)
 		];
-		
+		*/
 		var path = new google.maps.Polyline
 		({
 			path: userroute,
@@ -167,7 +172,7 @@ while($photograph = mysql_fetch_array($getphotos))
 {
         $data = $photograph['photoName'];
         
-        echo '<img src="data:image/jpg;base64,' . $data . '" />';
+        //echo '<img src="data:image/jpg;base64,' . $data . '" />';
         
 }
 
