@@ -64,12 +64,12 @@ foreach($thepost->locations as $mypoints)
 	}
 	mysql_query("INSERT INTO location (latitude, longitude, timestamp) VALUES ('$pointdata[2]', '$pointdata[3]', '$pointdata[4]')");
 	mysql_query("INSERT INTO placedesc (name, description) VALUES ('$pointdata[0]', '$pointdata[1]')");
-	mysql_query("INSERT INTO photos (placeID, photoName) VALUES ('$pointdata[]','$pointdata[5]')");
+	mysql_query("INSERT INTO photos (photoName) VALUES ($pointdata[5]')");
 	$y = 0;
 }
 $a = 0;
 $max = 0;
-/*
+
 foreach($thepost->waypoint_long as $interlongs)
 {
 	foreach($interlongs as $value)
@@ -95,7 +95,7 @@ for(a=0; a<$max; a++)
 	mysql_query("INSERT INTO location (latitude, longitude) VALUES ('$wayptlong[a]', '$wayptlat[a]')");
 	a++;
 }
-*/
+
 mysql_close($con);
 
 ?>
