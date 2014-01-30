@@ -24,7 +24,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import uk.ac.aber.group12.walkingtour.data.Image;
@@ -33,14 +32,11 @@ import uk.ac.aber.group12.walkingtour.data.TourLocation;
 
 public class LocationCreatorActivity extends Activity implements LocationListener {
 
-    private static final int CAMERA_REQUEST = 1888;
     private LocationManager locationManager;
     private String provider;
     private double latitude = 0;
     private double longitude = 0;
     private String imageFilePath;
-    private TourLocation loca;
-    private TextView textView;
     private ImageView imageView;
     private Tour tour;
 
@@ -147,13 +143,11 @@ public class LocationCreatorActivity extends Activity implements LocationListene
     public void onLocationChanged(Location location) {
         location.getLatitude();
         location.getLongitude();
-        System.out.println("location changed");
         latitude = location.getLatitude();
         longitude = location.getLongitude();
 
-        String Text = "Latitude = " + latitude + " Longitude = " + longitude;
+        String Text = "LocationCreator Latitude = " + latitude + " Longitude = " + longitude;
         Toast.makeText(getApplicationContext(), Text, Toast.LENGTH_LONG).show();
-
     }
 
     /**
@@ -195,7 +189,6 @@ public class LocationCreatorActivity extends Activity implements LocationListene
         TourLocation loc;
 
         loc = new TourLocation(locName, locationDes, imageFilePath, Image.base64(savedImage), latitude, longitude, time);
-
 
         tour.addLocation(loc);
         Toast.makeText(getApplicationContext(), String.valueOf(tour.getLocations().size()), Toast.LENGTH_SHORT).show();
