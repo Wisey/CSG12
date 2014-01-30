@@ -153,11 +153,11 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 	google.maps.event.addDomListener(window, 'load', initialize);
     </script>
     
-    $prev = $page - 1;
+   <? $prev = $page - 1;
 $next = $page + 1;
 
 if(!($page <= 1)){
-echo "<a href ='pagination.php?page=$prev'>previous</a>";
+echo "<a href ='ben.php?page=$prev'>previous</a>";
 }
 
 if($pages >= 1){
@@ -168,9 +168,9 @@ if($pages >= 1){
 
 }
 if(!($page >=$pages)){
-echo "<a href ='pagination.php?page=$next'>next</a>";
+echo "<a href ='ben.php?page=$next'>next</a>";
 }
-
+?>
 </head>
 
 <body>
