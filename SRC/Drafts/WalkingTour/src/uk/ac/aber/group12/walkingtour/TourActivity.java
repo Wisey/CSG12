@@ -13,7 +13,7 @@ import uk.ac.aber.group12.walkingtour.data.Post;
 import uk.ac.aber.group12.walkingtour.data.Tour;
 
 public class TourActivity extends Activity {
-    private static boolean DEBUG = false;
+    private static boolean DEBUG = true;
 
     // private TourCreatorActivity TCA;
     private Tour tour;
@@ -57,7 +57,7 @@ public class TourActivity extends Activity {
         if (DEBUG) {
             url = "http://nyaa.kragniz.eu";
         } else {
-            url = "http://nyaa.kragniz.eu:443/upload.php";
+            url = "http://nyaa.kragniz.eu:443/~group/upload.php";
         }
         Toast.makeText(getApplicationContext(), tour.toJSON().concat(" to ").concat(url), Toast.LENGTH_SHORT).show();
         Post post = new Post(url, tour.toJSON());

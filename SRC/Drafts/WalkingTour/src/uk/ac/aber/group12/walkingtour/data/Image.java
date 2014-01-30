@@ -28,6 +28,7 @@ public class Image {
         this.imageFilePath=imageFilePath;
        // this.encodedImage=null;
     }
+
 /*
     public String convertimagebase64(Bitmap image){
         ByteArrayOutputStream baos = new ByteArrayOutputStream();

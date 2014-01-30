@@ -16,6 +16,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -73,12 +74,17 @@ public class LocationCreatorActivity extends Activity implements LocationListene
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
         if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
             Uri _uri = data.getData();
 
+            Log.e("TAG", data.getDataString());
+
             //image = new Image(photo);
-            Cursor cursor = getContentResolver().query(_uri, new String[] { android.provider.MediaStore.Images.ImageColumns.DATA }, null, null, null);
+            Cursor cursor = getContentResolver().query(_uri,
+                    new String[] { android.provider.MediaStore.Images.ImageColumns.DATA }, null, null, null);
             cursor.moveToFirst();
 
             //Link to the image
