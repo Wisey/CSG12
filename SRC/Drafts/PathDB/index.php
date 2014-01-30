@@ -72,6 +72,7 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 		$drop = $_POST['select1'];
 		$selectedwalk = mysql_query("SELECT ID FROM walks WHERE title = '$drop'");
 		echo $selectedwalk;
+		echo </br>;
 		echo $drop;
 		//echo $_POST['select1'];
 		$res = mysql_query("SELECT * FROM location WHERE walkID = $selectedwalk");
