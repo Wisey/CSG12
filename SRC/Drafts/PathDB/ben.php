@@ -151,7 +151,12 @@ $getphotos = mysql_query ("SELECT * FROM photos");
 while($photograph = mysql_fetch_assoc($getphotos))
 {
 	$data = $photograph['photoName'];
-	echo '<img src="data:image/jpg;base64,' . $data . '" />  ';
+	echo '<img src="data:image/jpg;base64,' . $data . '" />    ';
+	$image = new Imagick('images/picture.jpg');
+
+//adding border
+$image->borderImage ('#000000',20,10);
+echo $image;
 }
 ?>
 
