@@ -22,13 +22,13 @@ import static java.lang.System.*;
 
 public class TourActivity extends Activity implements LocationListener{
     private static double TIME_BETWEEN_WAYPOINTS = 10000;
-    private static boolean DEBUG = false;
+    private static boolean DEBUG = true;
 
     private LocationManager locationManager;
     private String provider;
     private double latitude = 0;
     private double longitude = 0;
-    private double time = currentTimeMillis();
+    private double time = 0;
 
     // private TourCreatorActivity TCA;
     private Tour tour;
@@ -97,7 +97,7 @@ public class TourActivity extends Activity implements LocationListener{
         } else {
             url = "http://nyaa.kragniz.eu:443/~group/upload.php";
         }
-        //Toast.makeText(getApplicationContext(), tour.toJSON().concat(" to ").concat(url), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "POST to ".concat(url).concat(" ").concat(tour.toJSON()), Toast.LENGTH_SHORT).show();
         Post post = new Post(url, tour.toJSON());
         post.sendAsync();
     }
