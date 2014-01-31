@@ -67,17 +67,17 @@ foreach($thepost as $key => $value)
 	$x++;
 }
 mysql_query("INSERT INTO walks (title, shortDesc, longDesc) VALUES ('$name', '$short', '$long')");
-$getpathID = mysql_query("SELECT * FROM walks WHERE title = '$name'");
-$fetchpathID = mysql_fetch_array($getpathID);
-$pathID = $fetchpathID['id'];
-echo "ARRAY ACCESS";
+//$getpathID = mysql_query("SELECT * FROM walks WHERE title = '$name'");
+//$fetchpathID = mysql_fetch_array($getpathID);
+$pathID = mysql_insert_id();
+error_log("inserted walk");
 
-$pointMarkers = json_decode(file_get_contents("post_data.json"));
-$y=0;
-
+//$pointMarkers = json_decode(file_get_contents("post_data.json"));
+//$y=0;
 
 foreach($thepost->locations as $mypoints)
 {
+	 error_log("location");
 	 $desc = "";
          $name = "";
          $lat = 0;

@@ -31,7 +31,8 @@ a img {
 }
 
 body {
-	background: url(background.jpg);
+	background-image:url('background.jpg');
+	background-repeat:no-repeat;
 }
 
 
