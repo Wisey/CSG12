@@ -144,8 +144,8 @@ mysql_select_db("pathdb", $con);
 <script src="js/lightbox.js"></script>
 
 <?php
-$findpath = mysql_query("SELECT * FROM walks WHERE title = '$drop'")
-$pathidentity = mysql_fetch_array($findpath);
+//$findpath = mysql_query("SELECT * FROM walks WHERE title = '$drop'")
+//$pathidentity = mysql_fetch_array($findpath);
 //$findlocations = mysql_query("SELECT * FROM locations WHERE walkID = '$pathidentity'");
 //$located = mysql_fetch_array($findlocations);
 //$getphotos = mysql_query ("SELECT * FROM photos WHERE ID = '$located'");
