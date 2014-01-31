@@ -1,61 +1,64 @@
- <?php
- include("config.php");
+
+<?php
+//CREATE DATABASE CONNECTION, WITH DEBUG.
+$con = mysql_connect("localhost","root","group12");
+if (!$con)
+{
+	die('Could not connect: ' . mysql_error());
+}
+else
+{
+	echo('Connection Established.');
+}
+//pathdb STORES ALL TABLES.
+mysql_select_db("pathdb", $con);
 ?>
 
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-us">
 <head>
-
-
-	<meta charset="utf-8">
-	<title>Walking tour</title>
-	<link rel="stylesheet" href="css/screen.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="css/lightbox.css" type="text/css" media="screen" />
-
-  <link href='http://fonts.googleapis.com/css?family=Fredoka+One|Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <style>
-      #map-canvas {
-        height: 450px;
-        width:950px;
-        margin: auto;
-        padding: auto;
-        box-shadow: 2px 2px 2px 2px #999;
-
-      }
-
-    </style>
-    
-    <nav><?php $query = "SELECT * FROM walks";
-    $result = mysql_query($query);
-	?>
+<title>Main Page</title>
+<link rel="stylesheet" href="css/screen.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="css/lightbox.css" type="text/css" media="screen" />
+<link href='http://fonts.googleapis.com/css?family=Fredoka+One|Open+Sans:400,700' rel='stylesheet' type='text/css'>
+<style>
+#map-canvas
+{
+	height: 450px;
+	width:950px;
+	margin: auto;
+	padding: auto;
+	box-shadow: 2px 2px 2px 2px #999;
+}
+</style>
+<nav>
+<?php
+	$options = mysql_query("SELECT * FROM walks");
+?>
 <form action="index.php" method="post" style="height:15px; float:left;">
 <select name="select1"  style="width:134px; float:left; margin-left:10px; margin-top:10px;">
 <?php
-while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
+	while($line = mysql_fetch_array($options))
+	{
 ?>
-<option value="<?php echo $line['title'];?>"> <?php echo $line['title'];?> </option>
-
+		<option value="<?php echo $line['title'];?>"> <?php echo $line['title'];?> </option>
 <?php
-}
+	}
 ?>
 </select>
-
 <input name = "submitbutton" type = "submit" value = "submit" />
 </form>
-
-    
-    <ul>
-			<li class="active"><a href="#">Home</a></li>
-			<li><a href="#">Tours</a></li>
-			<li><a href="#">About</a></li>
-		</ul></nav>
+<ul>
+	<li class="active"><a href="#">Home</a></li>
+	<li><a href="#">Tours</a></li>
+	<li><a href="#">About</a></li>
+</ul>
+</nav>
 		
-	<script type="text/javascript"
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgXd8GzR2kAhJw-fnQqX_ZYpDnBxLLiRw&sensor=false">
-	</script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgXd8GzR2kAhJw-fnQqX_ZYpDnBxLLiRw&sensor=false">
+</script>
 	
-    <script type="text/javascript">
+<script type="text/javascript">
 	var image = 'icon2.png';
 	var directionsDisplay;
 	var directionsService = new google.maps.DirectionsService();
@@ -70,25 +73,15 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 		
 		<?php
 		$drop = $_POST['select1'];
-		$selectedwalk = mysql_query("SELECT * FROM walks WHERE title = $drop");
-		$selectedwalkID = $selectedwalk['ID'];
-		echo $selectedwalkID;
-		echo " +++ ";
-		echo $selectedwalk;
-		echo "</br>";
-		echo $drop;
-		echo 
-		//echo $_POST['select1'];
-		$res = mysql_query("SELECT * FROM location WHERE walkID = $selectedwalk");
-		$res2 = mysql_query("SELECT * FROM placedesc");
-		while($a = mysql_fetch_array($res))
-		{
-		
-		while($b = mysql_fetch_array($res2))
+		$result = mysql_query("SELECT * FROM walks WHERE title = '$drop'");
+		$actual = mysql_fetch_array($result);
+		$actualpath = $actual['id'];
+		//$drop = 1;
+		$points = mysql_query("SELECT * FROM location WHERE walkID = '$actualpath'");
+		while($a = mysql_fetch_array($points))
 		{
 		?>
 			var LatLng = new google.maps.LatLng(<?=$a['latitude']?>,<?=$a['longitude']?>);
-			var ContentString = "<b><?=$b['name']?></b></br><?=$b['description']?>";
 			var marker = new google.maps.Marker(
 			{
 				map:map,
@@ -96,16 +89,11 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 				animation: google.maps.Animation.DROP,
 				position: LatLng,
 				icon: image
-			});
-			marker.content = ContentString;
-			google.maps.event.addListener(marker, 'click', function(){
-				infowindow.setContent(this.content);
-				infowindow.open(this.getMap(),this);
 			});	
 		<?php
 		}
-		}
 		?>
+		
 		/*
 		userroute = [
 		new google.maps.LatLng(52.415100,-4.063118),
@@ -170,31 +158,6 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 <div id="wrapper">
 <p align="center">
 
-<div class="section" id="example">
-	
-	<div class="imageRow">
-  	<div class="set">
-	
-<?php
-include('config.php');
-$getphotos = mysql_query ("SELECT * FROM photos");
-while($photograph = mysql_fetch_array($getphotos))
-{
-        $data = $photograph['photoName'];
-        
-        //echo '<img src="data:image/jpg;base64,' . $data . '" />';
-        
-}
-
-?>		
-		
-		
-		
-  	</div>
-  </div>
-	
-</div>
-
 <hr />
 </div>
 <!-- end #content -->
@@ -203,31 +166,5 @@ while($photograph = mysql_fetch_array($getphotos))
 <script src="js/jquery-ui-1.8.18.custom.min.js"></script>
 <script src="js/jquery.smooth-scroll.min.js"></script>
 <script src="js/lightbox.js"></script>
-
-<script>
-  jQuery(document).ready(function($) {
-      $('a').smoothScroll({
-        speed: 1000,
-        easing: 'easeInOutCubic'
-      });
-
-      $('.showOlderChanges').on('click', function(e){
-        $('.changelog .old').slideDown('slow');
-        $(this).fadeOut();
-        e.preventDefault();
-      })
-  });
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-2196019-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
 </body>
 </html>
