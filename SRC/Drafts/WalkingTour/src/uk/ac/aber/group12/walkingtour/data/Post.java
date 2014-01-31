@@ -26,6 +26,13 @@ public class Post {
         this.postBody = postBody;
     }
 
+    /**
+     *
+     * Attempts to Post a Json string via HTTP.
+     *
+     *
+     * @return a boolean value, to confirm whether the Post was successful
+     */
     public boolean send() {
         int TIMEOUT = 60000;
         HttpParams httpParams = new BasicHttpParams();
@@ -50,6 +57,11 @@ public class Post {
         return true;
     }
 
+    /**
+     * Runs the send method, and if it fails,
+     * it attempts to save the tour locally on the device.
+     *
+     */
     public void sendAsync() {
         Thread thread = new Thread(new Runnable(){
             @Override

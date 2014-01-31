@@ -16,6 +16,8 @@ import uk.ac.aber.group12.walkingtour.data.Tour;
 
 public class TourCreatorActivity extends Activity {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +51,15 @@ public class TourCreatorActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     *
+     * When Tour Creation begins, it stores the name, Short Description and Long Description
+     * by creating a new instance of tour, passing in these parameters.
+     *
+     * If any field is left blank, a pop-up message is displayed, and the Tour is not saved.
+     *
+     * @param view the button that was clicked to call this method.
+     */
     public void onStartTour(View view) {
         String name = ((EditText) findViewById(R.id.tourName)).getText().toString();
         String shortDes = ((EditText) findViewById(R.id.shortDes)).getText().toString();

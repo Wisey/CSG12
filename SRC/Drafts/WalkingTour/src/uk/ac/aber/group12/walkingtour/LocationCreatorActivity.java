@@ -176,6 +176,12 @@ public class LocationCreatorActivity extends Activity implements LocationListene
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     *
+     *
+     *
+     * @param view
+     */
     public void onStartAddLocation(View view) {
         String locName = ((EditText) findViewById(R.id.locName)).getText().toString();
         String locationDes = ((EditText) findViewById(R.id.locDes)).getText().toString();

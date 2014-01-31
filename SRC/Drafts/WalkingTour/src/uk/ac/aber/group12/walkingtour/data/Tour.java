@@ -28,6 +28,15 @@ public class Tour implements Serializable {
     private ArrayList<Double> latitudes;
     private ArrayList<Double> longitudes;
 
+
+    /**
+     * The constructor for a Tour.
+     * It has a name, a short Description and a Long Description.
+     *
+     * @param name The name of the Tour.
+     * @param shortDescription A short description that describes the route taken.
+     * @param longDescription A description that can be used to describe the route taken in more detail.
+     */
     public Tour(String name, String shortDescription, String longDescription) {
         this.name = name;
         this.shortDescription = shortDescription;
@@ -46,6 +55,11 @@ public class Tour implements Serializable {
         longitudes.add(_long);
     }
 
+    /**
+     *Attempts to convert a Tour into a Json string, so that it may be sent to the database via HTTP Post.
+     *
+     * @return a Json String that holds the information of a single tour.
+     */
     public String toJSON() {
         StringBuffer buf = new StringBuffer();
 
