@@ -111,7 +111,7 @@ foreach($thepost->locations as $mypoints)
 			$image = $value;
 		}
 	}
-	$q = "INSERT INTO location (walkID, latitude, longitude, timestamp) VALUES ('$pathID','$lat', '$long', '$time')"
+	$q = "INSERT INTO location (walkID, latitude, longitude, timestamp) VALUES ('$pathID','$lat', '$long', '$time')";
 	mysql_query($q);
 	
 	//$getlocationID = mysql_query("SELECT * FROM location WHERE time = '$time'");
