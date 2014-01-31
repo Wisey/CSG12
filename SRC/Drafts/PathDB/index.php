@@ -49,7 +49,6 @@ mysql_select_db("pathdb", $con);
 </form>
 <ul>
 	<li class="active"><a href="#">Home</a></li>
-	<li><a href="#">Tours</a></li>
 	<li><a href="#">About</a></li>
 </ul>
 </nav>
@@ -82,10 +81,14 @@ mysql_select_db("pathdb", $con);
 			$dataselector = $a['ID'];
 			$data = mysql_query("SELECT * FROM placedesc WHERE locationID = '$dataselector'");
 			$description = mysql_fetch_array($data);
+			
+			$getphotos = mysql_query ("SELECT * FROM photos WHERE placeID = '$dataselector'");
+			$photograph = mysql_fetch_array($getphotos);
+			$data = $photograph['photoName'];
 		?>
 			var LatLng = new google.maps.LatLng(<?=$a['latitude']?>,<?=$a['longitude']?>);
 			var ContentString = "<b><?=$description['name']?></b></br><?=$description['description']?>";
-			ContentString = '<IMG BORDER="0" ALIGN="Left" SRC="icon2.png">';
+			ContentString = '<IMG BORDER="0" ALIGN="Left" SRC="data:image/jpg;base64,'.<?=$data?>.'" >';
 			var marker = new google.maps.Marker(
 			{
 				map:map,
