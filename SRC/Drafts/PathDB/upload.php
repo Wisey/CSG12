@@ -40,40 +40,80 @@ $jsonDecode=json_decode(file_get_contents("post_data.json"));
 print_r($jsonDecode);
 echo("</br>");
 $pathdata=array();
+$short = "";
+$name = "";
+$long = "";
 $x = 0;
  
 foreach($thepost as $key => $value)
 {
 	echo "<p>$key | $value</p>";
 	$pathdata[$x]=$value;
+	if ($key == "name") {
+		$name = $value;
+	}
+	if ($key == "short-description") {
+		$short = $value;
+	}
+	if ($key == "long-description") {
+		$long = $value;
+	}
 	$x++;
 }
-mysql_query("INSERT INTO walks (title, shortDesc, longDesc) VALUES ('$thepost[\"name\"]', '$thepost[\"short-description\"]', '$thepost[\"long-description\"]')");
-$getpathID = mysql_query("SELECT * FROM walks WHERE title = '$pathdata[0]'");
+mysql_query("INSERT INTO walks (title, shortDesc, longDesc) VALUES ('$name', '$short', '$long')");
+$getpathID = mysql_query("SELECT * FROM walks WHERE title = '$name'");
 $fetchpathID = mysql_fetch_array($getpathID);
 $pathID = $fetchpathID['id'];
 echo "ARRAY ACCESS";
 
 $pointMarkers = json_decode(file_get_contents("post_data.json"));
 $y=0;
+
+
 foreach($thepost->locations as $mypoints)
 {
+	 $desc = "";
+         $name = "";
+         $lat = 0;
+         $long = 0;
+         $time = 0;
+         $image = "";
+         
 	foreach($mypoints as $key => $value)
 	{
 		echo "<p>$key | $value</p>";
 		$pointdata[$y]=$value;
 		$y++;
+		
+		if ($key == "description") {
+			$desc = $value;
+		}
+		if ($key == "name") {
+			$name = $value;
+		}
+		if ($key == "latitude") {
+			$lat = $value;
+		}
+		if ($key == "longitude") {
+			$long = $value;
+		}
+		if ($key == "time") {
+			$time = $value;
+		}
+		if ($key == "image") {
+			$image = $value;
+		}
 	}
-	mysql_query("INSERT INTO location (walkID, latitude, longitude, timestamp) VALUES ('$pathID','$pointdata[2]', '$pointdata[3]', '$pointdata[4]')");
+	mysql_query("INSERT INTO location (walkID, latitude, longitude, timestamp) VALUES ('$pathID','$lat', '$long', '$time')");
 	
-	$getlocationID = mysql_query("SELECT * FROM location WHERE latitude = '$pointdata[2]'");
+	$getlocationID = mysql_query("SELECT * FROM location WHERE latitude = '$lat'");
 	$fetchlocationID = mysql_fetch_array($getlocationID);
 	$locationID = $fetchlocationID['ID'];
 	
-	mysql_query("INSERT INTO placedesc (locationID, name, description) VALUES ('$locationID', '$pointdata[0]', '$pointdata[1]')");
+	mysql_query("INSERT INTO placedesc (locationID, name, description) VALUES ('$locationID', '$name', '$desc')");
 	
 	
-	mysql_query("INSERT INTO photos (placeID, photoName) VALUES ('$locationID','$pointdata[5]')");
+	mysql_query("INSERT INTO photos (placeID, photoName) VALUES ('$locationID','$image')");
 	$y = 0;
 }
 $a = 0;
