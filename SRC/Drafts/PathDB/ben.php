@@ -124,7 +124,7 @@ mysql_select_db("pathdb", $con);
  <div id="map-canvas"></div>
 
 
-<div id="content">
+<div id="content" style=width:960px;">
  
 <div id="wrapper">
 <p align="center">
@@ -146,7 +146,7 @@ $getphotos = mysql_query ("SELECT * FROM photos");
 	while($photograph = mysql_fetch_assoc($getphotos))
 	{
 	$data = $photograph['photoName'];
-	<div id="image" style="heght:450px; width:450;"> echo '<img src="data:image/jpg;base64,' . $data . '" />     ';</div>
+	 echo '<img src="data:image/jpg;base64,' . $data . '" />     ';
 }
 ?>
 
