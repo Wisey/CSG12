@@ -152,7 +152,8 @@ while($photograph = mysql_fetch_assoc($getphotos))
 {
 	$data = $photograph['photoName'];
 	
-	echo '<img src="data:image/jpg;base64,' . $data . '" />    ';
+	echo '   <img src="data:image/jpg;base64,' . $data . '" />    ';
+	</br>
 
 	
 </body>
