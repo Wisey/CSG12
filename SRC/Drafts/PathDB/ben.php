@@ -1,60 +1,62 @@
- <?php
- include("config.php");
+<?php
+//CREATE DATABASE CONNECTION, WITH DEBUG.
+$con = mysql_connect("localhost","root","group12");
+if (!$con)
+{
+	die('Could not connect: ' . mysql_error());
+}
+else
+{
+	echo('Connection Established.');
+}
+//pathdb STORES ALL TABLES.
+mysql_select_db("pathdb", $con);
 ?>
 
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-us">
 <head>
-
-
-	<meta charset="utf-8">
-	<title>Walking tour</title>
-	<link rel="stylesheet" href="css/screen.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="css/lightbox.css" type="text/css" media="screen" />
-
-  <link href='http://fonts.googleapis.com/css?family=Fredoka+One|Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <style>
-      #map-canvas {
-        height: 450px;
-        width:950px;
-        margin: auto;
-        padding: auto;
-        box-shadow: 2px 2px 2px 2px #999;
-
-      }
-
-    </style>
-    
-    <nav><?php $query = "SELECT * FROM walks";
-    $result = mysql_query($query);
-	?>
+<title>Main Page</title>
+<link rel="stylesheet" href="css/screen.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="css/lightbox.css" type="text/css" media="screen" />
+<link href='http://fonts.googleapis.com/css?family=Fredoka+One|Open+Sans:400,700' rel='stylesheet' type='text/css'>
+<style>
+#map-canvas
+{
+	height: 450px;
+	width:950px;
+	margin: auto;
+	padding: auto;
+	box-shadow: 2px 2px 2px 2px #999;
+}
+</style>
+<nav>
+<?php
+	$options = mysql_query("SELECT * FROM walks");
+?>
 <form action="index.php" method="post" style="height:15px; float:left;">
 <select name="select1"  style="width:134px; float:left; margin-left:10px; margin-top:10px;">
 <?php
-while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
+	while($line = mysql_fetch_array($options))
+	{
 ?>
-<option value="<?php echo $line['title'];?>"> <?php echo $line['title'];?> </option>
-
+		<option value="<?php echo $line['title'];?>"> <?php echo $line['title'];?> </option>
 <?php
-}
+	}
 ?>
 </select>
-<input name = "submitbutton" type = "submit" value = "submit" />
+<b>Select a walk</b><input name = "submitbutton" type = "submit" value = "go" style="height:16px; width:16px; background-color:black; color:white;" />
 </form>
-
-    
-    <ul>
-			<li class="active"><a href="#">Home</a></li>
-			<li><a href="#">Tours</a></li>
-			<li><a href="#">About</a></li>
-		</ul></nav>
+<ul>
+	<li class="active"><a href="#">Home</a></li>
+	<li><a href="#">About</a></li>
+</ul>
+</nav>
 		
-	<script type="text/javascript"
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgXd8GzR2kAhJw-fnQqX_ZYpDnBxLLiRw&sensor=false">
-	</script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgXd8GzR2kAhJw-fnQqX_ZYpDnBxLLiRw&sensor=false">
+</script>
 	
-    <script type="text/javascript">
+<script type="text/javascript">
 	var image = 'icon2.png';
 	var directionsDisplay;
 	var directionsService = new google.maps.DirectionsService();
@@ -66,23 +68,22 @@ while($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 		var mapOptions = {center: new google.maps.LatLng(52.413571,-4.073489), zoom: 14};
 		var map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
 		var infowindow = new google.maps.InfoWindow();
-	<?php	
-		$per_page = 1;
-$pages_query = mysql_query("SELECT COUNT('id') From walks");
-$pages = floor(mysql_result($pages_query, 0) / $per_page);
-
-$page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1; 
-$start = ($page - 1) * $per_page;
-$query = mysql_query("SELECT * From walks LIMIT $start, $per_page");
-
 		
-		
-		
-		while($query_row = mysql_fetch_assoc($query))
+		<?php
+		$drop = $_POST['select1'];
+		$result = mysql_query("SELECT * FROM walks WHERE title = '$drop'");
+		$actual = mysql_fetch_array($result);
+		$actualpath = $actual['id'];
+		//$drop = 1;
+		$points = mysql_query("SELECT * FROM location WHERE walkID = '$actualpath'");
+		while($a = mysql_fetch_array($points))
 		{
+			$dataselector = $a['ID'];
+			$data = mysql_query("SELECT * FROM placedesc WHERE locationID = '$dataselector'");
+			$description = mysql_fetch_array($data);
 		?>
 			var LatLng = new google.maps.LatLng(<?=$a['latitude']?>,<?=$a['longitude']?>);
-			var ContentString = "<b><?=$b['name']?></b></br><?=$b['description']?>";
+			var ContentString = "<b><?=$description['name']?></b></br><?=$description['description']?>";
 			var marker = new google.maps.Marker(
 			{
 				map:map,
@@ -93,13 +94,13 @@ $query = mysql_query("SELECT * From walks LIMIT $start, $per_page");
 			});
 			marker.content = ContentString;
 			google.maps.event.addListener(marker, 'click', function(){
-				infowindow.setContent(this.content);
-				infowindow.open(this.getMap(),this);
-			});	
+			infowindow.setContent(this.content);
+			infowindow.open(this.getMap(),this);
+			});
 		<?php
 		}
-		}
 		?>
+		
 		/*
 		userroute = [
 		new google.maps.LatLng(52.415100,-4.063118),
@@ -140,6 +141,19 @@ $query = mysql_query("SELECT * From walks LIMIT $start, $per_page");
 		new google.maps.LatLng(52.424648,-4.082924)
 		];
 		*/
+		
+		var userroute = new Array();
+		<?php
+		$route = mysql_query("SELECT * FROM location WHERE walkID = '$actualpath'");
+		while($getpath = mysql_fetch_array($route))
+		{
+		?>
+			var pathlatlng = new google.maps.LatLng(<?=$getpath['latitude']?>,<?=$getpath['longitude']?>);
+			userroute.push(pathlatlng)
+		<?php
+		}
+		?>
+		
 		var path = new google.maps.Polyline
 		({
 			path: userroute,
@@ -153,25 +167,6 @@ $query = mysql_query("SELECT * From walks LIMIT $start, $per_page");
 	
 	google.maps.event.addDomListener(window, 'load', initialize);
     </script>
-    
-   <? $prev = $page - 1;
-$next = $page + 1;
-
-if(!($page <= 1)){
-echo "<a href ='ben.php?page=$prev'>previous</a>";
-}
-
-if($pages >= 1){
-
-	for($x = 1; $x<=$pages; $x++){
-		echo ($x == $page) ? '<b><a href="?page='.$x.'">'.$x.'</a></b>      ': '<a href="?page='.$x.'">'.$x.'</a>      ';
-	}
-
-}
-if(!($page >=$pages)){
-echo "<a href ='ben.php?page=$next'>next</a>";
-}
-?>
 </head>
 
 <body>
@@ -183,31 +178,6 @@ echo "<a href ='ben.php?page=$next'>next</a>";
 <div id="wrapper">
 <p align="center">
 
-<div class="section" id="example">
-	
-	<div class="imageRow">
-  	<div class="set">
-	
-<?php
-include('config.php');
-$getphotos = mysql_query ("SELECT * FROM photos");
-while($photograph = mysql_fetch_array($getphotos))
-{
-        $data = $photograph['photoName'];
-        
-        //echo '<img src="data:image/jpg;base64,' . $data . '" />';
-        
-}
-
-?>		
-		
-		
-		
-  	</div>
-  </div>
-	
-</div>
-
 <hr />
 </div>
 <!-- end #content -->
@@ -216,31 +186,5 @@ while($photograph = mysql_fetch_array($getphotos))
 <script src="js/jquery-ui-1.8.18.custom.min.js"></script>
 <script src="js/jquery.smooth-scroll.min.js"></script>
 <script src="js/lightbox.js"></script>
-
-<script>
-  jQuery(document).ready(function($) {
-      $('a').smoothScroll({
-        speed: 1000,
-        easing: 'easeInOutCubic'
-      });
-
-      $('.showOlderChanges').on('click', function(e){
-        $('.changelog .old').slideDown('slow');
-        $(this).fadeOut();
-        e.preventDefault();
-      })
-  });
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-2196019-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
 </body>
 </html>
