@@ -124,7 +124,7 @@ mysql_select_db("pathdb", $con);
  <div id="map-canvas"></div>
 
 
-<div id="content" style=width:960px;">
+<div id="content" style=width:980px;">
  
 <div id="wrapper">
 <p align="center">
