@@ -48,7 +48,7 @@ foreach($thepost as $key => $value)
 	$pathdata[$x]=$value;
 	$x++;
 }
-mysql_query("INSERT INTO walks (title, shortDesc, longDesc) VALUES ('$pathdata[0]', '$pathdata[1]', '$pathdata[2]')");
+mysql_query("INSERT INTO walks (title, shortDesc, longDesc) VALUES ('$thepost[\"name\"]', '$thepost[\"short-description\"]', '$thepost[\"long-description\"]')");
 $getpathID = mysql_query("SELECT * FROM walks WHERE title = '$pathdata[0]'");
 $fetchpathID = mysql_fetch_array($getpathID);
 $pathID = $fetchpathID['id'];
@@ -85,7 +85,7 @@ foreach($thepost->waypoint_long as $interlongs)
 		echo "<p>$value</p>";
 		$wayptlong[$a]=$value;
 		$a++;
-		$max = a;
+		$max = $a;
 	}
 }
 $a = 0;
@@ -98,10 +98,10 @@ foreach($thepost->waypoint_lat as $interlats)
 		$a++;
 	}
 }
-for(a=0; a<$max; a++)
+for($a=0; $a<$max; $a++)
 {
 	mysql_query("INSERT INTO location (latitude, longitude) VALUES ('$wayptlong[a]', '$wayptlat[a]')");
-	a++;
+	$a++;
 }
 
 mysql_close($con);

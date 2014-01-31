@@ -5,10 +5,7 @@ if (!$con)
 {
 	die('Could not connect: ' . mysql_error());
 }
-else
-{
-	echo('Connection Established.');
-}
+
 //pathdb STORES ALL TABLES.
 mysql_select_db("pathdb", $con);
 ?>
@@ -86,8 +83,9 @@ mysql_select_db("pathdb", $con);
 			$photograph = mysql_fetch_array($getphotos);
 			$data = $photograph['photoName'];
 		?>
+			<?php $LocationPhoto = data:image/jpg;base64,' . $data . '?>
 			var LatLng = new google.maps.LatLng(<?=$a['latitude']?>,<?=$a['longitude']?>);
-			var ContentString = "<b><?=$description['name']?></b></br><?=$description['description']?>";
+			var ContentString = "<b><?=$description['name']?></b></br> <?=$description['description']?></br> <img src='icon.2.png";
 			//ContentString =
 			var marker = new google.maps.Marker(
 			{
