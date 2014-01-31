@@ -44,10 +44,6 @@ mysql_select_db("pathdb", $con);
 </select>
 <input name = "submitbutton" type = "submit" value = "submit" />
 </form>
-<ul>
-	<li class="active"><a href="#">Home</a></li>
-	<li><a href="#">About</a></li>
-</ul>
 </nav>
 		
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgXd8GzR2kAhJw-fnQqX_ZYpDnBxLLiRw&sensor=false">
