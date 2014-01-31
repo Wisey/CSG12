@@ -31,9 +31,10 @@ mysql_select_db("pathdb", $con);
 
 error_log("sql works");
 
-$thepost=json_decode(file_get_contents('php://input'));
-var_dump(json_decode(file_get_contents("php://input")));
-echo "</br>";
+$jsonfile = mb_convert_encoding(file_get_contents('php://input'), "UTF-8");
+$thepost=json_decode($jsonfile);
+//var_dump(json_decode(file_get_contents("php://input")));
+//echo "</br>";
 
 error_log("json decoding");
 
