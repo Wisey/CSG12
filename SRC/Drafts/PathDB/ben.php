@@ -34,8 +34,8 @@ mysql_select_db("pathdb", $con);
 <?php
 	$options = mysql_query("SELECT * FROM walks");
 ?>
+<div style+="color: olive; float:left;">Select a walk</div>
 <form action="index.php" method="post" style="height:15px; float:left;">
-Select a walk
 <select name="select1"  style="width:134px; float:left; margin-left:10px; margin-top:10px;">
 <?php
 	while($line = mysql_fetch_array($options))
@@ -46,7 +46,7 @@ Select a walk
 	}
 ?>
 </select>
-<input name = "submitbutton" type = "submit" value = "go" style=" margin-top:10px; height:20px; width:50px; background-color:grey; color:black;" />
+<input name = "submitbutton" type = "submit" value = "go" style=" margin-top:10px; height:40px; width:50px; background-color:grey; color:black;" />
 </form>
 <ul>
 	<li class="active"><a href="#">Home</a></li>
