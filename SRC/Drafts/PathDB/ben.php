@@ -138,7 +138,7 @@ mysql_select_db("pathdb", $con);
 <script src="js/jquery.smooth-scroll.min.js"></script>
 <script src="js/lightbox.js"></script>
 
-<div id="image" style="heght:450px; width:450;">
+
 <?php
 $getlocations = mysql_query("SELECT * FROM locations");
 $getphotos = mysql_query ("SELECT * FROM photos");
@@ -146,9 +146,9 @@ $getphotos = mysql_query ("SELECT * FROM photos");
 	while($photograph = mysql_fetch_assoc($getphotos))
 	{
 	$data = $photograph['photoName'];
-	echo '<img src="data:image/jpg;base64,' . $data . '" />     ';
+	<div id="image" style="heght:450px; width:450;"> echo '<img src="data:image/jpg;base64,' . $data . '" />     ';</div>
 }
 ?>
-</div>
+
 </body>
 </html>
