@@ -87,6 +87,7 @@ foreach($thepost->locations as $mypoints)
          
 	foreach($mypoints as $key => $value)
 	{
+		error_log("key: '$key'");
 		echo "<p>$key | $value</p>";
 		$pointdata[$y]=$value;
 		$y++;
@@ -110,7 +111,8 @@ foreach($thepost->locations as $mypoints)
 			$image = $value;
 		}
 	}
-	mysql_query("INSERT INTO location (walkID, latitude, longitude, timestamp) VALUES ('$pathID','$lat', '$long', '$time')");
+	$q = "INSERT INTO location (walkID, latitude, longitude, timestamp) VALUES ('$pathID','$lat', '$long', '$time')"
+	mysql_query($q);
 	
 	//$getlocationID = mysql_query("SELECT * FROM location WHERE time = '$time'");
 	//$fetchlocationID = mysql_fetch_array($getlocationID);
