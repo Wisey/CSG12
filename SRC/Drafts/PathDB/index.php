@@ -82,9 +82,16 @@ mysql_select_db("pathdb", $con);
 			$dataselector = $a['ID'];
 			$data = mysql_query("SELECT * FROM placedesc WHERE locationID = '$dataselector'");
 			$description = mysql_fetch_array($data);
+			
+			$getphotos = mysql_query ("SELECT * FROM photos WHERE placeID = '$dataselector'");
+			while($photograph = mysql_fetch_array($getphotos))
+			{
+				$data = $photograph['photoName'];
+				$imgdisplay = <img src="data:image/jpg;base64,'.$data.'"/>;
+			}
 		?>
 			var LatLng = new google.maps.LatLng(<?=$a['latitude']?>,<?=$a['longitude']?>);
-			var ContentString = "<b><?=$description['name']?></b></br><?=$description['description']?>/>";
+			var ContentString = "<b><?=$description['name']?></b></br><?=$description['description']?><?=$imgdisplay?>";
 			var marker = new google.maps.Marker(
 			{
 				map:map,
