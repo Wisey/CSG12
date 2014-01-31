@@ -149,11 +149,11 @@ $pathidentity = mysql_fetch_array($findpath);
 $findlocations = mysql_query("SELECT * FROM locations WHERE walkID = '$pathidentity'");
 $located = mysql_fetch_array($findlocations);
 $getphotos = mysql_query ("SELECT * FROM photos WHERE ID = '$located'");
-while($photograph = mysql_fetch_array($getphotos))
-{
-	$data = $photograph['photoName'];
-	echo '<img src="data:image/jpg;base64,' . $data . '" />     ';
-}
+//while($photograph = mysql_fetch_array($getphotos))
+//{
+//	$data = $photograph['photoName'];
+//	echo '<img src="data:image/jpg;base64,' . $data . '" />     ';
+//}
 ?>
 
 </body>
