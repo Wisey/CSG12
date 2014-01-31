@@ -1,3 +1,4 @@
+/*
 package uk.ac.aber.group12.walkingtour;
 
 
@@ -18,7 +19,9 @@ import android.widget.Toast;
 
 /**
  * Created by dpb1 on 28/01/2014.
- */
+ *
+ * This class is no longer in use. It has been replaced by newer code.
+
 
 
 public class thread extends Activity implements LocationListener {
@@ -96,7 +99,7 @@ public class thread extends Activity implements LocationListener {
 
     /**
      * Set up the {@link android.app.ActionBar}, if the API is available.
-     */
+
 
     private void setupActionBar() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
@@ -144,3 +147,4 @@ public class thread extends Activity implements LocationListener {
     public void onStatusChanged(String arg0, int arg1, Bundle arg2) {
     }
 }
+ */
