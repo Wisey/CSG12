@@ -59,7 +59,7 @@ body, input, textarea {
 nav {
 	
 	border: #FFFFFF;
-	background: white;
+	background: blue;
 	font-size: 1.143em;
 	height: 45px;
 	line-height: 30px;
@@ -69,7 +69,7 @@ nav {
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	width: 950px;
-	box-shadow: 2px 2px 2px 2px #999;
+	
 	
 }
 
