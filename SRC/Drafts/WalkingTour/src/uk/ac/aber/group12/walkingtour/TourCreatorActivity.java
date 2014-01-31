@@ -64,6 +64,15 @@ public class TourCreatorActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     *
+     * When the tour is started, the Name, Short Description and Long Description are saved.
+     *
+     *
+     *
+     *
+     * @param view
+     */
     public void onStartTour(View view) {
         String name = ((EditText) findViewById(R.id.tourName)).getText().toString();
         String shortDes = ((EditText) findViewById(R.id.shortDes)).getText().toString();

@@ -67,6 +67,7 @@ public class ViewWalksActivity extends Activity {
         // Third parameter - ID of the TextView to which the data is written
         // Forth - the Array of data
 
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, android.R.id.text1, values);
 

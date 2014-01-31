@@ -14,10 +14,22 @@ public class WalkingTourApplication extends Application {
     private static Tour tour;
     public ArrayList<Integer> asyncDone = new ArrayList<Integer>();
 
+    /**
+     *
+     *
+     *
+     * @return The tour currently being used in the application.
+     */
     public Tour getCurrentTour() {
         return tour;
     }
 
+    /**
+     *
+     * Sets the tour in the application.
+     *
+     * @param tour
+     */
     public void setCurrentTour(Tour tour) {
         WalkingTourApplication.tour = tour;
     }
