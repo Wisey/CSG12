@@ -80,8 +80,12 @@ mysql_select_db("pathdb", $con);
 		$points = mysql_query("SELECT * FROM location WHERE walkID = '$actualpath'");
 		while($a = mysql_fetch_array($points))
 		{
+			$dataselector = $a['ID'];
+			$data = mysql_query("SELECT * FROM placedesc WHERE locationID = '$dataselector'");
+			$description = mysql_fetch_array($data);
 		?>
 			var LatLng = new google.maps.LatLng(<?=$a['latitude']?>,<?=$a['longitude']?>);
+			var ContentString = "<b><?=$description['name']?></b></br><?=$description['description']?>";
 			var marker = new google.maps.Marker(
 			{
 				map:map,
@@ -89,7 +93,12 @@ mysql_select_db("pathdb", $con);
 				animation: google.maps.Animation.DROP,
 				position: LatLng,
 				icon: image
-			});	
+			});
+			marker.content = ContentString;
+			google.maps.event.addListener(marker, 'click', function(){
+			infowindow.setContent(this.content);
+			infowindow.open(this.getMap(),this);
+			});
 		<?php
 		}
 		?>
