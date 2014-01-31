@@ -1,7 +1,11 @@
+#!/usr/bin/env python
+
 from flask import Flask, request
 import json
 import sys
 import os
+import urllib2
+import sys
 
 app = Flask(__name__)
 
@@ -20,10 +24,21 @@ def hello_world():
                       'long-description'
                       )
                   )
+        if False:
+            for loc in body['locations']:
+                loc['image'] = 'test'
 
         if body.has_key('locations') and body.has_key('name'):
             if len(body['locations']) > 0 and type(body['name']) is unicode:
                 os.system('figlet IT WORKS')
+                print '1'
+                req = urllib2.Request("http://nyaa.kragniz.eu:443/~group/upload.php")
+                print '2'
+                req.add_header('Content-Type', 'application/json')
+                print '3'
+                print json.dumps(body)
+                response = urllib2.urlopen(req, json.dumps(body))
+                print '4'
             else:
                 os.system('figlet MALFORMED')
 
