@@ -7,6 +7,8 @@
 <body>
 
 <?php
+error_log("Hi, dude");
+
 if(!function_exists('json_decode')) die('JSON not supported.');
 else 
 echo("JSON Supported.</br>");
