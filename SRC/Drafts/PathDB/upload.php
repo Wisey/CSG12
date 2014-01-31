@@ -106,7 +106,7 @@ foreach($thepost->locations as $mypoints)
 	}
 	mysql_query("INSERT INTO location (walkID, latitude, longitude, timestamp) VALUES ('$pathID','$lat', '$long', '$time')");
 	
-	$getlocationID = mysql_query("SELECT * FROM location WHERE latitude = '$lat'");
+	$getlocationID = mysql_query("SELECT * FROM location WHERE time = '$time'");
 	$fetchlocationID = mysql_fetch_array($getlocationID);
 	$locationID = $fetchlocationID['ID'];
 	
