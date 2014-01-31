@@ -88,7 +88,7 @@ mysql_select_db("pathdb", $con);
 		?>
 			var LatLng = new google.maps.LatLng(<?=$a['latitude']?>,<?=$a['longitude']?>);
 			var ContentString = "<b><?=$description['name']?></b></br><?=$description['description']?>";
-			ContentString = <img src="data:image/jpg;base64,<?=$data?>" />;
+			ContentString = '<img src="data:image/jpg;base64,<?=$data?>" />';
 			var marker = new google.maps.Marker(
 			{
 				map:map,
