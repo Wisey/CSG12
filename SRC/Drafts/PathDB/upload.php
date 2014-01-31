@@ -88,10 +88,6 @@ foreach($thepost->locations as $mypoints)
 	foreach($mypoints as $key => $value)
 	{
 		error_log("key: '$key'");
-		echo "<p>$key | $value</p>";
-		$pointdata[$y]=$value;
-		$y++;
-		
 		if ($key == "description") {
 			$desc = $value;
 		}
@@ -109,6 +105,7 @@ foreach($thepost->locations as $mypoints)
 		}
 		if ($key == "image") {
 			$image = $value;
+			error_log($image);
 		}
 	}
 	$q = "INSERT INTO location (walkID, latitude, longitude, timestamp) VALUES ('$pathID','$lat', '$long', '$time')";
