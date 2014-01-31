@@ -59,21 +59,27 @@
                 android:text="Location Description"
                 android:selectAllOnFocus="true"/>
 
-        <Button
+        <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Save Location"
-                android:id="@+id/button"
-                android:layout_gravity="left|center_vertical"
-                android:onClick="onStartAddLocation"/>
+                android:layout_height="fill_parent"
+                android:layout_gravity="center">
 
-        <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Delete Location"
-                android:id="@+id/button2"
-                android:layout_gravity="right|center_vertical"
-                android:onClick="onStartDeleteLocation"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Save Location"
+                    android:id="@+id/button"
+                    android:layout_gravity="left|center_vertical"
+                    android:onClick="onStartAddLocation"/>
+
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Delete Location"
+                    android:id="@+id/button2"
+                    android:layout_gravity="right|center_vertical"
+                    android:onClick="onStartDeleteLocation"/>
+        </LinearLayout>
 
     </LinearLayout>
 
