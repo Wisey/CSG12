@@ -84,14 +84,12 @@ mysql_select_db("pathdb", $con);
 			$description = mysql_fetch_array($data);
 			
 			$getphotos = mysql_query ("SELECT * FROM photos WHERE placeID = '$dataselector'");
-			while($photograph = mysql_fetch_array($getphotos))
-			{
-				$data = $photograph['photoName'];
-				$imgdisplay = echo '<img src="data:image/jpg;base64,' . $data . '" />';
-			}
+			$photograph = mysql_fetch_array($getphotos);
+			$data = $photograph['photoName'];
+			$imgdisplay = echo '<img src="data:image/jpg;base64,' . $data . '" />';
 		?>
 			var LatLng = new google.maps.LatLng(<?=$a['latitude']?>,<?=$a['longitude']?>);
-			var ContentString = "<b><?=$description['name']?></b></br><?=$description['description']?><?=$imgdisplay?>";
+			var ContentString = "<b><?=$description['name']?></b></br><?=$description['description']?><img src="data:image/jpg;base64,' . <?=$data?> . '" />";
 			var marker = new google.maps.Marker(
 			{
 				map:map,
