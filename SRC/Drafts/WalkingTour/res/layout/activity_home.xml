@@ -6,7 +6,7 @@
       xmlns:android="http://schemas.android.com/apk/res/android"
       android:baselineAligned="true"
       android:clickable="false"
-      android:background="@drawable/BackGround">
+      android:background="@drawable/background">
 
   <ImageView
           android:layout_width="wrap_content"
