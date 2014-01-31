@@ -80,8 +80,7 @@ mysql_select_db("pathdb", $con);
 			$data = $photograph['photoName'];
 		?>
 			var LatLng = new google.maps.LatLng(<?=$a['latitude']?>,<?=$a['longitude']?>);
-			var ContentString = "<b><?=$description['name']?></b></br> <?=$description['description']?></br> <img src='icon.2.png";
-			//ContentString =
+			var ContentString = "<b><?=$description['name']?></b></br> <?=$description['description']?>;
 			var marker = new google.maps.Marker(
 			{
 				map:map,
@@ -145,14 +144,16 @@ mysql_select_db("pathdb", $con);
 <script src="js/lightbox.js"></script>
 
 <?php
-
-
-$getphotos = mysql_query ("SELECT * FROM photos");
-while($photograph = mysql_fetch_array($getphotos))
-{
-	$data = $photograph['photoName'];
-	echo '<img src="data:image/jpg;base64,' . $data . '" />     ';
-}
+$findpath = mysql_query("SELECT * FROM walks WHERE title = '$drop'")
+$pathidentity = mysql_fetch_array($findpath);
+//$findlocations = mysql_query("SELECT * FROM locations WHERE walkID = '$pathidentity'");
+//$located = mysql_fetch_array($findlocations);
+//$getphotos = mysql_query ("SELECT * FROM photos WHERE ID = '$located'");
+//while($photograph = mysql_fetch_array($getphotos))
+//{
+//	$data = $photograph['photoName'];
+//	echo '<img src="data:image/jpg;base64,' . $data . '" />     ';
+//}
 ?>
 
 </body>
