@@ -101,9 +101,10 @@ public class LocationCreatorActivity extends Activity implements LocationListene
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode == RESULT_OK){
         Uri selectedImage = data.getData();
 
-        if (requestCode == 1 && resultCode == RESULT_OK) {
+        if (requestCode == 1) {
             Cursor cursor = null;
             if (selectedImage != null) {
                 cursor = getContentResolver().query(selectedImage, new String[]{MediaStore.Images.ImageColumns.DATA}, null, null, null);
@@ -137,6 +138,7 @@ public class LocationCreatorActivity extends Activity implements LocationListene
 
         savedImage = Bitmap.createScaledBitmap(img, (int) (scale*w), (int) (scale*h), false);
         imageView.setImageBitmap(savedImage);
+        }
     }
 
     @Override

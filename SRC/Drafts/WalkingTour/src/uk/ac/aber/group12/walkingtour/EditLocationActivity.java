@@ -103,10 +103,11 @@ public class EditLocationActivity extends Activity{
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode == RESULT_OK){
         Uri selectedImage = data.getData();
 
 
-        if (requestCode == 1 && resultCode == RESULT_OK) {
+        if (requestCode == 1 ) {
             Cursor cursor = getContentResolver().query(selectedImage, new String[] { android.provider.MediaStore.Images.ImageColumns.DATA }, null, null, null);
             cursor.moveToFirst();
             imageFilePath = cursor.getString(0);
@@ -126,6 +127,7 @@ public class EditLocationActivity extends Activity{
         Bitmap img=BitmapFactory.decodeFile(imageFilePath);
         imageView.setImageBitmap(Bitmap.createScaledBitmap(img, 512, 512, false));
         //imageView.setImageBitmap(img);
+        }
     }
 
     public void onStartEditLocation(View view){
