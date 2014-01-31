@@ -147,5 +147,17 @@ mysql_select_db("pathdb", $con);
 <script src="js/jquery-ui-1.8.18.custom.min.js"></script>
 <script src="js/jquery.smooth-scroll.min.js"></script>
 <script src="js/lightbox.js"></script>
+
+<?php
+
+
+$getphotos = mysql_query ("SELECT * FROM photos");
+while($photograph = mysql_fetch_array($getphotos))
+{
+	$data = $photograph['photoName'];
+	echo '<img src="data:image/jpg;base64,' . $data . '" />';
+}
+?>
+
 </body>
 </html>
