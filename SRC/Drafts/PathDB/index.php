@@ -74,9 +74,12 @@ mysql_select_db("pathdb", $con);
 			$data = mysql_query("SELECT * FROM placedesc WHERE locationID = '$dataselector'");
 			$description = mysql_fetch_array($data);
 		?>
+			<?php 
+			if($a['timestamp'] != 0)
+			{ ?>
 			var LatLng = new google.maps.LatLng(<?=$a['latitude']?>,<?=$a['longitude']?>);
 			var ContentString = "<b><?=$description['name']?></b></br> <?=$description['description']?></br> <img src='icon.2.png";
-			//ContentString =
+			
 			var marker = new google.maps.Marker(
 			{
 				map:map,
@@ -89,6 +92,9 @@ mysql_select_db("pathdb", $con);
 			infowindow.setContent(this.content);
 			infowindow.open(this.getMap(),this);
 			});
+			<?php
+			}
+			?>
 		<?php
 		}
 		?>
