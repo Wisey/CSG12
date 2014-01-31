@@ -87,11 +87,11 @@ mysql_select_db("pathdb", $con);
 			while($photograph = mysql_fetch_array($getphotos))
 			{
 				$data = $photograph['photoName'];
-				$imgdisplay = <img src="data:image/jpg;base64,'.$data.'"/>;
+				//$imgdisplay = <img src="data:image/jpg;base64,'.$data.'"/>;
 			}
 		?>
 			var LatLng = new google.maps.LatLng(<?=$a['latitude']?>,<?=$a['longitude']?>);
-			var ContentString = "<b><?=$description['name']?></b></br><?=$description['description']?></br>";
+			var ContentString = "<b><?=$description['name']?></b></br><?=$description['description']?>";
 			var marker = new google.maps.Marker(
 			{
 				map:map,
