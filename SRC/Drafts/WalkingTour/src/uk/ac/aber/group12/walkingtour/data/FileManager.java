@@ -84,6 +84,10 @@ public class FileManager {
         return tour;
     }
 
+    /**
+     *
+     * This removes the file currently in local storage.
+     */
     public void remove() {
 
 

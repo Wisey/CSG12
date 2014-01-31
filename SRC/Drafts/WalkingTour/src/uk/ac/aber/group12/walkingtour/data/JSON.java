@@ -5,6 +5,14 @@ package uk.ac.aber.group12.walkingtour.data;
  */
 
 public class JSON {
+    /**
+     *
+     * This method adds a \\ before characters to stop them from being misinterpreted during the
+     * JSON Post.
+     *
+     * @param string This is the JSON String to be sent.
+     * @return A 'safe' JSON String, ready to be posted.
+     */
     public static String quote(String string) {
         char         c = 0;
         int          i;

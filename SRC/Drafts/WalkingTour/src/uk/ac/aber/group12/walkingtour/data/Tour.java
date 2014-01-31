@@ -20,18 +20,38 @@ public class Tour implements Serializable {
     private String longDescription;
     private ArrayList<TourLocation> locations;
 
+    /**
+     *
+     * Constructor for a single Tour.
+     *
+     * @param name The Name of the Tour
+     * @param shortDescription a short description, describing the route.
+     * @param longDescription a more detailed description of the Tour and the route.
+     */
     public Tour(String name, String shortDescription, String longDescription) {
         this.name = name;
         this.shortDescription = shortDescription;
         this.longDescription = longDescription;
         locations = new ArrayList<TourLocation>();
     }
-    
 
+    /**
+     *
+     * This method adds a location to the Tour.
+     *
+     * @param location the location to be added.
+     */
     public void addLocation(TourLocation location) {
         locations.add(location);
     }
 
+    /**
+     *
+     * This method converts the Tour into a JSON string based on the Schema we are using.
+     *
+     *
+     * @return a JSON string of a converted Tour.
+     */
     public String toJSON() {
         StringBuffer buf = new StringBuffer();
 

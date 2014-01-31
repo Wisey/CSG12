@@ -26,6 +26,13 @@ public class Post {
         this.postBody = postBody;
     }
 
+    /**
+     *
+     * This method sends our JSON String containing information about a tour to the database to that
+     * it can be stored.
+     *
+     * @return a boolean value (True/False) to confim whether or not the Post was sent successfully.
+     */
     public boolean send() {
         int TIMEOUT = 60000;
         HttpParams httpParams = new BasicHttpParams();
@@ -50,6 +57,11 @@ public class Post {
         return true;
     }
 
+    /**
+     *
+     * This method attempts to begin the sending of the JSON post to the database.
+     * If there is an error in doing this, the tour is serialized and saved locally.
+     */
     public void sendAsync() {
         Thread thread = new Thread(new Runnable(){
             @Override

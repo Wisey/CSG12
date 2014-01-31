@@ -22,17 +22,17 @@ public class TourLocation {
     /**
      *
      * This is the constructor for a location in a Tour.
-     * Waypoints are considered locations, except that the unnecessary parameters are null.
      *
      *
-     * @param name
-     * @param description
-     * @param imagePath
-     * @param latitude
-     * @param longitude
-     * @param time
+     *
+     * @param name Name of location.
+     * @param description A description of the place. E.g. ("A very nice place to relax")
+     * @param imagePath The filepath of the image associated with the tour.
+     * @param base64Bitmap this is the converted image associated with the location.
+     * @param latitude The latitude coordinate
+     * @param longitude The longitude coordinate
+     * @param time The time that the location was created.
      */
-
     public TourLocation(String name, String description, String imagePath, String base64Bitmap, double latitude, double longitude, double time) {
         this.name = name;
         this.description = description;
@@ -43,6 +43,13 @@ public class TourLocation {
         this.time = time;
     }
 
+    /**
+     *
+     * This method converts the location into a JSON string based on the Schema we are using.
+     *
+     *
+     * @return a JSON string of a converted Tour.
+     */
     public String toJSON() {
         return String.format(LOCATION_JSON, JSON.quote(name), JSON.quote(description), latitude, longitude, time, JSON.quote(base64Bitmap));
     }
