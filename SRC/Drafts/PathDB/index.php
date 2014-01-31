@@ -1,7 +1,7 @@
 
 <?php
 //CREATE DATABASE CONNECTION, WITH DEBUG.
-$con = mysql_connect("localhost","root","group12");
+$con = mysql_connect("localhost","root","");
 if (!$con)
 {
 	die('Could not connect: ' . mysql_error());
@@ -143,6 +143,19 @@ mysql_select_db("pathdb", $con);
 		new google.maps.LatLng(52.424648,-4.082924)
 		];
 		*/
+		
+		var userroute = new Array();
+		<?php
+		$route = mysql_query("SELECT * FROM location WHERE walkID = '$actualpath'");
+		while($getpath = mysql_fetch_array($route))
+		{
+		?>
+			var pathlatlng = new google.maps.LatLng(<?=$getpath['latitude']?>,<?=$getpath['longitude']?>);
+			userroute.push(pathlatlng)
+		<?php
+		}
+		?>
+		
 		var path = new google.maps.Polyline
 		({
 			path: userroute,
