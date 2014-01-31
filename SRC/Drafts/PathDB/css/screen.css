@@ -33,6 +33,7 @@ a img {
 body {
 	background-image:url('background.jpg');
 	background-repeat:no-repeat;
+	size: 100%;
 }
 
 
