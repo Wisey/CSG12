@@ -136,7 +136,7 @@ foreach($thepost->waypoint_lat as $interlats)
 
 for($b=0; $b<$a; $b++)
 {
-	mysql_query("INSERT INTO location (latitude, longitude) VALUES ('$wayptlong[b]', '$wayptlat[b]')");
+	mysql_query("INSERT INTO location (latitude, longitude) VALUES ('$wayptlong[$b]', '$wayptlat[$b]')");
 }
 
 mysql_close($con);
