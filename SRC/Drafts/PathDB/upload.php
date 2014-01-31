@@ -104,6 +104,7 @@ foreach($thepost->locations as $mypoints)
 			$time = $value;
 		}
 		if ($key == "image") {
+			error_log("assigning");
 			$image = $value;
 			error_log($image);
 		}
