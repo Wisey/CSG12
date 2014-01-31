@@ -3,7 +3,11 @@ package uk.ac.aber.group12.JavaTests;
 import android.test.InstrumentationTestCase;
 import junit.framework.Assert;
 import uk.ac.aber.group12.walkingtour.data.TourLocation;
+import junit.framework.TestCase;
 
+//import org.junit.Test;
+
+//import org.robolectric.RobolectricTestRunner;
 
 /**
  * Created by srp11 on 29/01/2014.

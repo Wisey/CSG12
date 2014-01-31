@@ -2,6 +2,8 @@ package uk.ac.aber.group12.walkingtour.data;
 
 
 public class TourLocation {
+    private static boolean UPLOAD_IMAGES = true;
+
     private static String LOCATION_JSON = "    {\n"
             + "      \"name\": %s,\n"
             + "      \"description\": %s,\n"
@@ -44,7 +46,13 @@ public class TourLocation {
     }
 
     public String toJSON() {
-        return String.format(LOCATION_JSON, JSON.quote(name), JSON.quote(description), latitude, longitude, time, JSON.quote(base64Bitmap));
+        String image;
+        if (UPLOAD_IMAGES) {
+            image = JSON.quote(base64Bitmap);
+        } else {
+            image = "\"placeholder image\"";
+        }
+        return String.format(LOCATION_JSON, JSON.quote(name), JSON.quote(description), latitude, longitude, time, image);
     }
 
     public String getName() {

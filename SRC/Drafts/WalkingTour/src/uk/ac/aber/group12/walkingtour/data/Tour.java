@@ -12,6 +12,12 @@ public class Tour implements Serializable {
         + "  \"long-description\": %s,\n"
         + "  \"locations\": [\n"
         + "%s"
+        + "  ],\n"
+        + "  \"waypoint_long\": [\n"
+        + "%s"
+        + "  ],\n"
+        + "  \"waypoint_lat\": [\n"
+        + "%s"
         + "  ]\n"
         + "}";
 
@@ -19,17 +25,25 @@ public class Tour implements Serializable {
     private String shortDescription;
     private String longDescription;
     private ArrayList<TourLocation> locations;
+    private ArrayList<Double> latitudes;
+    private ArrayList<Double> longitudes;
 
     public Tour(String name, String shortDescription, String longDescription) {
         this.name = name;
         this.shortDescription = shortDescription;
         this.longDescription = longDescription;
         locations = new ArrayList<TourLocation>();
+        latitudes = new ArrayList<Double>();
+        longitudes = new ArrayList<Double>();
     }
     
-
     public void addLocation(TourLocation location) {
         locations.add(location);
+    }
+
+    public void addWaypoint(double lat, double _long) {
+        latitudes.add(lat);
+        longitudes.add(_long);
     }
 
     public String toJSON() {
@@ -44,7 +58,31 @@ public class Tour implements Serializable {
             }
         }
 
-        return String.format(TOUR_JSON, JSON.quote(name), JSON.quote(shortDescription), JSON.quote(longDescription), buf.toString());
+        StringBuffer latBuf = new StringBuffer();
+
+        for(int i=0; i < latitudes.size(); i++) {
+            latBuf.append("    ");
+            latBuf.append(latitudes.get(i).toString());
+            if (i < latitudes.size()-1) {
+                latBuf.append(",\n");
+            } else {
+                latBuf.append("\n");
+            }
+        }
+
+        StringBuffer longBuf = new StringBuffer();
+
+        for(int i=0; i < longitudes.size(); i++) {
+            longBuf.append("    ");
+            longBuf.append(longitudes.get(i).toString());
+            if (i < longitudes.size()-1) {
+                longBuf.append(",\n");
+            } else {
+                longBuf.append("\n");
+            }
+        }
+
+        return String.format(TOUR_JSON, JSON.quote(name), JSON.quote(shortDescription), JSON.quote(longDescription), buf.toString(), latBuf.toString(), longBuf.toString());
     }
 
     public String getName() {
