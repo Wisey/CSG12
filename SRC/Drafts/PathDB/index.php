@@ -5,10 +5,7 @@ if (!$con)
 {
 	die('Could not connect: ' . mysql_error());
 }
-else
-{
-	echo('Connection Established.');
-}
+
 //pathdb STORES ALL TABLES.
 mysql_select_db("pathdb", $con);
 ?>
@@ -87,7 +84,7 @@ mysql_select_db("pathdb", $con);
 			$data = $photograph['photoName'];
 		?>
 			var LatLng = new google.maps.LatLng(<?=$a['latitude']?>,<?=$a['longitude']?>);
-			var ContentString = "<b><?=$description['name']?></b></br><?=$description['description']?>";
+			var ContentString = "<b><?=$description['name']?></b></br> <?=$description['description']?></br> <img src='icon.2.png";
 			//ContentString =
 			var marker = new google.maps.Marker(
 			{
@@ -150,5 +147,17 @@ mysql_select_db("pathdb", $con);
 <script src="js/jquery-ui-1.8.18.custom.min.js"></script>
 <script src="js/jquery.smooth-scroll.min.js"></script>
 <script src="js/lightbox.js"></script>
+
+<?php
+
+
+$getphotos = mysql_query ("SELECT * FROM photos");
+while($photograph = mysql_fetch_array($getphotos))
+{
+	$data = $photograph['photoName'];
+	echo '<img src="data:image/jpg;base64,' . $data . '" />';
+}
+?>
+
 </body>
 </html>
