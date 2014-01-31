@@ -24,15 +24,15 @@ public class TourLocation {
     /**
      *
      * This is the constructor for a location in a Tour.
-     * Waypoints are considered locations, except that the unnecessary parameters are null.
      *
      *
-     * @param name
-     * @param description
-     * @param imagePath
-     * @param latitude
-     * @param longitude
-     * @param time
+     *
+     * @param name The name of a location. (E.g. "The Pug's tail")
+     * @param description The Descripion of a location. (E.g. "The local watering whole for the crimnal puppy masterminds.")
+     * @param imagePath The image filepath of a picture taken at the location. (E.g. " C:\Users\Benson\My Pictures\woof.bark")
+     * @param latitude The latitude coordinate of a location.
+     * @param longitude The longitude coordinate of a location.
+     * @param time The date/Time of when a location was recorded into the phone.
      */
 
     public TourLocation(String name, String description, String imagePath, String base64Bitmap, double latitude, double longitude, double time) {
@@ -45,6 +45,11 @@ public class TourLocation {
         this.time = time;
     }
 
+    /**
+     *Attempts to convert a location into a Json string, so that it may be sent to the database via HTTP Post.
+     *
+     * @return a Json String that holds the information of a single location.
+     */
     public String toJSON() {
         String image;
         if (UPLOAD_IMAGES) {

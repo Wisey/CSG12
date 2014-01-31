@@ -5,6 +5,14 @@ package uk.ac.aber.group12.walkingtour.data;
  */
 
 public class JSON {
+    /**
+     *
+     * Prevents illegal characters from being sent in the Json Post.
+     * it adds a \ in front of illegal characters so that they do not get misinterpreted.
+     *
+     * @param string to be escaped for illegal characters.
+     * @return A corrected Json String, ready to be Posted.
+     */
     public static String quote(String string) {
         char         c = 0;
         int          i;

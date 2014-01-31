@@ -7,6 +7,8 @@
 <body>
 
 <?php
+error_log("Hi, dude");
+
 if(!function_exists('json_decode')) die('JSON not supported.');
 else 
 echo("JSON Supported.</br>");
@@ -27,69 +29,124 @@ else
 mysql_select_db("pathdb", $con);
 //-------------------------------------------------------------------------------
 
-$thepost=json_decode(file_get_contents('php://input'));
-var_dump(json_decode(file_get_contents("php://input")));
-echo "</br>";
+error_log("sql works");
+
+$jsonfile = mb_convert_encoding(file_get_contents('php://input'), "UTF-8");
+$thepost=json_decode($jsonfile);
+//var_dump(json_decode(file_get_contents("php://input")));
+//echo "</br>";
+
+error_log("json decoding");
 
 $file = 'output.txt';
 $current = $thepost;
 file_put_contents($file, $current);
 
 
-$jsonDecode=json_decode(file_get_contents("json2.json"));
+$jsonDecode=json_decode(file_get_contents("post_data.json"));
 print_r($jsonDecode);
 echo("</br>");
 $pathdata=array();
+$short = "";
+$name = "";
+$long = "";
 $x = 0;
  
-foreach($jsonDecode as $key => $value)
+foreach($thepost as $key => $value)
 {
 	echo "<p>$key | $value</p>";
 	$pathdata[$x]=$value;
+	if ($key == "name") {
+		$name = $value;
+	}
+	if ($key == "short-description") {
+		$short = $value;
+	}
+	if ($key == "long-description") {
+		$long = $value;
+	}
 	$x++;
 }
-mysql_query("INSERT INTO walks (title, shortDesc, longDesc) VALUES ('$pathdata[0]', '$pathdata[1]', '$pathdata[2]')");
+mysql_query("INSERT INTO walks (title, shortDesc, longDesc) VALUES ('$name', '$short', '$long')");
+//$getpathID = mysql_query("SELECT * FROM walks WHERE title = '$name'");
+//$fetchpathID = mysql_fetch_array($getpathID);
+$pathID = mysql_insert_id();
+error_log("inserted walk");
 
-echo "ARRAY ACCESS";
+//$pointMarkers = json_decode(file_get_contents("post_data.json"));
+//$y=0;
 
-$pointMarkers = json_decode(file_get_contents("post_data.json"));
-$y=0;
 foreach($thepost->locations as $mypoints)
 {
+	 error_log("location");
+	 $desc = "";
+         $name = "";
+         $lat = 0;
+         $long = 0;
+         $time = 0;
+         $image = "";
+         
 	foreach($mypoints as $key => $value)
 	{
-		echo "<p>$key | $value</p>";
-		$pointdata[$y]=$value;
-		$y++;
+		error_log("key: '$key'");
+		if ($key == "description") {
+			$desc = $value;
+		}
+		if ($key == "name") {
+			$name = $value;
+		}
+		if ($key == "latitude") {
+			$lat = $value;
+		}
+		if ($key == "longitude") {
+			$long = $value;
+		}
+		if ($key == "time") {
+			$time = $value;
+		}
+		if ($key == "image") {
+			error_log("assigning");
+			$image = $value;
+			error_log($image);
+		}
 	}
-	mysql_query("INSERT INTO location (latitude, longitude, timestamp) VALUES ('$pointdata[2]', '$pointdata[3]', '$pointdata[4]')");
-	mysql_query("INSERT INTO placedesc (name, description) VALUES ('$pointdata[0]', '$pointdata[1]')");
-	mysql_query("INSERT INTO photos (photoName) VALUES ($pointdata[5]')");
+	$q = "INSERT INTO location (walkID, latitude, longitude, timestamp) VALUES ('$pathID','$lat', '$long', '$time')";
+	mysql_query($q);
+	
+	//$getlocationID = mysql_query("SELECT * FROM location WHERE time = '$time'");
+	//$fetchlocationID = mysql_fetch_array($getlocationID);
+	//$locationID = $fetchlocationID['ID'];
+	$locationID = mysql_insert_id();
+	
+	mysql_query("INSERT INTO placedesc (locationID, name, description) VALUES ('$locationID', '$name', '$desc')");
+	
+	
+	mysql_query("INSERT INTO photos (placeID, photoName) VALUES ('$locationID','$image')");
 	$y = 0;
 }
 $a = 0;
-$max = 0;
-
-foreach($thepost->waypoint_long as $interlongs)
+$wayptlong = array();
+foreach($thepost->waypoint_long as $value)
 {
-	echo "Reading from waypoint_long Array.";
-		echo "<p>$interlongs</p>";
-		$wayptlong[$a]=$interlongs;
-		$a++;
-		$max = $a;
-}
-$a = 0;
-foreach($thepost->waypoint_lat as $interlats)
-{
-	echo "Reading from waypoint_lat Array.";
-		echo "<p>$interlats</p>";
-		$wayptlat[$a]=$interlats;
-		$a++;
-}
-for($a=0; $a<$max; $a++)
-{
-	mysql_query("INSERT INTO location (latitude, longitude) VALUES ('$wayptlong[$a]', '$wayptlat[$a]')");
+	echo "<p>$value</p>";
+	$wayptlong[$a]=$value;
 	$a++;
+}
+
+$a = 0;
+$wayptlat = array();
+foreach($thepost->waypoint_lat as $value)
+{
+	echo "<p>$value</p>";
+	$wayptlat[$a]=$value;
+	$a++;
+}
+
+for($b=0; $b<$a; $b++)
+{
+	$q = "INSERT INTO location (walkID, longitude, latitude) VALUES ('$pathID','$wayptlat[$b]', '$wayptlong[$b]')";
+	error_log($q);
+	mysql_query($q);
 }
 
 mysql_close($con);
