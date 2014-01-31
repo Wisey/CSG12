@@ -143,7 +143,7 @@ foreach($thepost->waypoint_lat as $value)
 
 for($b=0; $b<$a; $b++)
 {
-	$q = "INSERT INTO location (walkID, latitude, longitude) VALUES ('$pathID','$wayptlat[$b]', '$wayptlong[$b]')";
+	$q = "INSERT INTO location (walkID, longitude, latitude) VALUES ('$pathID','$wayptlat[$b]', '$wayptlong[$b]')";
 	error_log($q);
 	mysql_query($q);
 }
