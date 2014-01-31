@@ -118,6 +118,7 @@ foreach($thepost->locations as $mypoints)
 	$y = 0;
 }
 $a = 0;
+$wayptlong = array();
 foreach($thepost->waypoint_long as $interlongs)
 {
 	echo "<p>$value</p>";
@@ -127,10 +128,11 @@ foreach($thepost->waypoint_long as $interlongs)
 }
 
 $a = 0;
+$wayptlat = array();
 foreach($thepost->waypoint_lat as $interlats)
 {
 	echo "<p>$value</p>";
-	$wayptlong[$a]=$value;
+	$wayptlat[$a]=$value;
 	$a++;
 }
 
