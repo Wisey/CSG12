@@ -151,7 +151,7 @@ $getphotos = mysql_query ("SELECT * FROM photos");
 while($photograph = mysql_fetch_array($getphotos))
 {
 	$data = $photograph['photoName'];
-	echo '<img src="data:image/jpg;base64,' . $data . '" />';
+	echo '<img src="data:image/jpg;base64,' . $data . '" />     ';
 }
 ?>
 
