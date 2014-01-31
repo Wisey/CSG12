@@ -119,17 +119,16 @@ foreach($thepost->locations as $mypoints)
 }
 $a = 0;
 $wayptlong = array();
-foreach($thepost->waypoint_long as $interlongs)
+foreach($thepost->waypoint_long as $value)
 {
 	echo "<p>$value</p>";
 	$wayptlong[$a]=$value;
 	$a++;
-	$max = $a;
 }
 
 $a = 0;
 $wayptlat = array();
-foreach($thepost->waypoint_lat as $interlats)
+foreach($thepost->waypoint_lat as $value)
 {
 	echo "<p>$value</p>";
 	$wayptlat[$a]=$value;
@@ -138,7 +137,7 @@ foreach($thepost->waypoint_lat as $interlats)
 
 for($b=0; $b<$a; $b++)
 {
-	$q = "INSERT INTO location (latitude, longitude) VALUES ('$wayptlong[$b]', '$wayptlat[$b]')";
+	$q = "INSERT INTO location (walkID, latitude, longitude) VALUES ('$pathID','$wayptlat[$b]', '$wayptlong[$b]')";
 	error_log($q);
 	mysql_query($q);
 }
