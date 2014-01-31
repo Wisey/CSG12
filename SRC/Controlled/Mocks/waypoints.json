@@ -1,0 +1,27 @@
+{
+  "name": "Tour name",
+  "short-description": "Short Description",
+  "long-description": "Long Description",
+  "locations": [
+    {
+      "name": "Location Name",
+      "description": "Location Description",
+      "latitude": 52.416170,
+      "longitude": -4.065692,
+      "time": 1391108923.000000,
+      "image": "placeholder image"
+    }
+  ],
+  "waypoint_long": [
+    52.41627328,
+    52.41620099,
+    52.41615193,
+    52.41615023
+  ],
+  "waypoint_lat": [
+    -4.06569866,
+    -4.06588392,
+    -4.06576817,
+    -4.06576162
+  ]
+}

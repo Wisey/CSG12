@@ -1,0 +1,9 @@
+#!/bin/bash
+# Pull from git and deploy the webserver files into public_html
+
+while true;
+    do
+        git pull
+        sleep 5
+	rsync -av --delete . ~/public_html
+done

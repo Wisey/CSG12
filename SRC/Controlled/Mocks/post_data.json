@@ -1,0 +1,23 @@
+{
+  "name": "A tour",
+  "short-description": "Some kind of tour. I'm not sure how long this should be.",
+  "long-description": "I don't know what to say right here.",
+  "locations": [
+    {
+      "name": "Point number tree",
+      "description": "something...",
+      "latitude": 0.23223232,
+      "longitude": -1.23232,
+      "time": 1390832912.171089,
+      "image": "AB8FD927E8B72CB7223..."
+    },
+    {
+      "name": "shtsjksjkejtkls",
+      "description": "something...",
+      "latitude": 0.23223232,
+      "longitude": -1.23232,
+      "time": 1390832912.171089,
+      "image": "AB8FD927E8B72CB7223..."
+    }
+  ]
+}
