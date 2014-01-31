@@ -24,7 +24,7 @@ mysql_select_db("pathdb", $con);
 	width:950px;
 	margin: auto;
 	padding: auto;
-	box-shadow: 2px 2px 2px 2px #999;
+	
 }
 </style>
 <nav>
