@@ -34,7 +34,7 @@ mysql_select_db("pathdb", $con);
 <?php
 	$options = mysql_query("SELECT * FROM walks");
 ?><h6 style = "color:black;">Select a walk</h6>
-<form action="index.php" method="post" style="height:15px; float:left;">
+<form action="index.php" method="post" style="height:15px; margin-left:auto;">
 
 <select name="select1"  style="width:134px; float:left; margin-left:10px; margin-top:10px;">
 <?php
