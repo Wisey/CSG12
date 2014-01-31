@@ -24,14 +24,14 @@ mysql_select_db("pathdb", $con);
 	width:950px;
 	margin: auto;
 	padding: auto;
-	box-shadow: 2px 2px 2px 2px #999;
+	
 }
 </style>
 <nav>
 <?php
 	$options = mysql_query("SELECT * FROM walks");
 ?>
-<form action="index.php" method="post" style="height:15px; float:left;">
+<form action="ben.php" method="post" style="height:15px; float:left;">
 <select name="select1"  style="width:134px; float:left; margin-left:10px; margin-top:10px;">
 <?php
 	while($line = mysql_fetch_array($options))
@@ -124,7 +124,7 @@ mysql_select_db("pathdb", $con);
  <div id="map-canvas"></div>
 
 
-<div id="content">
+<div id="content" style=width:980px;">
  
 <div id="wrapper">
 <p align="center">
@@ -138,14 +138,15 @@ mysql_select_db("pathdb", $con);
 <script src="js/jquery.smooth-scroll.min.js"></script>
 <script src="js/lightbox.js"></script>
 
+
 <?php
 $getlocations = mysql_query("SELECT * FROM locations");
 $getphotos = mysql_query ("SELECT * FROM photos");
 
-	while($photograph = mysql_fetch_array($getphotos))
+	while($photograph = mysql_fetch_assoc($getphotos))
 	{
 	$data = $photograph['photoName'];
-	echo '<img src="data:image/jpg;base64,' . $data . '" />     ';
+	 echo '<img src="data:image/jpg;base64,' . $data . '" />     ';
 }
 ?>
 
