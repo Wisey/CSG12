@@ -118,31 +118,25 @@ foreach($thepost->locations as $mypoints)
 	$y = 0;
 }
 $a = 0;
-$max = 0;
 foreach($thepost->waypoint_long as $interlongs)
 {
-	foreach($interlongs as $value)
-	{
-		echo "<p>$value</p>";
-		$wayptlong[$a]=$value;
-		$a++;
-		$max = $a;
-	}
+	echo "<p>$value</p>";
+	$wayptlong[$a]=$value;
+	$a++;
+	$max = $a;
 }
+
 $a = 0;
 foreach($thepost->waypoint_lat as $interlats)
 {
-	foreach($interlats as $value)
-	{
-		echo "<p>$value</p>";
-		$wayptlong[$a]=$value;
-		$a++;
-	}
-}
-for($a=0; $a<$max; $a++)
-{
-	mysql_query("INSERT INTO location (latitude, longitude) VALUES ('$wayptlong[a]', '$wayptlat[a]')");
+	echo "<p>$value</p>";
+	$wayptlong[$a]=$value;
 	$a++;
+}
+
+for($b=0; $b<$a; $b++)
+{
+	mysql_query("INSERT INTO location (latitude, longitude) VALUES ('$wayptlong[b]', '$wayptlat[b]')");
 }
 
 mysql_close($con);
