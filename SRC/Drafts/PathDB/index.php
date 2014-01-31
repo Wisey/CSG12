@@ -50,7 +50,6 @@ mysql_select_db("pathdb", $con);
 </script>
 	
 <script type="text/javascript">
-	var image = 'icon2.png';
 	var directionsDisplay;
 	var directionsService = new google.maps.DirectionsService();
 	
@@ -87,8 +86,7 @@ mysql_select_db("pathdb", $con);
 				map:map,
 				draggable:false,
 				animation: google.maps.Animation.DROP,
-				position: LatLng,
-				icon: image
+				position: LatLng
 			});
 			marker.content = ContentString;
 			google.maps.event.addListener(marker, 'click', function(){
@@ -145,11 +143,12 @@ mysql_select_db("pathdb", $con);
 <script src="js/lightbox.js"></script>
 
 <?php
-
-
+$getlocations = mysql_query("SELECT * FROM locations");
 $getphotos = mysql_query ("SELECT * FROM photos");
-while($photograph = mysql_fetch_array($getphotos))
+
+
 {
+	$photograph = mysql_fetch_array($getphotos))
 	$data = $photograph['photoName'];
 	echo '<img src="data:image/jpg;base64,' . $data . '" />     ';
 }
