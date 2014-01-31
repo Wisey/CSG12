@@ -5,10 +5,7 @@ if (!$con)
 {
 	die('Could not connect: ' . mysql_error());
 }
-else
-{
-	echo('Connection Established.');
-}
+
 //pathdb STORES ALL TABLES.
 mysql_select_db("pathdb", $con);
 ?>
