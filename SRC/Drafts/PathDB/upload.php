@@ -48,7 +48,7 @@ foreach($thepost as $key => $value)
 	$pathdata[$x]=$value;
 	$x++;
 }
-mysql_query("INSERT INTO walks (title, shortDesc, longDesc) VALUES ('$pathdata[0]', '$pathdata[1]', '$pathdata[2]')");
+mysql_query("INSERT INTO walks (title, shortDesc, longDesc) VALUES ('$thepost[\"name\"]', '$thepost[\"short-description\"]', '$thepost[\"long-description\"]')");
 $getpathID = mysql_query("SELECT * FROM walks WHERE title = '$pathdata[0]'");
 $fetchpathID = mysql_fetch_array($getpathID);
 $pathID = $fetchpathID['id'];
